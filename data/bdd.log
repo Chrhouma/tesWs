@@ -1,0 +1,3 @@
+/*C2*/SET SCHEMA PUBLIC
+alter table web_service drop constraint UK_ljcc6jx7h4y12wdcn4nb6a9ue
+alter table web_service add constraint UK_ljcc6jx7h4y12wdcn4nb6a9ue unique (id, rang)
