@@ -1,0 +1,133 @@
+package com.pictimegroupe.FrontVendeur.testWebservice;
+
+import org.hibernate.annotations.Cascade;
+import javax.persistence.Entity;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+public class WebService implements Serializable  {
+    @Id
+    private String id =UUID.randomUUID().toString();
+    private String name;
+    private String url;
+
+    private Integer rang;
+
+    @OneToOne
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    private Schema inputSchema ;
+
+    @OneToOne
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    private Schema outSchema ;
+
+
+
+    public List<WebService> getWebServices() {
+        return webServices;
+    }
+
+    public void setWebServices(List<WebService> webServices) {
+        this.webServices = webServices;
+    }
+
+    @ManyToMany
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    @JoinTable(name = "WebService_Scenario",
+            joinColumns = { @JoinColumn(name = "idWebService", referencedColumnName = "id"),
+                            @JoinColumn(name="rang",referencedColumnName = "rang")},
+
+            inverseJoinColumns = { @JoinColumn(name = "idScenario",referencedColumnName = "id")})
+
+    private List<WebService>webServices;
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
+
+    public WebService() {
+        webServices = new LinkedList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Schema getInputSchema() {
+        return inputSchema;
+    }
+
+    public void setInputSchema(Schema inputSchema) {
+        this.inputSchema = inputSchema;
+    }
+
+    public Schema getOutSchema() {
+        return outSchema;
+    }
+
+    public void setOutSchema(Schema outSchema) {
+        this.outSchema = outSchema;
+    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Integer getRang() {
+        return rang;
+    }
+
+    public void setRang(Integer rang) {
+        this.rang = rang;
+    }
+
+    public JsonObjectBuilder getWebServiceJson() {
+
+        JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
+        JsonObjectBuilder jsonObjectBuilderschemaInput= Json.createObjectBuilder();
+        JsonObjectBuilder jsonObjectBuilderschemaOutput= Json.createObjectBuilder();
+        jsonObjectBuilder.add("id",this.getId());
+        jsonObjectBuilder.add("rang",this.getRang());
+
+        jsonObjectBuilder.add("name",this.getName());
+        jsonObjectBuilder.add("url",this.getUrl());
+         jsonObjectBuilder.add("description",this.getDescription());
+
+        jsonObjectBuilderschemaInput.add("InputShemaName",this.getInputSchema().getName());
+        jsonObjectBuilderschemaInput.add("InputShemapath",this.getInputSchema().getShemapath());
+
+        jsonObjectBuilderschemaOutput.add("OutputSchemaName",this.getOutSchema().getName());
+//        jsonObjectBuilderschemaOutput.add("Outputshemapath",this.getOutSchema().getShemapath());
+        jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
+        jsonObjectBuilder.add("OutputShema",jsonObjectBuilderschemaOutput);
+        return jsonObjectBuilder;
+    }
+}
