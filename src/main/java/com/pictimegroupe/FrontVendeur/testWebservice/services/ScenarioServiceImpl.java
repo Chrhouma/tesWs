@@ -419,9 +419,9 @@ public class ScenarioServiceImpl implements ScenarioService {
     @Override
     public List<String> getWebServiceNamesByIdScenario(String id) {
         List<String> webservicesNames= new LinkedList<>();
-        for(WebService webService:this.getScenario(id).getWebServices()){
+      /*  for(WebService webService:this.getScenario(id).getWebServicesScenario()){
             webservicesNames.add(webService.getName());
-        }
+        }*/
         return webservicesNames;
     }
 
@@ -445,8 +445,8 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
 
     @Override
-    public void AddScenario(Scenario scenario) {
-        scenarioRepository.save(scenario);
+    public Scenario AddScenario(Scenario scenario) {
+       return scenarioRepository.save(scenario);
     }
 
 

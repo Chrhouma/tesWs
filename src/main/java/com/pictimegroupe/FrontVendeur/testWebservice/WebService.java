@@ -27,26 +27,12 @@ public class WebService implements Serializable  {
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private Schema outSchema ;
 
-
-
-    public List<WebService> getWebServices() {
-        return webServices;
+    public WebService() {
     }
 
-    public void setWebServices(List<WebService> webServices) {
-        this.webServices = webServices;
+    public WebService(String id) {
+        this.id = id;
     }
-
-    @ManyToMany
-    @Cascade({org.hibernate.annotations.CascadeType.ALL})
-    @JoinTable(name = "WebService_Scenario",
-            joinColumns = { @JoinColumn(name = "idWebService", referencedColumnName = "id"),
-                            @JoinColumn(name="rang",referencedColumnName = "rang")},
-
-            inverseJoinColumns = { @JoinColumn(name = "idScenario",referencedColumnName = "id")})
-
-    private List<WebService>webServices;
-
 
     public String getDescription() {
         return description;
@@ -58,9 +44,7 @@ public class WebService implements Serializable  {
 
     private String description;
 
-    public WebService() {
-        webServices = new LinkedList<>();
-    }
+
 
     public String getName() {
         return name;

@@ -1,7 +1,7 @@
 package com.pictimegroupe.FrontVendeur.testWebservice;
 
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+import javax.persistence.CascadeType;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -20,21 +20,21 @@ public class Scenario implements Serializable {
     private String name;
     private String cron;
 
-   // private Integer rang;
 
-    @ManyToMany
-    @Cascade({CascadeType.ALL})
-    @JoinTable(name = "WebService_Scenario",
-                joinColumns = { @JoinColumn(name = "idScenario", referencedColumnName = "id")},
-                inverseJoinColumns = { @JoinColumn(name = "idWebService",referencedColumnName = "id"),
-                        @JoinColumn(name = "rang",referencedColumnName = "rang")})
-    private List<WebService> webServices= new LinkedList<WebService>();
+    @OneToMany(mappedBy="scenario", cascade = CascadeType.ALL)
+    private List<WebServiceScenario> webServicesScenario;
 
 
     public Scenario() {
     }
 
+    public List<WebServiceScenario> getWebServicesScenario() {
+        return webServicesScenario;
+    }
 
+    public void setWebServicesScenario(List<WebServiceScenario> webServicesScenario) {
+        this.webServicesScenario = webServicesScenario;
+    }
 
     public String getId() {
         return id;
@@ -59,13 +59,7 @@ public class Scenario implements Serializable {
         this.cron = cron;
     }
 
-   public List<WebService> getWebServices() {
-        return webServices;
-    }
 
-    public void setWebServices(List<WebService> webServices) {
-        this.webServices = webServices;
-    }
 
 
 
@@ -81,13 +75,13 @@ public class Scenario implements Serializable {
         jsonObjectBuilder.add("name",name);
         jsonObjectBuilder.add("cron",cron);
 
-        for (WebService webService : webServices) {
+        /*for (WebService webService : webServices) {
            jsonObjectBuilder.add("rang",webService.getRang());
             idWService.add("id",webService.getId());
             idWService.add("rang",webService.getRang());
 
             webserviceArray.add(idWService);
-        }
+        }*/
 
         jsonObjectBuilder.add("webServices",webserviceArray);
 

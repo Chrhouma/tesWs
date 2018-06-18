@@ -13,7 +13,7 @@ public interface ScenarioService  {
     List<String> getWebServiceNamesByIdScenario(String id);
 
     JsonArrayBuilder getAllScenario();
-    void AddScenario(Scenario scenario);
+    Scenario AddScenario(Scenario scenario);
     void testProduitStock(String id) throws IOException;
     void testRechercheClient(String id) throws IOException;
     void testPlaningLiv(String id) throws IOException;
