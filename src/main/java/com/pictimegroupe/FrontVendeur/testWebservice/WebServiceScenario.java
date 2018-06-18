@@ -15,8 +15,9 @@ public class WebServiceScenario implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="ID_SCENARIO")
     private Scenario scenario;
-
+    @Id
     private int rang;
+
 
 
     public WebServiceScenario() {

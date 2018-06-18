@@ -1,6 +1,6 @@
 package com.pictimegroupe.FrontVendeur.testWebservice;
 
-import org.hibernate.annotations.Cascade;
+
 import javax.persistence.CascadeType;
 
 import javax.json.Json;
@@ -23,7 +23,6 @@ public class Scenario implements Serializable {
 
     @OneToMany(mappedBy="scenario", cascade = CascadeType.ALL)
     private List<WebServiceScenario> webServicesScenario;
-
 
     public Scenario() {
     }
@@ -59,29 +58,22 @@ public class Scenario implements Serializable {
         this.cron = cron;
     }
 
-
-
-
-
     public JsonObjectBuilder getScenarioJson() {
 
         JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
         JsonArrayBuilder webserviceArray =Json.createArrayBuilder();
         JsonObjectBuilder idWService=Json.createObjectBuilder();
-        JsonObjectBuilder rangWebService=Json.createObjectBuilder();
-        JsonArrayBuilder webserviceinfoArray =Json.createArrayBuilder();
-
         jsonObjectBuilder.add("id",id);
         jsonObjectBuilder.add("name",name);
         jsonObjectBuilder.add("cron",cron);
 
-        /*for (WebService webService : webServices) {
+        for (WebServiceScenario webService : webServicesScenario) {
            jsonObjectBuilder.add("rang",webService.getRang());
-            idWService.add("id",webService.getId());
+            idWService.add("id",webService.getWebService().getId());
             idWService.add("rang",webService.getRang());
 
             webserviceArray.add(idWService);
-        }*/
+        }
 
         jsonObjectBuilder.add("webServices",webserviceArray);
 

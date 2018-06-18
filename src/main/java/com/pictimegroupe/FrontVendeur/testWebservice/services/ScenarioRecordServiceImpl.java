@@ -2,6 +2,7 @@ package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
 import com.pictimegroupe.FrontVendeur.testWebservice.ScenarioRecord;
 import com.pictimegroupe.FrontVendeur.testWebservice.ServiceRecord;
+import com.pictimegroupe.FrontVendeur.testWebservice.WebServiceScenario;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     public void testerScenario(String id) throws IOException {
         //Scenario scenario=this.getScenario(id);
         //System.out.println(scenario.getWebServices().size());
+        WebServiceScenario  webServiceScenario= new WebServiceScenario();
         ScenarioRecord scenarioRecord= new ScenarioRecord();
         scenarioRecord.setDate(date.actuelle);
         scenarioRecord.setScenario(scenarioService.getScenario(id));
@@ -66,59 +68,65 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
 
         System.out.println(scenarioService.getScenario(id));
         List<String> webServiceNameList = scenarioService.getWebServiceNamesByIdScenario(id);
-        for (String name : webServiceNameList) {
+        List<Integer> webServiceRang=scenarioService.getWebServiceRangByIdScenario(id);
+
+        for (int rang=0;rang< webServiceRang.size();rang++) {
+
+
+            String name=scenarioService.getWebServiceNamesByRang(id,rang+1);
+            System.out.println("le nom du rang "+(rang+1) +"est "+ name);
             switch (name) {
                 case "produitStock":
-                    scenarioService.testProduitStock(scenarioRecord.getId());
+                    scenarioService.testProduitStock(id,rang+1);
                     System.out.println("le produitStock c marche");
                     break;
                 case "rechercheclient":
-                    scenarioService.testRechercheClient(scenarioRecord.getId());
-                    System.out.println("le rechercheclient c marche");
+               //    scenarioService.testRechercheClient(id,i);
+                //    System.out.println("le rechercheclient c marche");
                     break;
                 case"PlaningLiv":
-                    scenarioService.testPlaningLiv(scenarioRecord.getId());
+                    scenarioService.testPlaningLiv(id,rang+1);
                     System.out.println("le PlaningLiv c marche");
                     break;
                 case"ajoutProduit":
-                    scenarioService.testAjoutProduit(scenarioRecord.getId());
+                    scenarioService.testAjoutProduit(id,rang+1);
                     System.out.println("le ajoutProduit c marche");
                     break;
                 case"rafraichir":
-                    scenarioService.testrafraichir(scenarioRecord.getId());
+                    scenarioService.testrafraichir(id,rang);
                     System.out.println("le rafraichir c marche");
                     break;
                 case"ValiderModeLiv":
-                    scenarioService.testValiderModeLiv(scenarioRecord.getId());
+                    scenarioService.testValiderModeLiv(id,rang+1);
                     System.out.println("le ValiderModeLiv c marche");
                     break;
                 case"associerClient":
-                    scenarioService.associerClient(scenarioRecord.getId());
+                    scenarioService.associerClient(id,rang+1);
                     System.out.println("le associerClient c marche");
                     break;
                 case"validerVendeur":
-                    scenarioService.testvaliderVendeur(scenarioRecord.getId());
+                    scenarioService.testvaliderVendeur(id,rang+1);
                     System.out.println("le validerVendeur c marche");
                     break;
                 case"parametrage":
-                    scenarioService.testParametrage(scenarioRecord.getId());
+//                    scenarioService.testParametrage(scenarioRecord.getId());
                     System.out.println("le parametrage c marche");
                     break;
                 case"rechercheCp":
-                    scenarioService.testRechercheCp(scenarioRecord.getId());
+                    scenarioService.testRechercheCp(id,rang+1);
                     System.out.println("le rechercheCp c marche");
                     break;
                 case"DerniereCommande":
-                    scenarioService.testDerniereCommande(scenarioRecord.getId());
+                    scenarioService.testDerniereCommande(id,rang+1);
                     System.out.println("le DerniereCommande c marche");
                     break;
                 case"valider":
-                    scenarioService.testvalider(scenarioRecord.getId());
+                    scenarioService.testvalider(id,rang+1);
                     System.out.println("le valider c marche");
                     break;
 
                 case "login":
-                    scenarioService.testLogin(scenarioRecord.getId());
+                    scenarioService.testLogin(id,rang+1);
                     //testWs.testerFonction();
                     System.out.println("le login c marche");
                     break;

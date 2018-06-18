@@ -27,7 +27,18 @@ public class WebService implements Serializable  {
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private Schema outSchema ;
 
+    @OneToMany(mappedBy="webService", cascade = CascadeType.ALL)
+    private List<WebServiceScenario> webServicesScenario;
+
     public WebService() {
+    }
+
+    public List<WebServiceScenario> getWebServicesScenario() {
+        return webServicesScenario;
+    }
+
+    public void setWebServicesScenario(List<WebServiceScenario> webServicesScenario) {
+        this.webServicesScenario = webServicesScenario;
     }
 
     public WebService(String id) {
