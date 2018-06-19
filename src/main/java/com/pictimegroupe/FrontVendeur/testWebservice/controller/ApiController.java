@@ -299,6 +299,7 @@ public class ApiController {
                                  @RequestParam(value = "idScenarioRecord2")String idScenario2) throws IOException {
 
         scenarioRecordService.comparerScenario(idScenario1,idScenario2);
+
         System.out.println("je compar mes scenarioRecord");
     }
 

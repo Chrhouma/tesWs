@@ -33,6 +33,7 @@ import java.util.Map;
 public class ScenarioServiceImpl implements ScenarioService {
     @Autowired
     ScenarioRepository scenarioRepository;
+    @Autowired
     ScenarioService scenarioService;
     @Autowired
     WebServicesServices webServicesServices;
@@ -51,7 +52,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         fw.close();
     }
     @Override
-    public  void testLogin(String idScenarioRecord,int rang) throws IOException {
+    public  void testLogin(String idScenario,int rang,String idScenarioRecord) throws IOException {
         String startTest=separateur+"login"+separateur+"\n";
         RestAssured.baseURI = "http://127.0.0.1/";
         String resultPath="/home/front-vendeur/Bureau/tesWs/webservice/login"+rang+date.date1;
@@ -80,21 +81,17 @@ public class ScenarioServiceImpl implements ScenarioService {
 
         serviceRecord.setExecutionTime(date.executionTime);
         serviceRecord.setDate(date.actuelle);
-
         serviceRecord.setWebService(webServicesServices.getWebServiceByName("login"));
-
-        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecord.setResultPath(resultPath);
         serviceRecord.setStatus(status);
         serviceRecord.setRang(rang);
-        System.out.println(serviceRecord.getStatus());
-
+        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
        serviceRecordServices.addServiceRecord(serviceRecord);
 
         System.out.println("le login marcvhe bien ");
     }
     @Override
-    public  void testRechercheClient(String idScenarioRecord,int rang)throws IOException{
+    public  void testRechercheClient(String idScenario,int rang,String idScenarioRecord)throws IOException{
         String startTest=separateur+"rech_client"+separateur+"\n";
         JsonObject json = new JsonObject();
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/client"+rang+date.date1);
@@ -120,13 +117,14 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setResultPath(resultPath);
         serviceRecord.setStatus(status);
         serviceRecord.setRang(rang);
-       serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
+
+        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("le recherche client marche bien ");
 
     }
     @Override
-    public  void testProduitStock(String idScenarioRecord,int rang) throws IOException{
+    public  void testProduitStock(String idScenario,int rang,String idScenarioRecord) throws IOException{
         String startTest=separateur+"stock_produits"+separateur+"\n";
         JsonObject json = new JsonObject();
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/stock"+rang + date.date1);
@@ -136,7 +134,6 @@ public class ScenarioServiceImpl implements ScenarioService {
                 // .body(json.toString())
                 .body("{\"references\": [\"1000000117\"]}")
                 .sessionId(RestAssured.sessionId);
-        System.out.println("je teste la session de user"+RestAssured.sessionId);
         Response  resp = request1.post("vente_panier/stock_produits/");
 
         writeOnFile(resultFile,startTest);
@@ -151,14 +148,14 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setResultPath(resultPath);
         serviceRecord.setStatus(status);
         serviceRecord.setRang(rang);
-       serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
+        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
 
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("le testProduitStock  marche bien ");
 
     }
     @Override
-    public  void testAjoutProduit( String idScenarioRecord,int rang) throws IOException{
+    public  void testAjoutProduit( String idScenario,int rang,String idScenarioRecord) throws IOException{
         String startTest=separateur+"ajout_produit"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/addProduct" + rang+date.date1 );
         File resultFile = new File(resultPath);
@@ -184,7 +181,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         System.out.println("le testAjout Produit  marche bien ");
     }
     @Override
-    public  void  testParametrage(String idScenarioRecord,int rang) throws IOException {
+    public  void  testParametrage(String idScenario,int rang,String idScenarioRecord) throws IOException {
         String startTest=separateur+"parametrage"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/parametrage" +rang+ date.date1 );
         File resultFile = new File(resultPath);
@@ -210,7 +207,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         System.out.println("le prametrage marche bien ");
     }
     @Override
-    public  void  testrafraichir(String idScenarioRecord ,int rang) throws IOException {
+    public  void  testrafraichir(String idScenario ,int rang,String idScenarioRecord) throws IOException {
         String startTest=separateur+"rafraichir"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/rafraichir" +rang+ date.date1);
         File resultFile = new File(resultPath);
@@ -231,13 +228,12 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setResultPath(resultPath);
         serviceRecord.setStatus(status);
         serviceRecord.setRang(rang);
-
         serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("le rafraichir marche bien");
     }
     @Override
-    public  void  testvalider(String idScenarioRecord,int rang) throws IOException {
+    public  void  testvalider(String idScenario,int rang,String idScenarioRecord) throws IOException {
         String startTest=separateur+"valider"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/valider" +rang+ date.date1 );
         File resultFile = new File(resultPath);
@@ -263,7 +259,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         System.out.println("le valider marche bien");
     }
     @Override
-    public  void associerClient(String idScenarioRecord,int rang) throws IOException {
+    public  void associerClient(String idScenario,int rang,String idScenarioRecord) throws IOException {
         String startTest = separateur + "associer_panier" + separateur + "\n";
         String resultPath = ("/home/front-vendeur/Bureau/tesWs/webservice/associerCLient" +rang+ date.date1);
         File resultFile = new File(resultPath);
@@ -285,12 +281,12 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setResultPath(resultPath);
         serviceRecord.setStatus(status);
         serviceRecord.setRang(rang);
-       serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
+        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("le assosier client marche bien");
     }
     @Override
-    public  void testValiderModeLiv(String idScenarioRecord,int rang) throws IOException{
+    public  void testValiderModeLiv(String idScenario,int rang,String idScenarioRecord) throws IOException{
         String startTest=separateur+"valider_mode_liv"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/validerModeLiv" +rang+ date.date1 );
         File resultFile = new File(resultPath);
@@ -317,7 +313,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         System.out.println("validerMode livraison client marche bien");
     }
     @Override
-    public  void testPlaningLiv(String idScenarioRecord,int rang) throws IOException{
+    public  void testPlaningLiv(String idScenario,int rang,String idScenarioRecord) throws IOException{
         String startTest=separateur+"planning_liv"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/planingLiv" +rang+ date .date1);
         File resultFile = new File(resultPath);
@@ -345,7 +341,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         System.out.println("palning livraison client marche bien");
     }
     @Override
-    public   void testRechercheCp(String idScenarioRecord,int rang)throws IOException{
+    public   void testRechercheCp(String idScenario,int rang,String idScenarioRecord)throws IOException{
         String startTest=separateur+"rechercher_CP"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/RechercheCp" +rang+ date.date1);
         File resultFile = new File(resultPath);
@@ -368,12 +364,12 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setResultPath(resultPath);
         serviceRecord.setStatus(status);
         serviceRecord.setRang(rang);
-       serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
+        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("recherche cp client marche bien");
     }
     @Override
-    public  void  testvaliderVendeur(String idScenarioRecord,int rang) throws IOException {
+    public  void  testvaliderVendeur(String idScenario,int rang,String idScenarioRecord) throws IOException {
         String startTest=separateur+"valider_vendeur_fin"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/validerVendeur" +rang+ date.date1 );
         File resultFile = new File(resultPath);
@@ -400,7 +396,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         System.out.println("valider vendeur  marche bien");
     }
     @Override
-    public  void  testDerniereCommande(String idScenarioRecord,int rang) throws IOException {
+    public  void  testDerniereCommande(String idScenario,int rang,String idScenarioRecord) throws IOException {
         String startTest=separateur+"derniere_commande"+separateur+"\n";
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/Commande"+rang + date.date1);
         File resultFile = new File(resultPath);
@@ -422,7 +418,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setStatus(status);
         serviceRecord.setRang(rang);
 
-        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
+        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenario));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("derniÃ¨re commande  marche bien");
     }
@@ -430,7 +426,7 @@ public class ScenarioServiceImpl implements ScenarioService {
 
     @Override
     public Scenario getScenario(String id) {
-        List<Scenario>listScenarios= scenarioRepository.findAllById(id);
+        List<Scenario>listScenarios= scenarioRepository.findScenarioById(id);
         return listScenarios.get(0);
     }
 
@@ -444,7 +440,7 @@ public class ScenarioServiceImpl implements ScenarioService {
     }*/
     @Override
     public List<String> getWebServiceNamesByIdScenario(String id) {
-        List<String> webservicesNames= new ArrayList<>();
+        List<String> webservicesNames= new LinkedList<>();
         for (WebServiceScenario webServiceScenario:this.getScenario(id).getWebServicesScenario()){
             webservicesNames.add(webServiceScenario.getWebService().getName());
         }
@@ -453,8 +449,7 @@ public class ScenarioServiceImpl implements ScenarioService {
 
     @Override
     public List<Integer> getWebServiceRangByIdScenario(String id) {
-
-        List<Integer> webServiceRang=new ArrayList<>();
+        List<Integer> webServiceRang=new LinkedList<>();
          for(WebServiceScenario webServiceScenario:this.getScenario(id).getWebServicesScenario()){
              webServiceRang.add(webServiceScenario.getRang());
         }
@@ -462,18 +457,20 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
 
     @Override
-    public String getWebServiceNamesByRang(String id,int rang) {
+    public List<String> getWebServiceNamesByRang(String id,int rang) {
         List<Integer> rangList=this.getWebServiceRangByIdScenario(id);
-        List<String> nameWs=new ArrayList<>();
-        for(int i=0;i<rangList.size();i++){
-            nameWs.add(this.getScenario(id).getWebServicesScenario().get(i).getWebService().getName());
+        List<String> nameWs=new LinkedList<>();
+        for (WebServiceScenario webServiceScenario:this.getScenario(id).getWebServicesScenario()){
+            if(webServiceScenario.getRang()==rang) {
+                nameWs.add(webServiceScenario.getWebService().getName());
+            }
         }
-        return nameWs.get(0);
+        return nameWs;
     }
 
 
-    @Override
 
+    @Override
     public JsonArrayBuilder getAllScenario() {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         List<Scenario> scenarioList=(List<Scenario>)scenarioRepository.findAll();

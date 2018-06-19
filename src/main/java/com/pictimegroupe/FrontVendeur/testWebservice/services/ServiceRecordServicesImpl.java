@@ -72,9 +72,9 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
         for (ServiceRecord serviceRecord:serviceRecords){
             if(serviceRecord.getScenarioRecord().getId().equals(idScnearioRecord)){
                 serviceRecords1.add(serviceRecord);
-            }
+             }
         }
-        return serviceRecords1;
+            return serviceRecords1;
     }
 
 

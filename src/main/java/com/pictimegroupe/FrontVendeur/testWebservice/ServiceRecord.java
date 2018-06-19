@@ -25,7 +25,8 @@ public class ServiceRecord {
 
     @ManyToOne (fetch = FetchType.LAZY)
     private  ScenarioRecord scenarioRecord;
-
+   /*@ManyToOne (fetch = FetchType.LAZY)
+   private Scenario scenario;*/
     private String status;
 
     @OneToMany(fetch = FetchType.LAZY ,mappedBy = "serviceRecord")
@@ -118,6 +119,7 @@ public class ServiceRecord {
         jsonObjectBuilder.add("executionTime", this.getFormattedDate(this.getExecutionTime()));
         jsonObjectBuilder.add("resultPath",this.getResultPath());
         jsonObjectBuilder.add("status", this.getStatus());
+
        /* for (Delta delta: Deltas) {
             deltasArray.add(delta.getDeltaJson());
         }*/
