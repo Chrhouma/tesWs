@@ -12,21 +12,24 @@ public interface ScenarioService  {
     Scenario getScenario(String id);
     List<String> getWebServiceNamesByIdScenario(String id);
 
+    List <Integer> getWebServiceRangByIdScenario(String id);
+    List<String> getWebServiceNamesByRang(String id,int rang);
     JsonArrayBuilder getAllScenario();
-    void AddScenario(Scenario scenario);
-    void testProduitStock(String id) throws IOException;
-    void testRechercheClient(String id) throws IOException;
-    void testPlaningLiv(String id) throws IOException;
-    void testAjoutProduit(String id) throws IOException;
-    void testrafraichir(String id) throws IOException;
-    void testValiderModeLiv(String id) throws IOException;
-    void associerClient(String id) throws IOException;
-    void testvaliderVendeur(String id) throws IOException;
-    void testParametrage(String id) throws IOException;
-    void testRechercheCp(String id) throws IOException;
-    void testDerniereCommande(String id) throws IOException;
-    void testvalider(String id) throws IOException;
-    void testLogin(String id) throws IOException;
+
+    Scenario AddScenario(Scenario scenario);
+    void testProduitStock(String id ,int rang,String idScenarioRecord) throws IOException;
+    void testRechercheClient(String id,int rang,String idScenarioRecord) throws IOException;
+    void testPlaningLiv(String id,int rang,String idScenarioRecord) throws IOException;
+    void testAjoutProduit(String id,int rang,String idScenarioRecord) throws IOException;
+    void testrafraichir(String id,int rang,String idScenarioRecord) throws IOException;
+    void testValiderModeLiv(String id,int rang,String idScenarioRecord) throws IOException;
+    void associerClient(String id,int rang,String idScenarioRecord) throws IOException;
+    void testvaliderVendeur(String id,int rang,String idScenarioRecord) throws IOException;
+    void testParametrage(String id,int rang,String idScenarioRecord) throws IOException;
+    void testRechercheCp(String id,int rang,String idScenarioRecord) throws IOException;
+    void testDerniereCommande(String id,int rang,String idScenarioRecord) throws IOException;
+    void testvalider(String id,int rang,String idScenarioRecord) throws IOException;
+    void testLogin(String id,int rang,String idScenarioRecord) throws IOException;
 
 
 

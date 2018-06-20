@@ -25,4 +25,5 @@ public interface Compare {
     void  simpleCompare(String path1, String path2) throws IOException;
 
     void CompareWs(String path1, String path2) throws IOException;
+    void comparaison (String path1,String path2,String idserviceRecord)throws IOException;
 }

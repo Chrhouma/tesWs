@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -24,6 +23,9 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     ServiceRecordServices serviceRecordServices;
    @Autowired
    Compare compare;
+   @Autowired
+   DeltaServices deltaServices;
+
 
 
     @Override
@@ -55,8 +57,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
 
     @Override
     public void testerScenario(String id) throws IOException {
-        //Scenario scenario=this.getScenario(id);
-        //System.out.println(scenario.getWebServices().size());
+
         ScenarioRecord scenarioRecord= new ScenarioRecord();
         scenarioRecord.setDate(date.actuelle);
         scenarioRecord.setScenario(scenarioService.getScenario(id));
@@ -65,62 +66,56 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         addScenarioRecord(scenarioRecord);
 
         System.out.println(scenarioService.getScenario(id));
-        List<String> webServiceNameList = scenarioService.getWebServiceNamesByIdScenario(id);
-        for (String name : webServiceNameList) {
+        List<Integer> webServiceRang=scenarioService.getWebServiceRangByIdScenario(id);
+
+        for (int rang=0;rang< webServiceRang.size();rang++) {
+            String name=scenarioService.getWebServiceNamesByRang(id,rang+1).get(0);
             switch (name) {
                 case "produitStock":
-                    scenarioService.testProduitStock(scenarioRecord.getId());
-                    System.out.println("le produitStock c marche");
+                    scenarioService.testProduitStock(id,rang+1,scenarioRecord.getId());
+
                     break;
                 case "rechercheclient":
-                    scenarioService.testRechercheClient(scenarioRecord.getId());
-                    System.out.println("le rechercheclient c marche");
+               //    scenarioService.testRechercheClient(id,i);
+                //    System.out.println("le rechercheclient c marche");
                     break;
                 case"PlaningLiv":
-                    scenarioService.testPlaningLiv(scenarioRecord.getId());
-                    System.out.println("le PlaningLiv c marche");
+                    scenarioService.testPlaningLiv(id,rang+1,scenarioRecord.getId());
+
                     break;
                 case"ajoutProduit":
-                    scenarioService.testAjoutProduit(scenarioRecord.getId());
-                    System.out.println("le ajoutProduit c marche");
+                    scenarioService.testAjoutProduit(id,rang+1,scenarioRecord.getId());
+                    ;
                     break;
                 case"rafraichir":
-                    scenarioService.testrafraichir(scenarioRecord.getId());
-                    System.out.println("le rafraichir c marche");
+                    scenarioService.testrafraichir(id,rang+1,scenarioRecord.getId());
+
                     break;
                 case"ValiderModeLiv":
-                    scenarioService.testValiderModeLiv(scenarioRecord.getId());
-                    System.out.println("le ValiderModeLiv c marche");
+                    scenarioService.testValiderModeLiv(id,rang+1,scenarioRecord.getId());
+
                     break;
                 case"associerClient":
-                    scenarioService.associerClient(scenarioRecord.getId());
-                    System.out.println("le associerClient c marche");
+                    scenarioService.associerClient(id,rang+1,scenarioRecord.getId());
                     break;
                 case"validerVendeur":
-                    scenarioService.testvaliderVendeur(scenarioRecord.getId());
-                    System.out.println("le validerVendeur c marche");
+                    scenarioService.testvaliderVendeur(id,rang+1,scenarioRecord.getId());
                     break;
                 case"parametrage":
-                    scenarioService.testParametrage(scenarioRecord.getId());
-                    System.out.println("le parametrage c marche");
+//                    scenarioService.testParametrage(scenarioRecord.getId());
                     break;
                 case"rechercheCp":
-                    scenarioService.testRechercheCp(scenarioRecord.getId());
-                    System.out.println("le rechercheCp c marche");
+                    scenarioService.testRechercheCp(id,rang+1,scenarioRecord.getId());
                     break;
                 case"DerniereCommande":
-                    scenarioService.testDerniereCommande(scenarioRecord.getId());
-                    System.out.println("le DerniereCommande c marche");
+                    scenarioService.testDerniereCommande(id,rang+1,scenarioRecord.getId());
                     break;
                 case"valider":
-                    scenarioService.testvalider(scenarioRecord.getId());
-                    System.out.println("le valider c marche");
+                    scenarioService.testvalider(id,rang+1,scenarioRecord.getId());
                     break;
 
                 case "login":
-                    scenarioService.testLogin(scenarioRecord.getId());
-                    //testWs.testerFonction();
-                    System.out.println("le login c marche");
+                    scenarioService.testLogin(id,rang+1,scenarioRecord.getId());
                     break;
             }
         }
@@ -128,29 +123,19 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
 
     @Override
     public void comparerScenario(String idScenarioRecord1, String idScenarioRecord2) throws IOException {
-        List<ServiceRecord> serviceRecords1 =serviceRecordServices.getAllServiceRecordByScenario(idScenarioRecord1);
-        List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenario(idScenarioRecord2);
-        int nb=0;
-        for(int i=0; i<serviceRecords1.size();i++){
-            String path1=serviceRecords1.get(i).getResultPath();
-            for(int j =0;j<serviceRecords2.size();j++){
-                String path2=serviceRecords2.get(j).getResultPath();
+        List<ServiceRecord> serviceRecords1 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
+        List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord2);
 
-                if(path1.substring(0,path1.length()-16).equals(path2.substring(0,path2.length()-16))){
+        for(int i=0; i<serviceRecords1.size();i++) {
+              for (int j = 0; j < serviceRecords2.size(); j++) {
+                if (serviceRecords1.get(i).getRang() == serviceRecords2.get(j).getRang()) {
+                    String path1=serviceRecords1.get(i).getResultPath();
+                    String path2=serviceRecords2.get(j).getResultPath();
+                    compare.comparaison(path1,path2,serviceRecords1.get(i).getId());
 
-                    compare.simpleCompare(path1,path2);
-                    System.out.println("je compare"+ nb++ );
-                    System.out.println(path1.substring(0,path1.length()-16));
-                    System.out.println(path1 +"        "+path2 );
                 }
             }
-          //  String path2=serviceRecords2.get(i).getResultPath();
-
-           //compare.simpleCompare(path1,path2);
-
-          // System.out.println(  path1.substring(0,path1.length()-16));
-
-
         }
+
     }
 }

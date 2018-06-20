@@ -1,21 +1,17 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 import com.pictimegroupe.FrontVendeur.testWebservice.Exception.GestionRoleException;
-import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
-import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.json.Json;
-import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -134,31 +130,38 @@ public class ApiController {
     }
 
     public WebService createWs(String id,int  rang){
-
-        WebService  webService=webServicesServices.getWebService(id);
-        webService.setId(id);
+        WebService webService = new WebService();
+          webService=webServicesServices.getWebService(id);
         webService.setRang(rang);
         return webService;
     }
 
     @RequestMapping(value = "/scenario/add/scenario1", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String addScenario(@RequestParam(value = "name", required = false) String name,
+    public Scenario addScenario(@RequestParam(value = "name", required = false) String name,
                               @RequestParam(value = "corn", required = false) String corn) {
+
+        Scenario scenario = new Scenario();
+        scenario.setName(name);
+        scenario.setCron(corn);
+        scenario=scenarioService.AddScenario(scenario);
+        System.out.println("====>"+scenario.getId()+"<====");
+
         JsonObjectBuilder obj = Json.createObjectBuilder();
-        List<WebService> arrayWebservice = new LinkedList();
+        List<WebServiceScenario> arrayWebserviceScenario = new ArrayList<WebServiceScenario>();
+
+
         //login
       //  WebService webService;
         //webService=webServicesServices.getWebService("c21c5721-35ef-417f-84a3-12ed58fff494");
        // webService.setRang(01);
-        arrayWebservice.add(createWs("1c018f8b-5eaa-4743-b615-3b08b0124b0c",1));
-       // arrayWebservice.add(webServicesServices.getWebService("c21c5721-35ef-417f-84a3-12ed58fff494"));
+        arrayWebserviceScenario.add(new WebServiceScenario(new WebService("1c018f8b-5eaa-4743-b615-3b08b0124b0c") , scenario, 1));
         System.out.println("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk1");
 
         //recherche client
        // arrayWebservice.add(webServicesServices.getWebService("70b24665-f282-4607-9ed4-d4b6fb296a26"));
-       arrayWebservice.add(createWs("04af2446-14f8-4125-90a5-997d6b4dd646",2));
+        arrayWebserviceScenario.add(new WebServiceScenario(new WebService("04af2446-14f8-4125-90a5-997d6b4dd646") , scenario, 2));
         System.out.println("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk2");
-        //produit stock
+/*        //produit stock
        // arrayWebservice.add(webServicesServices.getWebService("3713f47c-9722-4b08-98bb-a5384d6f8758"));
        arrayWebservice.add(createWs("89e52ad0-6c89-4a40-b21c-a1c97c9ba391",3));
         System.out.println("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk3");
@@ -208,29 +211,30 @@ public class ApiController {
         //derniere commande
         //arrayWebservice.add(webServicesServices.getWebService("ba268027-e5f2-4bf7-99b6-52a74f64b173"));
         arrayWebservice.add(createWs("61b521aa-9d18-429b-aa6c-7400b1ed2ba6",14));
-        System.out.println("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk14");
-        Scenario scenario = new Scenario();
+        System.out.println("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk14");*/
+
+        /*Scenario scenario = new Scenario();
         scenario.setName(name);
-        scenario.setCron(corn);
+        scenario.setCron(corn);*/
 
-
-      scenario.setWebServices(arrayWebservice);
-
-      for(WebService webService :arrayWebservice) {
+      /*for(WebService webService :arrayWebservice) {
         System.out.println(webService.getRang());
           //System.out.println(webService.getId());
         //  scenario.setRang(webService.getRang());
         //  scenario.setRang(webService.getRang());
           webService.setRang(1);
        //   scenarioService.AddScenario(scenario);
+      }*/
 
-      }
-      scenarioService.AddScenario(scenario);
-        obj.add("scenarios", scenario.getScenarioJson());
-        System.out.println("je rajoute avec succées");
-        return obj.build().toString();
+      //scenarioService.AddScenario(scenario);
+//        obj.add("scenarios", scenario.getScenarioJson());
+//        System.out.println("je rajoute avec succées");
+        scenario.setWebServicesScenario(arrayWebserviceScenario);
+        scenarioService.AddScenario(scenario);
+
+        return null;
     }
-    @RequestMapping(value = "/scenario/add/scenario2", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@RequestMapping(value = "/scenario/add/scenario2", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String addScenario2(@RequestParam(value = "name", required = false) String name,
                               @RequestParam(value = "corn", required = false) String corn) {
         JsonObjectBuilder obj = Json.createObjectBuilder();
@@ -277,7 +281,7 @@ public class ApiController {
         obj.add("scenarios", scenario.getScenarioJson());
 
         return obj.build().toString();
-    }
+    }*/
     @RequestMapping(value = "scenario/tester",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void testerScenario(@RequestParam(value = "idScenario")String idScenario) throws IOException {
 
@@ -286,11 +290,12 @@ public class ApiController {
     }
 
     @RequestMapping(value = "scenarioRecord/comparer",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void comparerScenario(@RequestParam(value = "idScenarioRecord1")String idScenario1,
+    public String comparerScenario(@RequestParam(value = "idScenarioRecord1")String idScenario1,
                                  @RequestParam(value = "idScenarioRecord2")String idScenario2) throws IOException {
-
+        JsonObjectBuilder obj = Json.createObjectBuilder();
         scenarioRecordService.comparerScenario(idScenario1,idScenario2);
-        System.out.println("je compar mes scenarioRecord");
+        obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario2));
+        return obj.build().toString();
     }
 
 
@@ -372,6 +377,6 @@ public class ApiController {
     @RequestMapping(value = "testing", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public  void findlisteServicerecordByScenario(@RequestParam(value = "scenario", required = false) String scenario){
 
-       serviceRecordServices.getAllServiceRecordByScenario(scenario);
+       serviceRecordServices.getAllServiceRecordByScenarioRecord(scenario);
     }
 }
