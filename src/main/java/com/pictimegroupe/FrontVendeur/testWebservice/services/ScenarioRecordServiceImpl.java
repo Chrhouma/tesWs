@@ -2,18 +2,14 @@ package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
 import com.pictimegroupe.FrontVendeur.testWebservice.ScenarioRecord;
 import com.pictimegroupe.FrontVendeur.testWebservice.ServiceRecord;
-import com.pictimegroupe.FrontVendeur.testWebservice.WebServiceScenario;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRecordRepository;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
-import java.io.File;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.List;
 
 @Service
@@ -27,6 +23,8 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     ServiceRecordServices serviceRecordServices;
    @Autowired
    Compare compare;
+   @Autowired
+   DeltaServices deltaServices;
 
 
 
@@ -125,31 +123,16 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
 
     @Override
     public void comparerScenario(String idScenarioRecord1, String idScenarioRecord2) throws IOException {
-        List<ServiceRecord> serviceRecords1 =serviceRecordServices. getAllServiceRecordByScenario(idScenarioRecord1);
-        List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenario(idScenarioRecord2);
+        List<ServiceRecord> serviceRecords1 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
+        List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord2);
 
-        int nb=0;
         for(int i=0; i<serviceRecords1.size();i++) {
-          /*  String path1=serviceRecords1.get(i).getResultPath();
-            for(int j =0;j<serviceRecords2.size();j++){
-                String path2=serviceRecords2.get(j).getResultPath();
-
-                if(path1.substring(0,path1.length()-16).equals(path2.substring(0,path2.length()-16))){
-
-                    compare.simpleCompare(path1,path2);
-                    System.out.println("je compare"+ nb++ );
-                    System.out.println(path1.substring(0,path1.length()-16));
-                    System.out.println(path1 +"        "+path2 );
-                }
-            }*/
-            for (int j = 0; j < serviceRecords2.size(); j++) {
+              for (int j = 0; j < serviceRecords2.size(); j++) {
                 if (serviceRecords1.get(i).getRang() == serviceRecords2.get(j).getRang()) {
-                    System.out.println("je compare le ws record     " + serviceRecords1.get(i).getWebService().getName() + "    de la date   " + serviceRecords1.get(i).getExecutionTime());
-                    System.out.println("son url est "+serviceRecords1.get(i).getResultPath());
+                    String path1=serviceRecords1.get(i).getResultPath();
+                    String path2=serviceRecords2.get(j).getResultPath();
+                    compare.comparaison(path1,path2,serviceRecords1.get(i).getId());
 
-                    System.out.println("avec  " + serviceRecords2.get(j).getWebService().getName() + "    de la date   " + serviceRecords2.get(j).getExecutionTime());
-                    System.out.println("son url est "+serviceRecords2.get(j).getResultPath());
-                    System.out.println("####################################################");
                 }
             }
         }

@@ -1,0 +1,7 @@
+/*C2*/SET SCHEMA PUBLIC
+INSERT INTO DELTA VALUES('67de8b9e-c5f2-4df0-a45f-3aa9951b9577','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('ccac84a9-88f4-4e4f-87af-c1da4c063aac','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('7c0cff5f-7d80-4d11-986a-f3c015eac0f8','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT

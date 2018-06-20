@@ -9,7 +9,7 @@ public interface ServiceRecordServices  {
     ServiceRecord getServiceRecord(String id);
     JsonArrayBuilder getAllServiceRecord();
     void addServiceRecord(ServiceRecord serviceRecord);
-    List<ServiceRecord> getAllServiceRecordByScenario(String idScnearioRecord);
+    List<ServiceRecord> getAllServiceRecordByScenarioRecord(String idScnearioRecord);
 
 
 

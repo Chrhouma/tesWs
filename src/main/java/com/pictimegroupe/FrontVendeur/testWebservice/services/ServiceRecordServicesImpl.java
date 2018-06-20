@@ -65,16 +65,16 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
     }
 
     @Override
-    public List<ServiceRecord> getAllServiceRecordByScenario(String idScnearioRecord) {
-       // List <ServiceRecord> serviceRecords= serviceRecordRepository.findAllByScenarioRecord(idScnearioRecord);
+    public List<ServiceRecord> getAllServiceRecordByScenarioRecord(String idScnearioRecord) {
         List <ServiceRecord> serviceRecords= (List<ServiceRecord>) serviceRecordRepository.findAll();
         List <ServiceRecord> serviceRecords1=new LinkedList<>();
-        for (ServiceRecord serviceRecord:serviceRecords){
-            if(serviceRecord.getScenarioRecord().getId().equals(idScnearioRecord)){
-                serviceRecords1.add(serviceRecord);
+
+            for(int i=0;i<serviceRecords.size();i++){
+                if(serviceRecords.get(i).getScenarioRecord().getId().equals(idScnearioRecord))
+                 serviceRecords1.add(serviceRecords.get(i));
              }
-        }
-            return serviceRecords1;
+        System.out.println("la liste filtré est de taille    "+serviceRecords1.size());
+             return serviceRecords1;
     }
 
 

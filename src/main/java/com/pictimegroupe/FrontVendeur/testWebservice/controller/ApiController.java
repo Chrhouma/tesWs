@@ -1,22 +1,17 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 import com.pictimegroupe.FrontVendeur.testWebservice.Exception.GestionRoleException;
-import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
-import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.json.Json;
-import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -295,12 +290,12 @@ public class ApiController {
     }
 
     @RequestMapping(value = "scenarioRecord/comparer",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void comparerScenario(@RequestParam(value = "idScenarioRecord1")String idScenario1,
+    public String comparerScenario(@RequestParam(value = "idScenarioRecord1")String idScenario1,
                                  @RequestParam(value = "idScenarioRecord2")String idScenario2) throws IOException {
-
+        JsonObjectBuilder obj = Json.createObjectBuilder();
         scenarioRecordService.comparerScenario(idScenario1,idScenario2);
-
-        System.out.println("je compar mes scenarioRecord");
+        obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario2));
+        return obj.build().toString();
     }
 
 
@@ -382,6 +377,6 @@ public class ApiController {
     @RequestMapping(value = "testing", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public  void findlisteServicerecordByScenario(@RequestParam(value = "scenario", required = false) String scenario){
 
-       serviceRecordServices.getAllServiceRecordByScenario(scenario);
+       serviceRecordServices.getAllServiceRecordByScenarioRecord(scenario);
     }
 }
