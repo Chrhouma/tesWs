@@ -203,23 +203,15 @@ public class CompareImpl implements Compare {
                 delta.setExpctedValue(line1);
                 delta.setRegisteedValue(line2);
                 deltaServices.addDelta(delta);
-                System.out.println("je trouvé une diférence "+delta.getRegisteedValue() +"     "+delta.getExpctedValue());
+
             }
             line1 = reader1.readLine();
             line2 = reader2.readLine();
 
         }
-        if(areEqual){
-           // writeOnFile(path1, txtresultatOk);
-            System.out.println("pas de changement dans les webs services");
-        }
-
         reader1.close();
         reader2.close();
-
-        System.out.println("je rajoute une différence");
-
-        //afficher toutes les deltas  // todo
+//afficher toutes les deltas
 
 
 

@@ -2,6 +2,7 @@ package com.pictimegroupe.FrontVendeur.testWebservice.controller;
 
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 import com.pictimegroupe.FrontVendeur.testWebservice.Exception.GestionRoleException;
+import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -31,6 +32,8 @@ public class ApiController {
     ServiceRecordServices serviceRecordServices;
     @Autowired
     DeltaServices deltaServices;
+    @Autowired
+    DeltaRepository deltaRepository;
    private String baseURI = "http://127.0.0.1/";
     /**
      * @param login
@@ -293,7 +296,9 @@ public class ApiController {
     public String comparerScenario(@RequestParam(value = "idScenarioRecord1")String idScenario1,
                                  @RequestParam(value = "idScenarioRecord2")String idScenario2) throws IOException {
         JsonObjectBuilder obj = Json.createObjectBuilder();
+
         scenarioRecordService.comparerScenario(idScenario1,idScenario2);
+
         obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario2));
         return obj.build().toString();
     }
@@ -375,8 +380,9 @@ public class ApiController {
     }
 
     @RequestMapping(value = "testing", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public  void findlisteServicerecordByScenario(@RequestParam(value = "scenario", required = false) String scenario){
+    public  void findlisteServicerecordByScenario(){
 
-       serviceRecordServices.getAllServiceRecordByScenarioRecord(scenario);
+       List<Delta> deltaList=deltaRepository.findDeltaByServiceRecordId("f85041cb-f190-486a-b215-d105ffa9f900");
+        System.out.println(deltaList.get(0).getRegisteedValue());
     }
 }

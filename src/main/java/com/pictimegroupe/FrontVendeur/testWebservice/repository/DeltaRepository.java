@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface DeltaRepository  extends CrudRepository<Delta,String> {
     List<Delta> findAllById(String id);
+    List<Delta> findDeltaByServiceRecordId(String id);
 
 }

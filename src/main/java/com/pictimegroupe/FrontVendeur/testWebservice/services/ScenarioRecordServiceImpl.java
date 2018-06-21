@@ -127,10 +127,12 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord2);
 
         for(int i=0; i<serviceRecords1.size();i++) {
+
               for (int j = 0; j < serviceRecords2.size(); j++) {
                 if (serviceRecords1.get(i).getRang() == serviceRecords2.get(j).getRang()) {
                     String path1=serviceRecords1.get(i).getResultPath();
                     String path2=serviceRecords2.get(j).getResultPath();
+
                     compare.comparaison(path1,path2,serviceRecords1.get(i).getId());
 
                 }
