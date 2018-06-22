@@ -1,6 +1,7 @@
 package com.pictimegroupe.FrontVendeur.testWebservice;
 
 
+import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRecordRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.ScenarioRecordService;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.ScenarioRecordServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,7 @@ public class Scenario implements Serializable {
     }
 
     public JsonObjectBuilder getScenarioJson() {
-         ScenarioRecordService scenarioRecordService= new ScenarioRecordServiceImpl();
+
         JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
         JsonArrayBuilder webserviceArray =Json.createArrayBuilder();
         JsonArrayBuilder scenarioRecordArray =Json.createArrayBuilder();
@@ -81,7 +82,9 @@ public class Scenario implements Serializable {
             webserviceArray.add(idWService);
         }
         jsonObjectBuilder.add("webServices",webserviceArray);
+      //  List<ScenarioRecord> recordList=scenarioRecordRepository.findAll();
         /*List<ScenarioRecord> recordList=scenarioRecordService.getScenarioRecordByScenario(id);
+
         for( ScenarioRecord  scenarioRecord:recordList){
             idWScenarioRecord.add("id",scenarioRecord.getId());
             idWScenarioRecord.add("date",scenarioRecord.getDate().toString());

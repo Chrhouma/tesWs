@@ -38,13 +38,16 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     @Override
     public List getScenarioRecordByScenario(String id) {
         List<ScenarioRecord> scenarioRecords= (List<ScenarioRecord>) scenarioRecordRepository.findAll();
-        System.out.println("taille"+scenarioRecords.size());
+        System.out.println("taille                "+scenarioRecords.size());
         List<ScenarioRecord> recordList= new LinkedList<>();
         for(ScenarioRecord scenarioRecord:scenarioRecords){
-            if(scenarioRecord.getId().equals(id)){
+
+            if(scenarioRecord.getScenario().getId().equals(id)){
                 recordList.add(scenarioRecord);
             }
+
         }
+        System.out.println("taille                "+recordList.size());
         return recordList;
     }
 

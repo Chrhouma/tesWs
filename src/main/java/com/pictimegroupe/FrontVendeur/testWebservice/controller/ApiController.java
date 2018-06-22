@@ -395,7 +395,6 @@ public class ApiController {
     @RequestMapping(value = "testing", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public  void findlisteServicerecordByScenario(){
 
-       List<Delta> deltaList=deltaRepository.findDeltaByServiceRecordId("f85041cb-f190-486a-b215-d105ffa9f900");
-        System.out.println(deltaList.get(0).getRegisteedValue());
+        scenarioRecordService.getScenarioRecordByScenario("3aebe875-7abc-4608-b483-8205b0b18b9e");
     }
 }
