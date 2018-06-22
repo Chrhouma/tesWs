@@ -9,5 +9,6 @@ import java.util.List;
 public interface ScenarioRecordRepository extends CrudRepository<ScenarioRecord, String> {
 
     List<ScenarioRecord> findScenarioRecordById(String id);
+    List<ScenarioRecord> findScenarioRecordsByScenario(String id);
 
 }

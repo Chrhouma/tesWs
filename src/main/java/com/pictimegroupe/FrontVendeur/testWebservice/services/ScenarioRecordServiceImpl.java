@@ -10,6 +10,7 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -32,6 +33,19 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     public ScenarioRecord getScenarioRecord(String id) {
         List<ScenarioRecord> recordList=scenarioRecordRepository.findScenarioRecordById(id);
         return recordList.get(0);
+    }
+
+    @Override
+    public List getScenarioRecordByScenario(String id) {
+        List<ScenarioRecord> scenarioRecords= (List<ScenarioRecord>) scenarioRecordRepository.findAll();
+        System.out.println("taille"+scenarioRecords.size());
+        List<ScenarioRecord> recordList= new LinkedList<>();
+        for(ScenarioRecord scenarioRecord:scenarioRecords){
+            if(scenarioRecord.getId().equals(id)){
+                recordList.add(scenarioRecord);
+            }
+        }
+        return recordList;
     }
 
     @Override
