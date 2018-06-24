@@ -486,7 +486,24 @@ public class ScenarioServiceImpl implements ScenarioService {
         }
         return arrayBuilder;
     }
+/* @Override
+ public JsonArrayBuilder getScenarioJson(String id){
+     JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+     List<Scenario> scenarioList=(List<Scenario>)scenarioRepository.findAll();
+     for(Scenario scenario :scenarioList){
+         if(scenario.getId().equals(id)) {
+             JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
 
+             jsonObjectBuilder.add("id", scenario.getId());
+             jsonObjectBuilder.add("name", scenario.getName());
+             jsonObjectBuilder.add("cron", scenario.getCron());
+             jsonObjectBuilder.add("webServices", scenario.getScenarioJson().build().getJsonArray("webServices"));
+            // ajouter la liste des scenario record
+         arrayBuilder.add(jsonObjectBuilder);
+         }
+     }
+     return arrayBuilder;
+ }*/
     @Override
     public Scenario AddScenario(Scenario scenario) {
        return scenarioRepository.save(scenario);

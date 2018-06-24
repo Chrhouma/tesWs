@@ -2,6 +2,7 @@ package com.pictimegroupe.FrontVendeur.testWebservice.controller;
 
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 import com.pictimegroupe.FrontVendeur.testWebservice.Exception.GestionRoleException;
+import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -31,6 +32,8 @@ public class ApiController {
     ServiceRecordServices serviceRecordServices;
     @Autowired
     DeltaServices deltaServices;
+    @Autowired
+    DeltaRepository deltaRepository;
    private String baseURI = "http://127.0.0.1/";
     /**
      * @param login
@@ -59,6 +62,7 @@ public class ApiController {
      * @return
      * @throws GestionRoleException
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/user/add", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String addUser(@RequestParam(value = "login", required = false) String login,
                           @RequestParam(value = "password", required = false) String password,
@@ -82,7 +86,7 @@ public class ApiController {
         }
         return obj.build().toString();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webService/add", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String addWebService(@RequestParam(value = "name", required = false) String name,
                                 @RequestParam(value = "url", required = false) String url,
@@ -114,14 +118,14 @@ public class ApiController {
 
         return obj.build().toString();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webServices", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllWebServices() {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         obj.add("webservices", webServicesServices.getAllWebService());
         return obj.build().toString();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllScenarios() {
         JsonObjectBuilder obj = Json.createObjectBuilder();
@@ -129,13 +133,23 @@ public class ApiController {
         return obj.build().toString();
     }
 
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/scenario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String findOneScenario(@RequestParam(value = "id", required = false) String id) {
+        JsonObjectBuilder obj = Json.createObjectBuilder();
+       // obj.add("scenario", scenarioService.getScenarioJson(id));
+        return obj.build().toString();
+    }
+
+
     public WebService createWs(String id,int  rang){
         WebService webService = new WebService();
           webService=webServicesServices.getWebService(id);
         webService.setRang(rang);
         return webService;
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenario/add/scenario1", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Scenario addScenario(@RequestParam(value = "name", required = false) String name,
                               @RequestParam(value = "corn", required = false) String corn) {
@@ -282,23 +296,26 @@ public class ApiController {
 
         return obj.build().toString();
     }*/
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "scenario/tester",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void testerScenario(@RequestParam(value = "idScenario")String idScenario) throws IOException {
 
     scenarioRecordService.testerScenario(idScenario);
     System.out.println("je teste mon ws");
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "scenarioRecord/comparer",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String comparerScenario(@RequestParam(value = "idScenarioRecord1")String idScenario1,
                                  @RequestParam(value = "idScenarioRecord2")String idScenario2) throws IOException {
         JsonObjectBuilder obj = Json.createObjectBuilder();
+
         scenarioRecordService.comparerScenario(idScenario1,idScenario2);
+
         obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario2));
         return obj.build().toString();
     }
 
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "serviceRecord/add", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String addScenarioRecord(@RequestParam(value = "executionTime", required = false) Date executionTime,
                                     @RequestParam(value = "date", required = false) Date date,
@@ -334,21 +351,21 @@ public class ApiController {
         obj.add("scenarioRecord", scenarioRecord.getSenarioRecordJson());
         return obj.build().toString();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenarioRecord", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllScenarioRecord() {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         obj.add("ScenarioRecords", scenarioRecordService.getAllScenarioRecord());
         return obj.build().toString();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/serviceRecord", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllServiceRecord() {
         JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
         jsonObjectBuilder.add("serviceRecord", serviceRecordServices.getAllServiceRecord());
         return jsonObjectBuilder.build().toString();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "delta", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public  String findAllDeltabyIdserviceRecord(@RequestParam(value = "idServicerecord", required = false) String idServicerecord){
         JsonObjectBuilder jsonObjectBuilder =Json.createObjectBuilder();
@@ -357,6 +374,7 @@ public class ApiController {
       // jsonArrayBuilder.add(jsonObjectBuilder);
         return jsonObjectBuilder.build().toString();
     }
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "delta/add", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public  String addDelta(@RequestParam(value = "expectedValue", required = false) String expectedValue,
                             @RequestParam(value = "node", required = false) String node,
@@ -373,10 +391,10 @@ public class ApiController {
         jsonObjectBuilder.add("delta",delta.getDeltoJson());
         return jsonObjectBuilder.build().toString();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "testing", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public  void findlisteServicerecordByScenario(@RequestParam(value = "scenario", required = false) String scenario){
+    public  void findlisteServicerecordByScenario(){
 
-       serviceRecordServices.getAllServiceRecordByScenarioRecord(scenario);
+        scenarioRecordService.getScenarioRecordByScenario("3aebe875-7abc-4608-b483-8205b0b18b9e");
     }
 }
