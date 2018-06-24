@@ -132,13 +132,19 @@ public class ApiController {
         obj.add("scenarios", scenarioService.getAllScenario());
         return obj.build().toString();
     }
+ /*   @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/scenario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String addServiceRecord(@RequestParam(value = "id", required = false) String id){
+        JsonObjectBuilder obj = Json.createObjectBuilder();
 
-
+        return obj.build().toString();
+    }
+*/
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findOneScenario(@RequestParam(value = "id", required = false) String id) {
         JsonObjectBuilder obj = Json.createObjectBuilder();
-       // obj.add("scenario", scenarioService.getScenarioJson(id));
+        obj.add("scenario",scenarioService.getScenarioJson(id));
         return obj.build().toString();
     }
 
@@ -336,6 +342,7 @@ public class ApiController {
         obj.add("serviceRecord", serviceRecord.getServiceRecordJson());
         return obj.build().toString();
     }
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "scenarioRecord/add", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String addServiceRecord(@RequestParam(value = "executionTime", required = false) Date executionTime,
                                     @RequestParam(value = "date", required = false) Date date,
@@ -352,12 +359,14 @@ public class ApiController {
         return obj.build().toString();
     }
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/scenarioRecord", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/scenarioRecords", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllScenarioRecord() {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         obj.add("ScenarioRecords", scenarioRecordService.getAllScenarioRecord());
         return obj.build().toString();
     }
+
+
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/serviceRecord", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllServiceRecord() {
@@ -393,8 +402,10 @@ public class ApiController {
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "testing", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public  void findlisteServicerecordByScenario(){
-
-        scenarioRecordService.getScenarioRecordByScenario("3aebe875-7abc-4608-b483-8205b0b18b9e");
+    public  String findlisteServicerecordByScenario(){
+        JsonObjectBuilder jsonObjectBuilder=Json.createObjectBuilder();
+       // scenarioRecordService.getScenarioRecordByScenario();
+        jsonObjectBuilder.add("scenrio",scenarioService.getScenarioJson("3aebe875-7abc-4608-b483-8205b0b18b9e"));
+        return jsonObjectBuilder.build().toString();
     }
 }
