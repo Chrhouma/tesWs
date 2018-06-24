@@ -50,7 +50,7 @@ public class ApiController {
     }
 
     /**
-     * Cette methode de faire l'ajout d'un user par un autre
+     * Cette methode de faire l'ajout d'un user par un autrex
      *
      * @param login
      * @param password
