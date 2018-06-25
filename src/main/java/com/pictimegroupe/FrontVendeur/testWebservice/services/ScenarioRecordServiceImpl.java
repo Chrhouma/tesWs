@@ -38,7 +38,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     @Override
     public List getScenarioRecordByScenario(String id) {
         List<ScenarioRecord> scenarioRecords= (List<ScenarioRecord>) scenarioRecordRepository.findAll();
-        System.out.println("taille                "+scenarioRecords.size());
+
         List<ScenarioRecord> recordList= new LinkedList<>();
         for(ScenarioRecord scenarioRecord:scenarioRecords){
 
@@ -47,7 +47,6 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
             }
 
         }
-        System.out.println("taille                "+recordList.size());
         return recordList;
     }
 
@@ -84,7 +83,6 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
 
         System.out.println(scenarioService.getScenario(id));
         List<Integer> webServiceRang=scenarioService.getWebServiceRangByIdScenario(id);
-
         for (int rang=0;rang< webServiceRang.size();rang++) {
             String name=scenarioService.getWebServiceNamesByRang(id,rang+1).get(0);
             switch (name) {
@@ -149,9 +147,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
                 if (serviceRecords1.get(i).getRang() == serviceRecords2.get(j).getRang()) {
                     String path1=serviceRecords1.get(i).getResultPath();
                     String path2=serviceRecords2.get(j).getResultPath();
-
                     compare.comparaison(path1,path2,serviceRecords1.get(i).getId());
-
                 }
             }
         }

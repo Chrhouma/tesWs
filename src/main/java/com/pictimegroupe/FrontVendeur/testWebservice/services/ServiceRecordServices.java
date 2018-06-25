@@ -8,6 +8,7 @@ import java.util.List;
 public interface ServiceRecordServices  {
     ServiceRecord getServiceRecord(String id);
     JsonArrayBuilder getAllServiceRecord();
+    List getWebServiceRecordByWebServiceId(String id);
     void addServiceRecord(ServiceRecord serviceRecord);
     List<ServiceRecord> getAllServiceRecordByScenarioRecord(String idScnearioRecord);
 

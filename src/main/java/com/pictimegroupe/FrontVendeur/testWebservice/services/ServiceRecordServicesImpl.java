@@ -58,7 +58,20 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
         }
         return arrayBuilder;
     }
+    @Override
+    public List getWebServiceRecordByWebServiceId(String id) {
+        List<ServiceRecord> serviceRecords= (List<ServiceRecord>) serviceRecordRepository.findAll();
 
+        List<ServiceRecord> recordList= new LinkedList<>();
+        for(ServiceRecord serviceRecord:serviceRecords){
+
+            if(serviceRecord.getWebService().getId().equals(id)){
+                recordList.add(serviceRecord);
+            }
+
+        }
+        return recordList;
+    }
     @Override
     public void addServiceRecord(ServiceRecord serviceRecord) {
         serviceRecordRepository.save(serviceRecord);

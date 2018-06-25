@@ -507,10 +507,10 @@ public class ScenarioServiceImpl implements ScenarioService {
                  JsonObjectBuilder jsonObjectBuilder1 = Json.createObjectBuilder();
                  jsonObjectBuilder1.add("id", scenarioRecord.getId());
                  jsonObjectBuilder1.add("status",scenarioRecord.getStatus());
-                 jsonObjectBuilder1.add("name","Record  "+scenarioRecord.getExecutionTime().toString());
+                 jsonObjectBuilder1.add("name","record  "+scenarioRecord.getExecutionTime().toString());
                  recordJsonArrayBuilder.add(jsonObjectBuilder1);
              }
-             jsonObjectBuilder.add("Records", recordJsonArrayBuilder);
+             jsonObjectBuilder.add("records", recordJsonArrayBuilder);
              arrayBuilder.add(jsonObjectBuilder);
          }
      }

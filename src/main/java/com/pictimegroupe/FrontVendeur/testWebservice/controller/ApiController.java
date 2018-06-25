@@ -126,20 +126,21 @@ public class ApiController {
         return obj.build().toString();
     }
     @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/webService", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String findOneWebService(@RequestParam(value = "id", required = false) String id) {
+        JsonObjectBuilder obj = Json.createObjectBuilder();
+        obj.add("webService",webServicesServices.getWebserviceJson(id));
+        return obj.build().toString();
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllScenarios() {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         obj.add("scenarios", scenarioService.getAllScenario());
         return obj.build().toString();
     }
- /*   @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/scenario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String addServiceRecord(@RequestParam(value = "id", required = false) String id){
-        JsonObjectBuilder obj = Json.createObjectBuilder();
 
-        return obj.build().toString();
-    }
-*/
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findOneScenario(@RequestParam(value = "id", required = false) String id) {

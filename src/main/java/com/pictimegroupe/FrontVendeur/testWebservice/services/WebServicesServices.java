@@ -9,5 +9,6 @@ public interface WebServicesServices {
      WebService getWebService(String id);
      WebService getWebServiceByName(String name);
      JsonArrayBuilder getAllWebService();
+     JsonArrayBuilder getWebserviceJson(String id);
      void addWebService(WebService webService);
 }
