@@ -82,17 +82,7 @@ public class Scenario implements Serializable {
             webserviceArray.add(idWService);
         }
         jsonObjectBuilder.add("webServices",webserviceArray);
-      //  List<ScenarioRecord> recordList=scenarioRecordRepository.findAll();
-        /*List<ScenarioRecord> recordList=scenarioRecordService.getScenarioRecordByScenario(id);
 
-        for( ScenarioRecord  scenarioRecord:recordList){
-            idWScenarioRecord.add("id",scenarioRecord.getId());
-            idWScenarioRecord.add("date",scenarioRecord.getDate().toString());
-            idWScenarioRecord.add("time execution",scenarioRecord.getExecutionTime().toString());
-            idWScenarioRecord.add("status", scenarioRecord.getStatus());
-            scenarioRecordArray.add(idWScenarioRecord);
-        }
-        jsonObjectBuilder.add("Record",scenarioRecordArray);*/
         return jsonObjectBuilder;
     }
 }

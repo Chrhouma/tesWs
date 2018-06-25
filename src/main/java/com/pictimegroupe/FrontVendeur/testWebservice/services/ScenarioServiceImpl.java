@@ -1,9 +1,9 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import com.pictimegroupe.FrontVendeur.testWebservice.ServiceRecord;
+import com.pictimegroupe.FrontVendeur.testWebservice.*;
 
-import com.pictimegroupe.FrontVendeur.testWebservice.WebServiceScenario;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.Dates;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.ServiceRecordServices;
 
@@ -11,8 +11,6 @@ import io.restassured.RestAssured;
 import io.restassured.config.SessionConfig;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import com.pictimegroupe.FrontVendeur.testWebservice.Scenario;
-import com.pictimegroupe.FrontVendeur.testWebservice.WebService;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRepository;
 import io.restassured.RestAssured;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -467,43 +465,58 @@ public class ScenarioServiceImpl implements ScenarioService {
         }
         return nameWs;
     }
-
-
-
     @Override
     public JsonArrayBuilder getAllScenario() {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+
+        JsonArrayBuilder recordJsonArrayBuilder =Json.createArrayBuilder();
         List<Scenario> scenarioList=(List<Scenario>)scenarioRepository.findAll();
         for(Scenario scenario :scenarioList){
+            List<ScenarioRecord> scenarioRecords= scenarioRecordService.getScenarioRecordByScenario(scenario.getId());
             JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
-
             jsonObjectBuilder.add("id",scenario.getId());
             jsonObjectBuilder.add("name",scenario.getName());
             jsonObjectBuilder.add("cron",scenario.getCron());
             jsonObjectBuilder.add("webServices",scenario.getScenarioJson().build().getJsonArray("webServices"));
-
+            for(ScenarioRecord scenarioRecord :scenarioRecords){
+                JsonObjectBuilder jsonObjectBuilder1=Json.createObjectBuilder();
+                jsonObjectBuilder1.add("id",scenarioRecord.getId());
+                recordJsonArrayBuilder.add(jsonObjectBuilder1);
+            }
+            jsonObjectBuilder.add("Records",recordJsonArrayBuilder);
             arrayBuilder.add(jsonObjectBuilder);
         }
         return arrayBuilder;
     }
-/* @Override
- public JsonArrayBuilder getScenarioJson(String id){
+ @Override
+ public JsonArrayBuilder getScenarioJson(String id) {
      JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-     List<Scenario> scenarioList=(List<Scenario>)scenarioRepository.findAll();
-     for(Scenario scenario :scenarioList){
-         if(scenario.getId().equals(id)) {
-             JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
 
+
+     JsonArrayBuilder recordJsonArrayBuilder =Json.createArrayBuilder();
+     List<Scenario> scenarioList=(List<Scenario>)scenarioRepository.findAll();
+     for(Scenario scenario :scenarioList) {
+         JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
+         if (scenario.getId().equals(id)) {
+             List<ScenarioRecord> scenarioRecords = scenarioRecordService.getScenarioRecordByScenario(scenario.getId());
              jsonObjectBuilder.add("id", scenario.getId());
              jsonObjectBuilder.add("name", scenario.getName());
              jsonObjectBuilder.add("cron", scenario.getCron());
              jsonObjectBuilder.add("webServices", scenario.getScenarioJson().build().getJsonArray("webServices"));
-            // ajouter la liste des scenario record
-         arrayBuilder.add(jsonObjectBuilder);
+             for (ScenarioRecord scenarioRecord : scenarioRecords) {
+                 JsonObjectBuilder jsonObjectBuilder1 = Json.createObjectBuilder();
+                 jsonObjectBuilder1.add("id", scenarioRecord.getId());
+                 jsonObjectBuilder1.add("status",scenarioRecord.getStatus());
+                 jsonObjectBuilder1.add("name","Record  "+scenarioRecord.getExecutionTime().toString());
+                 recordJsonArrayBuilder.add(jsonObjectBuilder1);
+             }
+             jsonObjectBuilder.add("Records", recordJsonArrayBuilder);
+             arrayBuilder.add(jsonObjectBuilder);
          }
      }
      return arrayBuilder;
- }*/
+
+ }
     @Override
     public Scenario AddScenario(Scenario scenario) {
        return scenarioRepository.save(scenario);

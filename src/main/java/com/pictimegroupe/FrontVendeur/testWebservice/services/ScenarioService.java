@@ -4,6 +4,7 @@ import com.pictimegroupe.FrontVendeur.testWebservice.Scenario;
 import com.pictimegroupe.FrontVendeur.testWebservice.WebService;
 
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonObjectBuilder;
 import java.io.IOException;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public interface ScenarioService  {
     List <Integer> getWebServiceRangByIdScenario(String id);
     List<String> getWebServiceNamesByRang(String id,int rang);
     JsonArrayBuilder getAllScenario();
+     JsonArrayBuilder getScenarioJson(String id);
     //JsonArrayBuilder getScenarioJson(String id);
     Scenario AddScenario(Scenario scenario);
     void testProduitStock(String id ,int rang,String idScenarioRecord) throws IOException;
