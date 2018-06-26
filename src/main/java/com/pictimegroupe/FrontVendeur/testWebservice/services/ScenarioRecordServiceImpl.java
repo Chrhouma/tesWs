@@ -10,6 +10,7 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -141,12 +142,21 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         List<ServiceRecord> serviceRecords1 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
         List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord2);
 
+        System.out.println("testerrr taille de service recrods1            "+serviceRecords1.size());
+        System.out.println("testerrr taille de service recrods2             "+serviceRecords2.size());
+
         for(int i=0; i<serviceRecords1.size();i++) {
 
-              for (int j = 0; j < serviceRecords2.size(); j++) {
+            for (int j = 0; j < serviceRecords2.size(); j++) {
+
                 if (serviceRecords1.get(i).getRang() == serviceRecords2.get(j).getRang()) {
                     String path1=serviceRecords1.get(i).getResultPath();
                     String path2=serviceRecords2.get(j).getResultPath();
+                    System.out.println(path1 );
+
+                    System.out.println(path2);
+                    System.out.println(serviceRecords1.get(i).getId());
+                    System.out.println("#######");
                     compare.comparaison(path1,path2,serviceRecords1.get(i).getId());
                 }
             }

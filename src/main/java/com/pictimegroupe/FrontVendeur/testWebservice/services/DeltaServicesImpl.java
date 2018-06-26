@@ -51,32 +51,19 @@ public class DeltaServicesImpl implements  DeltaServices {
     public JsonArrayBuilder getAllDeltaByIdeScenarioRcord(String idScenarioRecord1) {
         JsonArrayBuilder deltaArrayBuilder = Json.createArrayBuilder();
         List<ServiceRecord> serviceRecords = serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
+        List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
+
         List<Delta> deltaListfinale= new LinkedList<>();
-       // System.out.println("la taille de delta est "+deltas.size());
-        System.out.println("la taille des services record"+serviceRecords.size());
 
-            for (int i = 0; i < serviceRecords.size(); i++) {
-                System.out.println(serviceRecords.get(i).getId());
-                //deltaListfinale.add(deltaRepository.findDeltaByServiceRecordId(serviceRecords.get(i).getId()).get(0));
+       for(Delta delta:deltaList){
+           for (ServiceRecord serviceRecord:serviceRecords){
+                if(delta.getServiceRecord().getId().equals(serviceRecord.getId())){
 
-
-            /*if(serviceRecords.get(i).getScenarioRecord().getId().equals(idScenarioRecord1)){
-
-               deltaArrayBuilder.add(getDeltaByIdServiceRecord(idScenarioRecord1));
-            }*/
-                // je doit trouver la liste de s deltas
-
-
-             /*   System.out.println(serviceRecords.get(i).getId());
-
-
-                    if(delta.getServiceRecord().getId().equals(serviceRecords.get(i).getId())) {
-                        System.out.println(this.getDeltaByIdServiceRecord(serviceRecords.get(i).getId()).build().toString());
-                        System.out.println("****************");
-                    }
-            */
-
+                    deltaArrayBuilder.add(delta.getDeltoJson());
+                }
+            }
         }
+
         System.out.println("la taille de la liste de delta finale est"+deltaListfinale.size() );
         return deltaArrayBuilder;
     }

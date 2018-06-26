@@ -305,10 +305,13 @@ public class ApiController {
     }*/
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "scenario/tester",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void testerScenario(@RequestParam(value = "idScenario")String idScenario) throws IOException {
-
+    public String testerScenario(@RequestParam(value = "idScenario")String idScenario) throws IOException {
+        JsonObjectBuilder obj = Json.createObjectBuilder();
     scenarioRecordService.testerScenario(idScenario);
-    System.out.println("je teste mon ws");
+
+        System.out.println("je teste mon ws");
+        return obj.build().toString();
+
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "scenarioRecord/comparer",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -318,7 +321,7 @@ public class ApiController {
 
         scenarioRecordService.comparerScenario(idScenario1,idScenario2);
 
-        obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario2));
+        obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario1));
         return obj.build().toString();
     }
 

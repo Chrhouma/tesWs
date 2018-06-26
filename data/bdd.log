@@ -1,7 +1,116 @@
-/*C2*/SET SCHEMA PUBLIC
-INSERT INTO DELTA VALUES('67de8b9e-c5f2-4df0-a45f-3aa9951b9577','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+/*C3*/SET SCHEMA PUBLIC
+INSERT INTO SCENARIO_RECORD VALUES('99c5a6fd-386b-4c59-baa2-c658b285bf9e','2018-06-26 17:06:15.627000','2018-06-26 17:06:15.627000','ok','3aebe875-7abc-4608-b483-8205b0b18b9e')
 COMMIT
-INSERT INTO DELTA VALUES('ccac84a9-88f4-4e4f-87af-c1da4c063aac','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+INSERT INTO SERVICE_RECORD VALUES('899e218d-d891-431e-acaf-ef961c599e20','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',1,'/home/front-vendeur/Bureau/tesWs/webservice/login12018-06-26-05:06','ok','1c018f8b-5eaa-4743-b615-3b08b0124b0c','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
 COMMIT
-INSERT INTO DELTA VALUES('7c0cff5f-7d80-4d11-986a-f3c015eac0f8','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+INSERT INTO SERVICE_RECORD VALUES('4c8ccbf4-d151-4687-8182-303f69dc3cac','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',3,'/home/front-vendeur/Bureau/tesWs/webservice/stock32018-06-26-05:06','ok','89e52ad0-6c89-4a40-b21c-a1c97c9ba391','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('75f8d8ff-36e0-4e9d-a63f-bf9c687b5b29','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',4,'/home/front-vendeur/Bureau/tesWs/webservice/addProduct42018-06-26-05:06','ok','87d664b1-03c8-4996-9004-4b12ce93b29f','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('6838d5cd-28ee-44b9-8beb-74c2efd9d951','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',5,'/home/front-vendeur/Bureau/tesWs/webservice/associerCLient52018-06-26-05:06','ok','edbef8c2-3488-427b-acbc-c8ff0aa04542','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('ff9c8ecb-ff54-4b19-aba7-7e32400e8bf9','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',6,'/home/front-vendeur/Bureau/tesWs/webservice/rafraichir62018-06-26-05:06','ok','c15e34c3-6256-4681-9b39-5afe252f0b8a','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('32f83f4b-7558-482f-b017-8318d062eaee','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',7,'/home/front-vendeur/Bureau/tesWs/webservice/associerCLient72018-06-26-05:06','ok','edbef8c2-3488-427b-acbc-c8ff0aa04542','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('15c121d1-2e02-4369-a53a-e2127f50fd8b','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',8,'/home/front-vendeur/Bureau/tesWs/webservice/rafraichir82018-06-26-05:06','ok','c15e34c3-6256-4681-9b39-5afe252f0b8a','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('a39dd866-da9b-4757-8fd4-a8cf711802db','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',9,'/home/front-vendeur/Bureau/tesWs/webservice/valider92018-06-26-05:06','ok','21eba1d9-c4a8-4146-955f-0d9126bf5d95','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('57434cb2-6d9f-48c4-9872-78106594a012','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',11,'/home/front-vendeur/Bureau/tesWs/webservice/valider112018-06-26-05:06','ok','21eba1d9-c4a8-4146-955f-0d9126bf5d95','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('39865d6e-7112-4753-946e-36493c608673','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',12,'/home/front-vendeur/Bureau/tesWs/webservice/rafraichir122018-06-26-05:06','ok','c15e34c3-6256-4681-9b39-5afe252f0b8a','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO SERVICE_RECORD VALUES('ee8eb0a4-8796-4259-b953-f50a6839ee57','2018-06-26 17:06:15.616000','2018-06-26 17:06:15.616000',13,'/home/front-vendeur/Bureau/tesWs/webservice/validerVendeur132018-06-26-05:06','ok','21eba1d9-c4a8-4146-955f-0d9126bf5d95','99c5a6fd-386b-4c59-baa2-c658b285bf9e')
+COMMIT
+INSERT INTO DELTA VALUES('94864fd7-aed9-4ddd-9804-8a9c6be5eaf5','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('33cae0e8-1d86-4930-8f49-0da26e5f6003','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('19505999-9b54-4e74-9adc-438bc39878ff','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('a664197e-69a6-44a8-8236-880e91eaa254','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('f4c0bfb3-45da-497e-a83c-83bade930cc0','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT
+INSERT INTO DELTA VALUES('63a54b9a-55c0-4a0e-a4d7-52105d6efc0c','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('b9ddf019-bde2-4784-9f0c-77a6b73ebd12','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('84a659d2-ed85-451a-87a3-496e3a88651c','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('e157afaf-9235-4f0e-8554-c5be39594139','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('80c20a17-b333-4bb7-9426-ed5fd4b9d427','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT
+INSERT INTO DELTA VALUES('383a2e2f-a9dd-44ee-a3c1-793c4775cc78','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('1ec386b8-37c3-4081-b3c0-3d7623b2ffea','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('d22c2cca-167c-4a86-b8a5-a6d043a62f1a','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('5273a14b-4f7d-4060-8f59-1c3f2ca13c6c','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('43c04239-e110-4511-a89c-1ef212db6182','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT
+INSERT INTO DELTA VALUES('8b13baf1-cd9a-47ef-8fd1-5c7bb2d774c5','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('66fdb06c-4db5-4152-ba55-b427fc1c355c','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('27ca42b2-62d7-4625-b87d-0a017680a13d','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('e9ae4689-f246-48ba-8a47-f7ca68c21db9','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('52cd89eb-4318-4083-9ebd-87c9d7e2381a','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT
+/*C4*/SET SCHEMA PUBLIC
+INSERT INTO DELTA VALUES('c100683f-e2e4-4068-97a7-e91d7c904cf4','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('6bdc0360-789b-4ace-82a2-d2b1925ee1a1','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('abdc9529-28c0-496a-a9c6-aeb2bf204c67','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('9196b319-a5d6-462e-b19a-ed9a2792a827','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('2c849a2d-fd1e-4126-9296-198d2f371b5d','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT
+/*C3*/INSERT INTO DELTA VALUES('67fc95f6-f790-40fd-8c35-6f4a96a3a6e6','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('81cbaf2e-899d-4de1-8e0f-0d5043f71608','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('29221163-b768-45bf-91a4-8bcc93c8aa95','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('2c5f992c-89d7-4224-959d-348ba9f8cfc0','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('b039b758-f747-4375-930c-540a4e119d5f','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT
+INSERT INTO DELTA VALUES('b87448d1-0226-4be3-8f6c-1386913a2fc5','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('5e601465-2b36-4b24-854a-136e16b4bf65','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('7ecbd1da-0583-4ee2-b887-a509f5627868','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('28e575ff-88aa-48db-8f4e-b5d9df5c6803','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('b20fe30e-8c5b-4e27-9ef4-5fac5464e38f','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT
+INSERT INTO DELTA VALUES('7f6f8680-1455-4d7a-afe6-90d7b1c77a4c','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('2f7a0a2c-6541-45d2-a0c6-641b1a7aef2c','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('e047376a-2354-4cfd-86b1-49014166d4a5','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('093ed666-ae5c-48c9-9556-29ba7dde9278','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('f3e0ed99-1308-48e1-911b-70ecaa5e41a1','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
+COMMIT
+INSERT INTO DELTA VALUES('e7502361-ec89-4354-b3a2-84d6d7d48210','                }5555555555555555555','                    "lignes": [','                }','14f5f171-fe87-4e8e-8657-959e7f312121')
+COMMIT
+INSERT INTO DELTA VALUES('15f22143-8dc8-44be-aac8-dfadc7cf025c','}','    "donnees": {','    j''essaye de faire une difference','55e09b07-3e77-434d-9dbc-14d2da74b161')
+COMMIT
+INSERT INTO DELTA VALUES('3b18f70d-142f-4983-a5de-4ac71e57a25a','}1000000000000000000','    "donnees": {','}','60d9d5e8-442e-4800-8bc0-0f15af57b02e')
+COMMIT
+INSERT INTO DELTA VALUES('daaea242-8abd-467f-854d-08fa236cdab3','}','','}1000065565','f85041cb-f190-486a-b215-d105ffa9f900')
+COMMIT
+INSERT INTO DELTA VALUES('20c61e24-1588-49b4-a60f-642c9b2d8cf1','            "stocks": "8223/84107/3849/0",','    "donnees": [','            "stocks": "8218/84107/3849/0",','fffdb800-7add-42a3-9deb-c5ccc154e9a5')
 COMMIT
