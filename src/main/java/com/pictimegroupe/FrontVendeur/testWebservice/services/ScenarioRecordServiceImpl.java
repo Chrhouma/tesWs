@@ -1,8 +1,10 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
+import com.pictimegroupe.FrontVendeur.testWebservice.Scenario;
 import com.pictimegroupe.FrontVendeur.testWebservice.ScenarioRecord;
 import com.pictimegroupe.FrontVendeur.testWebservice.ServiceRecord;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRecordRepository;
+import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,8 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
    Compare compare;
    @Autowired
    DeltaServices deltaServices;
+   @Autowired
+    ScenarioRepository scenarioRepository;
 
 
 
@@ -135,6 +139,15 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
                     break;
             }
         }
+    }
+
+    @Override
+    public void testerAllScenario() throws IOException {
+        List <Scenario> scenarioList= (List<Scenario>) scenarioRepository.findAll();
+        for(Scenario scenario:scenarioList){
+            this.testerScenario(scenario.getId());
+        }
+
     }
 
     @Override

@@ -14,5 +14,6 @@ public interface ScenarioRecordService {
     void addScenarioRecord(ScenarioRecord ScenarioRecord);
 
     void testerScenario(String id) throws IOException;
+    void testerAllScenario() throws IOException;
     void comparerScenario(String idScenarioRecord, String IdScenarioRecord) throws IOException;
 }

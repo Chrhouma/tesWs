@@ -41,12 +41,13 @@ public class ApiController {
      * @return
      * @throws GestionRoleException
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/user/connect", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String connect(@RequestParam(value = "login", required = false) String login,
                           @RequestParam(value = "password", required = false) String password) throws GestionRoleException {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         if (login != null && password != null) {
-            userServices.connect(login, password);
+           obj.add("user",userServices.connect(login, password));
 
         }
         return obj.build().toString();

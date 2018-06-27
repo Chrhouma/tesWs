@@ -66,7 +66,7 @@ public class Delta {
         jsonObjectBuilder.add("node",node);
         jsonObjectBuilder.add("expctedValue",expctedValue);
         jsonObjectBuilder.add("registeredValue",registeedValue);
-        jsonObjectBuilder.add("serviceRecordId",serviceRecord.getId());
+        jsonObjectBuilder.add("serviceRecordId",serviceRecord.getWebService().getName());
 
         return jsonObjectBuilder;
     }
