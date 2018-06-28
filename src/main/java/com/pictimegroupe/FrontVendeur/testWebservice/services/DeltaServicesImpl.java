@@ -5,19 +5,26 @@ import com.pictimegroupe.FrontVendeur.testWebservice.ServiceRecord;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
-import java.util.LinkedList;
 import java.util.List;
 
+/**
+ *
+ */
 @Service
 public class DeltaServicesImpl implements  DeltaServices {
     @Autowired
     DeltaRepository deltaRepository;
     @Autowired
     ServiceRecordServices serviceRecordServices;
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Delta getDelta(String id) {
 
@@ -26,12 +33,14 @@ public class DeltaServicesImpl implements  DeltaServices {
 
     }
 
-
-
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public JsonArrayBuilder getDeltaByIdServiceRecord(String id) {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-
         List <Delta> deltaList = (List<Delta>) deltaRepository.findAll();
          for (Delta delta:deltaList){
              JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
@@ -40,20 +49,23 @@ public class DeltaServicesImpl implements  DeltaServices {
                 jsonObjectBuilder.add("node",delta.getNode());
                 jsonObjectBuilder.add("expctedValue",delta.getExpctedValue());
                 jsonObjectBuilder.add("registeredValue",delta.getRegisteedValue());
-                 }
+            }
              arrayBuilder.add(jsonObjectBuilder);
-        }
+         }
 
         return arrayBuilder;
     }
 
+    /**
+     *
+     * @param idScenarioRecord1
+     * @return
+     */
     @Override
     public JsonArrayBuilder getAllDeltaByIdeScenarioRcord(String idScenarioRecord1) {
         JsonArrayBuilder deltaArrayBuilder = Json.createArrayBuilder();
         List<ServiceRecord> serviceRecords = serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
         List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
-
-        List<Delta> deltaListfinale= new LinkedList<>();
 
        for(Delta delta:deltaList){
            for (ServiceRecord serviceRecord:serviceRecords){
@@ -63,10 +75,13 @@ public class DeltaServicesImpl implements  DeltaServices {
                 }
             }
         }
-
         return deltaArrayBuilder;
     }
 
+    /**
+     *
+     * @param delta
+     */
     @Override
     public void addDelta(Delta delta) {
   deltaRepository.save(delta);
