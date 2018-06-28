@@ -80,4 +80,8 @@ public class ScenarioRecord {
         return jsonObjectBuilder;
     }
 
+    public int compareScenarioRecordWithDate(ScenarioRecord scenarioRecord){
+        return  getDate().compareTo(scenarioRecord.getDate());
+    }
+
 }

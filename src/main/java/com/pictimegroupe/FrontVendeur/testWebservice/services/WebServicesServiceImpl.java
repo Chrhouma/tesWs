@@ -1,6 +1,10 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
+import com.pictimegroupe.FrontVendeur.testWebservice.Scenario;
+import com.pictimegroupe.FrontVendeur.testWebservice.ServiceRecord;
 import com.pictimegroupe.FrontVendeur.testWebservice.WebService;
+import com.pictimegroupe.FrontVendeur.testWebservice.WebServiceScenario;
+import com.pictimegroupe.FrontVendeur.testWebservice.repository.ServiceRecordRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.WebServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +18,10 @@ import java.util.List;
 public class WebServicesServiceImpl implements WebServicesServices {
     @Autowired
     WebServicesRepository webServicesRepository;
-
+    @Autowired
+    ServiceRecordRepository serviceRecordRepository;
+    @Autowired
+    ServiceRecordServices serviceRecordServices;
     public WebServicesServiceImpl() {
     }
 
@@ -68,6 +75,64 @@ public class WebServicesServiceImpl implements WebServicesServices {
             jsonObjectBuilder.add("OutputShema",jsonObjectBuilderschemaOutput);
 
             arrayBuilder.add(jsonObjectBuilder);
+        }
+        return arrayBuilder;
+    }
+    @Override
+    public JsonArrayBuilder getWebserviceJson(String id) {
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        JsonArrayBuilder recordJsonArrayBuilder =Json.createArrayBuilder();
+        JsonArrayBuilder scenarioServiceJsonArrayBuilder =Json.createArrayBuilder();
+        List <WebService> webServiceList=(List<WebService>) webServicesRepository.findAll();
+        List<ServiceRecord>serviceRecordList= (List<ServiceRecord>) serviceRecordRepository.findAll();
+
+        for(WebService webService: webServiceList) {
+            if ( webService.getId().equals(id)) {
+               // List<ServiceRecord> serviceRecords = serviceRecordServices.getWebServiceRecordByWebServiceId(webService.getId());
+                List<WebServiceScenario> webServiceScenarios= webService.getWebServicesScenario();
+                System.out.println(webServiceScenarios.size());
+                JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
+            JsonObjectBuilder jsonObjectBuilderschemaInput = Json.createObjectBuilder();
+            JsonObjectBuilder jsonObjectBuilderschemaOutput = Json.createObjectBuilder();
+
+            jsonObjectBuilder.add("id", webService.getId());
+            jsonObjectBuilder.add("rang", webService.getRang());
+
+
+
+            jsonObjectBuilder.add("name", webService.getName());
+            jsonObjectBuilder.add("url", webService.getUrl());
+            jsonObjectBuilder.add("description", webService.getDescription());
+            jsonObjectBuilderschemaInput.add("id", webService.getInputSchema().getId());
+            jsonObjectBuilderschemaOutput.add("id", webService.getOutSchema().getId());
+            jsonObjectBuilder.add("InputShema", jsonObjectBuilderschemaInput);
+            jsonObjectBuilder.add("OutputShema", jsonObjectBuilderschemaOutput);
+
+            for(WebServiceScenario  webServiceScenario:webServiceScenarios){
+                JsonObjectBuilder jsonObjectBuilder1 = Json.createObjectBuilder();
+                jsonObjectBuilder1.add("name",webServiceScenario.getScenario().getName());
+                jsonObjectBuilder1.add("id",webServiceScenario.getScenario().getId());
+                scenarioServiceJsonArrayBuilder.add(jsonObjectBuilder1);
+            }
+                System.out.println("liste des scenarios"+ webService.getWebServicesScenario().get(0).getScenario().getName());
+
+                for (ServiceRecord serviceRecord :serviceRecordList ) {
+
+                    if(serviceRecord.getWebService().getId().equals(id)) {
+
+                        JsonObjectBuilder jsonObjectBuilder1 = Json.createObjectBuilder();
+                        jsonObjectBuilder1.add("id", serviceRecord.getId());
+                        jsonObjectBuilder1.add("status", serviceRecord.getStatus());
+                        jsonObjectBuilder1.add("name", "record  " + serviceRecord.getExecutionTime().toString());
+                        jsonObjectBuilder1.add("date", serviceRecord.getDate().toString());
+                        recordJsonArrayBuilder.add(jsonObjectBuilder1);
+
+                    }
+                }
+                jsonObjectBuilder.add("scenarios",scenarioServiceJsonArrayBuilder);
+                jsonObjectBuilder.add("records", recordJsonArrayBuilder);
+                arrayBuilder.add(jsonObjectBuilder);
+        }
         }
         return arrayBuilder;
     }

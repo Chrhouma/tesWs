@@ -8,11 +8,20 @@ import java.util.Date;
 public class Dates {
     public Dates() {
     }
+
+    Calendar cal = Calendar.getInstance();
+    SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd-hh:MM:ss");
+
+    String datestr=dateFormat.format(cal.getTime());
+
+
+
      Date actuelle = new Date();
      DateFormat dateFormat1 = new SimpleDateFormat( "yyyy-MM-dd-hh:MM");
      DateFormat dateFormat2 = new SimpleDateFormat( "yyyy-MM-dd");
      String date1 = dateFormat1.format(actuelle.getTime());
      String date2 = dateFormat2.format(actuelle.getTime());
+
      Date  executionTime=actuelle;
      public Date yesterday() {
         final Calendar cal = Calendar.getInstance();

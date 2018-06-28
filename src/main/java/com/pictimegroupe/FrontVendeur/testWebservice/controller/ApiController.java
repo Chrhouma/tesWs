@@ -41,12 +41,13 @@ public class ApiController {
      * @return
      * @throws GestionRoleException
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/user/connect", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String connect(@RequestParam(value = "login", required = false) String login,
                           @RequestParam(value = "password", required = false) String password) throws GestionRoleException {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         if (login != null && password != null) {
-            userServices.connect(login, password);
+           obj.add("user",userServices.connect(login, password));
 
         }
         return obj.build().toString();
@@ -126,20 +127,21 @@ public class ApiController {
         return obj.build().toString();
     }
     @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/webService", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String findOneWebService(@RequestParam(value = "id", required = false) String id) {
+        JsonObjectBuilder obj = Json.createObjectBuilder();
+        obj.add("webService",webServicesServices.getWebserviceJson(id));
+        return obj.build().toString();
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllScenarios() {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         obj.add("scenarios", scenarioService.getAllScenario());
         return obj.build().toString();
     }
- /*   @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/scenario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String addServiceRecord(@RequestParam(value = "id", required = false) String id){
-        JsonObjectBuilder obj = Json.createObjectBuilder();
 
-        return obj.build().toString();
-    }
-*/
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenario", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findOneScenario(@RequestParam(value = "id", required = false) String id) {
@@ -261,35 +263,35 @@ public class ApiController {
         List<WebService> arrayWebservice = new LinkedList();
 
         //login
-        arrayWebservice.add(webServicesServices.getWebService("c21c5721-35ef-417f-84a3-12ed58fff494"));
+        arrayWebservice.add(webServicesServices.getWebService("1c018f8b-5eaa-4743-b615-3b08b0124b0c"));
         //produit stock
-        arrayWebservice.add(webServicesServices.getWebService("3713f47c-9722-4b08-98bb-a5384d6f8758"));
+        arrayWebservice.add(webServicesServices.getWebService("89e52ad0-6c89-4a40-b21c-a1c97c9ba391"));
         //recherche client
-        arrayWebservice.add(webServicesServices.getWebService("70b24665-f282-4607-9ed4-d4b6fb296a26"));
+        arrayWebservice.add(webServicesServices.getWebService("04af2446-14f8-4125-90a5-997d6b4dd646"));
         //associer client
-        arrayWebservice.add(webServicesServices.getWebService("64a6b694-d7da-4189-a383-5ec851639bc5"));
+        arrayWebservice.add(webServicesServices.getWebService("edbef8c2-3488-427b-acbc-c8ff0aa04542"));
         //rafraichir
-        arrayWebservice.add(webServicesServices.getWebService("46b765f7-96e9-4a50-8ba6-99a0051f6a2d"));
+        arrayWebservice.add(webServicesServices.getWebService("c15e34c3-6256-4681-9b39-5afe252f0b8a"));
         //ajout produit
-        arrayWebservice.add(webServicesServices.getWebService("3e7e16a6-2e48-4d66-b6a5-056b2ff6c0ce"));
+        arrayWebservice.add(webServicesServices.getWebService("87d664b1-03c8-4996-9004-4b12ce93b29f"));
         //valider mode livraison
-        arrayWebservice.add(webServicesServices.getWebService("53cb67b4-c760-422d-8249-d3194f48905e"));
+        arrayWebservice.add(webServicesServices.getWebService("8ef21c51-58b1-46d9-a5ae-cf16c7cbcb37"));
         //rafraichir
-        arrayWebservice.add(webServicesServices.getWebService("46b765f7-96e9-4a50-8ba6-99a0051f6a2d"));
+        arrayWebservice.add(webServicesServices.getWebService("c15e34c3-6256-4681-9b39-5afe252f0b8a"));
         //valider
-        arrayWebservice.add(webServicesServices.getWebService("f4f02399-3ea8-40cf-9459-66796874c259"));
+        arrayWebservice.add(webServicesServices.getWebService("21eba1d9-c4a8-4146-955f-0d9126bf5d95"));
         //planing livraison
-        arrayWebservice.add(webServicesServices.getWebService("3af860db-576d-49a8-9cd4-af9e2ecceb71"));
+        arrayWebservice.add(webServicesServices.getWebService("87c713a0-fc75-493b-a7dc-99e5efdbcd1e"));
         //rafraichir
-        arrayWebservice.add(webServicesServices.getWebService("46b765f7-96e9-4a50-8ba6-99a0051f6a2d"));
+        arrayWebservice.add(webServicesServices.getWebService("c15e34c3-6256-4681-9b39-5afe252f0b8a"));
         //rechercheCP
-        arrayWebservice.add(webServicesServices.getWebService("ab55a647-e55f-48fe-9f9a-c6ba5c863447"));
+        arrayWebservice.add(webServicesServices.getWebService("a23fbdd6-e741-4696-8ce1-dab9cf173126"));
         //valider Vendeur
-        arrayWebservice.add(webServicesServices.getWebService("a470cda4-8119-4874-875f-37392890c84c"));
+        arrayWebservice.add(webServicesServices.getWebService("f81b6826-a1f6-4434-a6e7-01a5cf1d871d"));
         //rafraichir
-        arrayWebservice.add(webServicesServices.getWebService("46b765f7-96e9-4a50-8ba6-99a0051f6a2d"));
+        arrayWebservice.add(webServicesServices.getWebService("c15e34c3-6256-4681-9b39-5afe252f0b8a"));
         //derniere commande
-        arrayWebservice.add(webServicesServices.getWebService("ba268027-e5f2-4bf7-99b6-52a74f64b173"));
+        arrayWebservice.add(webServicesServices.getWebService("61b521aa-9d18-429b-aa6c-7400b1ed2ba6"));
 
         Scenario scenario = new Scenario();
         scenario.setName(name);
@@ -304,10 +306,13 @@ public class ApiController {
     }*/
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "scenario/tester",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void testerScenario(@RequestParam(value = "idScenario")String idScenario) throws IOException {
-
+    public String testerScenario(@RequestParam(value = "idScenario")String idScenario) throws IOException {
+        JsonObjectBuilder obj = Json.createObjectBuilder();
     scenarioRecordService.testerScenario(idScenario);
-    System.out.println("je teste mon ws");
+
+        System.out.println("je teste mon ws");
+        return obj.build().toString();
+
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "scenarioRecord/comparer",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -317,8 +322,18 @@ public class ApiController {
 
         scenarioRecordService.comparerScenario(idScenario1,idScenario2);
 
-        obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario2));
+        obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario1));
         return obj.build().toString();
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "home", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String compareAlone() throws IOException {
+       /* JsonObjectBuilder obj = Json.createObjectBuilder();
+        String idScenario=scenarioRecordService.compareAutomatic();
+        System.out.println(idScenario);
+        obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario));
+        return obj.build().toString();*/
+        return scenarioRecordService.compareAutomatic();
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -400,12 +415,9 @@ public class ApiController {
         jsonObjectBuilder.add("delta",delta.getDeltoJson());
         return jsonObjectBuilder.build().toString();
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+   /* @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "testing", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public  String findlisteServicerecordByScenario(){
-        JsonObjectBuilder jsonObjectBuilder=Json.createObjectBuilder();
-       // scenarioRecordService.getScenarioRecordByScenario();
-        jsonObjectBuilder.add("scenrio",scenarioService.getScenarioJson("3aebe875-7abc-4608-b483-8205b0b18b9e"));
-        return jsonObjectBuilder.build().toString();
-    }
+    public void compareAlone(){
+        scenarioRecordService.compareAutomatic();
+    }*/
 }
