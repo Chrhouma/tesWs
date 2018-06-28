@@ -40,7 +40,7 @@ public class ScenarioServiceImpl implements ScenarioService {
     @Autowired
     ScenarioRecordService scenarioRecordService;
     TestWs testWs=new TestWs();
-    private Dates date=new Dates();
+
     private  String separateur="*****************************";
     private  String endWs="################################################################\n";
     private List <File> listscenaio2= new ArrayList<>();
@@ -51,9 +51,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void testLogin(String idScenario,int rang,String idScenarioRecord) throws IOException {
+        Dates date=new Dates();
         String startTest=separateur+"login"+separateur+"\n";
         RestAssured.baseURI = "http://127.0.0.1/";
-        String resultPath="/home/front-vendeur/Bureau/tesWs/webservice/login"+rang+date.date1;
+        String resultPath="/home/front-vendeur/Bureau/tesWs/webservice/login"+rang+date.datestr;
 
         File resultFile = new File(resultPath);
 
@@ -90,9 +91,11 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void testRechercheClient(String idScenario,int rang,String idScenarioRecord)throws IOException{
+        Dates date=new Dates();
+
         String startTest=separateur+"rech_client"+separateur+"\n";
         JsonObject json = new JsonObject();
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/client"+rang+date.date1);
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/client"+rang+date.datestr);
         File resultFile = new File(resultPath);
         json.addProperty("centrale", "0");
         json.addProperty("numeroClient", "P0126530");
@@ -123,9 +126,11 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void testProduitStock(String idScenario,int rang,String idScenarioRecord) throws IOException{
+        Dates date=new Dates();
+
         String startTest=separateur+"stock_produits"+separateur+"\n";
         JsonObject json = new JsonObject();
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/stock"+rang + date.date1);
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/stock"+rang + date.datestr);
         File resultFile = new File(resultPath);
         json.addProperty("references", "[\"0000100108\"]");
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
@@ -154,8 +159,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void testAjoutProduit( String idScenario,int rang,String idScenarioRecord) throws IOException{
+        Dates date=new Dates();
+
         String startTest=separateur+"ajout_produit"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/addProduct" + rang+date.date1 );
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/addProduct" + rang+date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("{\"eanPrincipal\": \"1000000117\", \"omnicanal\": false, \"produits\": [{\"numeroComposant\": 0}]}")
@@ -180,8 +187,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void  testParametrage(String idScenario,int rang,String idScenarioRecord) throws IOException {
+        Dates date=new Dates();
+
         String startTest=separateur+"parametrage"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/parametrage" +rang+ date.date1 );
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/parametrage" +rang+ date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .sessionId(RestAssured.sessionId);
@@ -206,8 +215,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void  testrafraichir(String idScenario ,int rang,String idScenarioRecord) throws IOException {
+        Dates date=new Dates();
+
         String startTest=separateur+"rafraichir"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/rafraichir" +rang+ date.date1);
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/rafraichir" +rang+ date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .sessionId(RestAssured.sessionId);
@@ -232,8 +243,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void  testvalider(String idScenario,int rang,String idScenarioRecord) throws IOException {
+        Dates date=new Dates();
+
         String startTest=separateur+"valider"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/valider" +rang+ date.date1 );
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/valider" +rang+ date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .sessionId(RestAssured.sessionId);
@@ -258,8 +271,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void associerClient(String idScenario,int rang,String idScenarioRecord) throws IOException {
+        Dates date=new Dates();
+
         String startTest = separateur + "associer_panier" + separateur + "\n";
-        String resultPath = ("/home/front-vendeur/Bureau/tesWs/webservice/associerCLient" +rang+ date.date1);
+        String resultPath = ("/home/front-vendeur/Bureau/tesWs/webservice/associerCLient" +rang+ date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1 = RestAssured.given().headers("Content-type", "application/json")
                 .body("{\"numeroClient\": \"P0126530\"}")
@@ -285,8 +300,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void testValiderModeLiv(String idScenario,int rang,String idScenarioRecord) throws IOException{
+        Dates date=new Dates();
+
         String startTest=separateur+"valider_mode_liv"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/validerModeLiv" +rang+ date.date1 );
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/validerModeLiv" +rang+ date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("{ \"codeSiteReservation\": \"\",\"codeTransporteur\": \"LVB\",\"dateDelivrance\": 20391231,\"commandeEntrepot\": true, \"quantite\": 1, \"codeDelivrance\": \"L\",\"numeroLigne\": 1\n}")
@@ -312,8 +329,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void testPlaningLiv(String idScenario,int rang,String idScenarioRecord) throws IOException{
+        Dates date=new Dates();
+
         String startTest=separateur+"planning_liv"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/planingLiv" +rang+ date .date1);
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/planingLiv" +rang+ date .datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("{\"codeInsee\": \"59350\",\"codePays\": \"FRA\", \"codePostal\": \"59000\",\"numerosLignes\": [{\"ligne\": 1}]}")
@@ -340,8 +359,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public   void testRechercheCp(String idScenario,int rang,String idScenarioRecord)throws IOException{
+        Dates date=new Dates();
+
         String startTest=separateur+"rechercher_CP"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/RechercheCp" +rang+ date.date1);
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/RechercheCp" +rang+ date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("{\"codePays\": \"FRA\",\"codePostal\": \"62000\"}")
@@ -368,8 +389,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void  testvaliderVendeur(String idScenario,int rang,String idScenarioRecord) throws IOException {
+        Dates date=new Dates();
+
         String startTest=separateur+"valider_vendeur_fin"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/validerVendeur" +rang+ date.date1 );
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/validerVendeur" +rang+ date.datestr );
         File resultFile = new File(resultPath);
 
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
@@ -395,8 +418,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
     @Override
     public  void  testDerniereCommande(String idScenario,int rang,String idScenarioRecord) throws IOException {
+        Dates date=new Dates();
+
         String startTest=separateur+"derniere_commande"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/Commande"+rang + date.date1);
+        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/Commande"+rang + date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .sessionId(RestAssured.sessionId);
@@ -421,21 +446,12 @@ public class ScenarioServiceImpl implements ScenarioService {
         System.out.println("derniÃ¨re commande  marche bien");
     }
 
-
     @Override
     public Scenario getScenario(String id) {
         List<Scenario>listScenarios= scenarioRepository.findScenarioById(id);
         return listScenarios.get(0);
     }
 
-   /* @Override
-    public List<String> getWebServiceNamesByIdScenario(String id) {
-        List<String> webservicesNames= new LinkedList<>();
-       for(WebServiceScenario webService:this.getScenario(id).getWebServicesScenario()){
-            webservicesNames.add(webService.getName());
-        }
-        return webservicesNames;
-    }*/
     @Override
     public List<String> getWebServiceNamesByIdScenario(String id) {
         List<String> webservicesNames= new LinkedList<>();

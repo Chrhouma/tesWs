@@ -64,7 +64,6 @@ public class DeltaServicesImpl implements  DeltaServices {
             }
         }
 
-        System.out.println("la taille de la liste de delta finale est"+deltaListfinale.size() );
         return deltaArrayBuilder;
     }
 

@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
-public class ServiceRecord {
+public class ServiceRecord  {
 
     public ServiceRecord() {
     }

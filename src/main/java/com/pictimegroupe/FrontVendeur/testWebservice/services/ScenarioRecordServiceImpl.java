@@ -13,24 +13,23 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.io.IOException;
 import java.sql.SQLOutput;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     private Dates date=new Dates();
     @Autowired
-    ScenarioRecordRepository scenarioRecordRepository;
+        ScenarioRecordRepository scenarioRecordRepository;
     @Autowired
-    ScenarioService scenarioService;
+        ScenarioService scenarioService;
     @Autowired
-    ServiceRecordServices serviceRecordServices;
-   @Autowired
-   Compare compare;
-   @Autowired
-   DeltaServices deltaServices;
-   @Autowired
-    ScenarioRepository scenarioRepository;
+        ServiceRecordServices serviceRecordServices;
+    @Autowired
+        Compare compare;
+    @Autowired
+     DeltaServices deltaServices;
+    @Autowired
+     ScenarioRepository scenarioRepository;
 
 
 
@@ -50,7 +49,6 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
             if(scenarioRecord.getScenario().getId().equals(id)){
                 recordList.add(scenarioRecord);
             }
-
         }
         return recordList;
     }
@@ -78,7 +76,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
 
     @Override
     public void testerScenario(String id) throws IOException {
-
+       Dates date= new Dates();
         ScenarioRecord scenarioRecord= new ScenarioRecord();
         scenarioRecord.setDate(date.actuelle);
         scenarioRecord.setScenario(scenarioService.getScenario(id));
@@ -86,8 +84,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         scenarioRecord.setStatus("ok");
         addScenarioRecord(scenarioRecord);
 
-        System.out.println(scenarioService.getScenario(id));
-        List<Integer> webServiceRang=scenarioService.getWebServiceRangByIdScenario(id);
+            List<Integer> webServiceRang=scenarioService.getWebServiceRangByIdScenario(id);
         for (int rang=0;rang< webServiceRang.size();rang++) {
             String name=scenarioService.getWebServiceNamesByRang(id,rang+1).get(0);
             switch (name) {
@@ -105,7 +102,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
                     break;
                 case"ajoutProduit":
                     scenarioService.testAjoutProduit(id,rang+1,scenarioRecord.getId());
-                    ;
+
                     break;
                 case"rafraichir":
                     scenarioService.testrafraichir(id,rang+1,scenarioRecord.getId());
@@ -128,7 +125,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
                     scenarioService.testRechercheCp(id,rang+1,scenarioRecord.getId());
                     break;
                 case"DerniereCommande":
-                    scenarioService.testDerniereCommande(id,rang+1,scenarioRecord.getId());
+//                    scenarioService.testDerniereCommande(id,rang+1,scenarioRecord.getId());
                     break;
                 case"valider":
                     scenarioService.testvalider(id,rang+1,scenarioRecord.getId());
@@ -141,22 +138,72 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         }
     }
 
+    // methode qui permet de trier la liste des scenario record avec la date d'exécution
+    @Override
+    public String sortListrecordByDAte(List<ScenarioRecord> recordList){
+        Collections.sort(recordList, Comparator.comparing(ScenarioRecord::getDate));
+        String idScenarioRecord1=recordList.get(recordList.size()-1).getId();
+        String idScenarioRecord2=recordList.get(recordList.size()-2).getId();
+        try {
+            comparerScenario(idScenarioRecord1,idScenarioRecord2);
+            System.out.println("comparaison terminé");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return idScenarioRecord2;
+
+    }
+
     @Override
     public void testerAllScenario() throws IOException {
         List <Scenario> scenarioList= (List<Scenario>) scenarioRepository.findAll();
         for(Scenario scenario:scenarioList){
             this.testerScenario(scenario.getId());
         }
-
     }
+
+   @Override
+   public String compareAutomatic() throws IOException {
+        JsonArrayBuilder jsonArrayBuilder =Json.createArrayBuilder();
+
+        //tetster tous les scénarios
+        testerAllScenario();
+        List <Scenario> scenarioList= (List<Scenario>) scenarioRepository.findAll();
+
+        //pour chaque scénarios je cherche sa liste de scenario records
+        for(Scenario scenario :scenarioList){
+            JsonObjectBuilder obj = Json.createObjectBuilder();
+            //trouver les scenario record pour chaque scenrio
+            List<ScenarioRecord> scenarioRecordList=new LinkedList<>();
+            scenarioRecordList=findScenarioRecordsByIdScenario(scenario.getId());
+             //trier la liste de scenario Record selon la date
+             String idScenarioRecord=  sortListrecordByDAte(scenarioRecordList);
+            obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenarioRecord));
+
+            jsonArrayBuilder.add(obj);
+
+
+        }
+      return jsonArrayBuilder.build().toString();
+
+   }
+
+   @Override
+   public List<ScenarioRecord> findScenarioRecordsByIdScenario(String id){
+        List <ScenarioRecord> recordList= new LinkedList<>();
+       List<ScenarioRecord>AllscenarioRecords= (List<ScenarioRecord>) scenarioRecordRepository.findAll();
+       for(ScenarioRecord scenarioRecord:AllscenarioRecords){
+           if(scenarioRecord.getScenario().getId().equals(id)){
+               recordList.add(scenarioRecord);
+           }
+       }
+       return recordList;
+   }
 
     @Override
     public void comparerScenario(String idScenarioRecord1, String idScenarioRecord2) throws IOException {
         List<ServiceRecord> serviceRecords1 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
         List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord2);
-
-        System.out.println("testerrr taille de service recrods1            "+serviceRecords1.size());
-        System.out.println("testerrr taille de service recrods2             "+serviceRecords2.size());
 
         for(int i=0; i<serviceRecords1.size();i++) {
 
@@ -165,11 +212,6 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
                 if (serviceRecords1.get(i).getRang() == serviceRecords2.get(j).getRang()) {
                     String path1=serviceRecords1.get(i).getResultPath();
                     String path2=serviceRecords2.get(j).getResultPath();
-                    System.out.println(path1 );
-
-                    System.out.println(path2);
-                    System.out.println(serviceRecords1.get(i).getId());
-                    System.out.println("#######");
                     compare.comparaison(path1,path2,serviceRecords1.get(i).getId());
                 }
             }
