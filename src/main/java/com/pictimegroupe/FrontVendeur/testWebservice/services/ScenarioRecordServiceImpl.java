@@ -15,6 +15,9 @@ import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.*;
 
+/**
+ *
+ */
 @Service
 public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     private Dates date=new Dates();
@@ -32,13 +35,22 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
      ScenarioRepository scenarioRepository;
 
 
-
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public ScenarioRecord getScenarioRecord(String id) {
         List<ScenarioRecord> recordList=scenarioRecordRepository.findScenarioRecordById(id);
         return recordList.get(0);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public List getScenarioRecordByScenario(String id) {
         List<ScenarioRecord> scenarioRecords= (List<ScenarioRecord>) scenarioRecordRepository.findAll();
@@ -53,6 +65,10 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         return recordList;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public JsonArrayBuilder getAllScenarioRecord() {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
@@ -63,12 +79,15 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
             jsonObjectBuilder.add("date","25/02/2011");
             jsonObjectBuilder.add("executionTime","25/02/2011");
            // jsonObjectBuilder.add("status",scenarioRecord.getStatus());
-           // jsonObjectBuilder.add("scenario", (JsonObjectBuilder) scenarioRecord.getScenario());
             arrayBuilder.add(jsonObjectBuilder);
         }
         return arrayBuilder;
     }
 
+    /**
+     *
+     * @param scenarioRecord
+     */
     @Override
     public void addScenarioRecord(ScenarioRecord scenarioRecord) {
     scenarioRecordRepository.save(scenarioRecord);
@@ -138,6 +157,11 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         }
     }
 
+    /**
+     *
+     * @param recordList
+     * @return
+     */
     // methode qui permet de trier la liste des scenario record avec la date d'exécution
     @Override
     public String sortListrecordByDAte(List<ScenarioRecord> recordList){
@@ -146,14 +170,16 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         String idScenarioRecord2=recordList.get(recordList.size()-2).getId();
         try {
             comparerScenario(idScenarioRecord1,idScenarioRecord2);
-            System.out.println("comparaison terminé");
         } catch (IOException e) {
             e.printStackTrace();
         }
         return idScenarioRecord2;
-
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     @Override
     public void testerAllScenario() throws IOException {
         List <Scenario> scenarioList= (List<Scenario>) scenarioRepository.findAll();
@@ -162,6 +188,11 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         }
     }
 
+    /**
+     *
+     * @return
+     * @throws IOException
+     */
    @Override
    public String compareAutomatic() throws IOException {
         JsonArrayBuilder jsonArrayBuilder =Json.createArrayBuilder();
@@ -177,17 +208,20 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
             List<ScenarioRecord> scenarioRecordList=new LinkedList<>();
             scenarioRecordList=findScenarioRecordsByIdScenario(scenario.getId());
              //trier la liste de scenario Record selon la date
-             String idScenarioRecord=  sortListrecordByDAte(scenarioRecordList);
+            String idScenarioRecord=  sortListrecordByDAte(scenarioRecordList);
             obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenarioRecord));
 
             jsonArrayBuilder.add(obj);
-
-
         }
       return jsonArrayBuilder.build().toString();
 
    }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
    @Override
    public List<ScenarioRecord> findScenarioRecordsByIdScenario(String id){
         List <ScenarioRecord> recordList= new LinkedList<>();
@@ -200,6 +234,12 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
        return recordList;
    }
 
+    /**
+     *
+     * @param idScenarioRecord1
+     * @param idScenarioRecord2
+     * @throws IOException
+     */
     @Override
     public void comparerScenario(String idScenarioRecord1, String idScenarioRecord2) throws IOException {
         List<ServiceRecord> serviceRecords1 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
