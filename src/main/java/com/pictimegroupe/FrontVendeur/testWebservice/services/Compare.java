@@ -18,8 +18,6 @@ public interface Compare {
 
     void clearFile(String path)throws IOException;
 
-    void deleteComparedWs(String path, int nb)throws  IOException;
-
     int chargerParagraphe(String path1, String ftmp1) throws IOException;
 
     void  simpleCompare(String path1, String path2) throws IOException;

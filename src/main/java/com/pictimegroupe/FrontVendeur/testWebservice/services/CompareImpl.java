@@ -8,6 +8,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 @Service
 public class CompareImpl implements Compare {
     @Autowired
@@ -19,26 +22,57 @@ public class CompareImpl implements Compare {
 
     public CompareImpl() {
     }
+
+    /**
+     *
+     * @param ch
+     * @return
+     */
     @Override
     public boolean isNoeud(String ch)
     {
         return ch.contains("\": {") || ch.contains("\": [");
     }
 
+    /**
+     *
+     * @param ch
+     * @return
+     */
     @Override
     public boolean isWebService(String ch) {
         return ch.contains("*****************************");
     }
+
+    /**
+     *
+     * @param ch
+     * @return
+     */
     @Override
     public boolean isEndWebService(String ch) {
         return ch.contains("################################################################");
     }
+
+    /**
+     *
+     * @param path
+     * @param txt
+     * @throws IOException
+     */
     @Override
     public void writeOnFile(String path, String txt) throws IOException {
         FileWriter fw = new FileWriter(new File(path),true);
         fw.write(txt);
         fw.close();
     }
+
+    /**
+     *
+     * @param path
+     * @param txt
+     * @throws IOException
+     */
     @Override
     public void reWriteOnFile(String path, String txt) throws IOException {
         FileWriter fw = new FileWriter(new File(path),true);
@@ -48,6 +82,13 @@ public class CompareImpl implements Compare {
 
         fw.close();
     }
+
+    /**
+     *
+     * @param path
+     * @return
+     * @throws IOException
+     */
     @Override
     public int nbWebService(String path)throws IOException{
         BufferedReader reader1 = new BufferedReader(new FileReader(new File(path)));
@@ -61,6 +102,11 @@ public class CompareImpl implements Compare {
         return nb;
     }
 
+    /**
+     *
+     * @param path
+     * @throws IOException
+     */
     @Override
     public void clearFile(String path )throws IOException{
         PrintWriter writer = new PrintWriter(new File(path));
@@ -68,28 +114,14 @@ public class CompareImpl implements Compare {
         writer.close();
     }
 
-    @Override
-    public void deleteComparedWs(String path, int nb)throws  IOException{
-        BufferedReader  br1 = new BufferedReader(new FileReader(path));
-        String line = br1.readLine();
-        List<String> list1 = new ArrayList<String>();
-        List<String> listtmp = new ArrayList<String>();
-         while ((line != null)){
-            //list1.add(line);
-             if (line!=null){
-                 list1.add(line);
-             }
-            line = br1.readLine();
-        }
-        for (int i = nb+1; i < list1.size(); i++) {
-            listtmp.add(list1.get(i));
-        }
-        clearFile(path);
-        for (int i = 0; i < listtmp.size(); i++) {
-           reWriteOnFile(path,listtmp.get(i));
-        }
-     }
 
+    /**
+     *
+     * @param path1
+     * @param ftmp1
+     * @return
+     * @throws IOException
+     */
    @Override
    public int chargerParagraphe(String path1, String ftmp1) throws IOException {
        int nbLigne=0;
@@ -109,6 +141,12 @@ public class CompareImpl implements Compare {
         return nbLigne;
     }
 
+    /**
+     *
+     * @param path1
+     * @param path2
+     * @throws IOException
+     */
     @Override
     public void  simpleCompare(String path1, String path2) throws IOException {
         String pathResult="/home/front-vendeur/Bureau/tesWs/webservice/resultat1"+date.date1;
@@ -154,6 +192,12 @@ public class CompareImpl implements Compare {
         reader2.close();
     }
 
+    /**
+     *
+     * @param path1
+     * @param path2
+     * @throws IOException
+     */
    @Override
     public void CompareWs(String path1, String path2) throws IOException {
         String ftmp1 = "/home/front-vendeur/Bureau/tesWs/webservice/ftmp01";
@@ -173,7 +217,13 @@ public class CompareImpl implements Compare {
         }
     }
 
-
+    /**
+     *
+     * @param path1
+     * @param path2
+     * @param idServiceRecord
+     * @throws IOException
+     */
     @Override
     public void comparaison(String path1,String path2,String idServiceRecord) throws IOException {
         Delta delta= new Delta();
@@ -217,7 +267,6 @@ public class CompareImpl implements Compare {
 
 
     }
-
 
 
     }
