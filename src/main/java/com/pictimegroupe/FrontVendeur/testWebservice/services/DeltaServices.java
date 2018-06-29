@@ -12,5 +12,6 @@ public interface DeltaServices  {
 
     JsonArrayBuilder getDeltaByIdServiceRecord(String id);
     void addDelta(Delta delta);
+    JsonArrayBuilder getAllDeltaByIdeScenarioRcordAutomatictest(String idScenarioRecord1,String scenarioName);
     JsonArrayBuilder getAllDeltaByIdeScenarioRcord(String idScenarioRecord1);
 }

@@ -62,13 +62,44 @@ public class DeltaServicesImpl implements  DeltaServices {
      * @return
      */
     @Override
+    public JsonArrayBuilder getAllDeltaByIdeScenarioRcordAutomatictest(String idScenarioRecord1,String scenarioName) {
+        JsonArrayBuilder deltaArrayBuilder = Json.createArrayBuilder();
+        JsonArrayBuilder deltaArrayBuilder1 = Json.createArrayBuilder();
+        JsonObjectBuilder nbWebService=Json.createObjectBuilder();
+        List<ServiceRecord> serviceRecords = serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
+        List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
+
+        int nbWebServiceModifie=0;
+        int nbwebSericeTotale=serviceRecords.size();
+
+         for(Delta delta:deltaList){
+
+           for (ServiceRecord serviceRecord:serviceRecords){
+                if(delta.getServiceRecord().getId().equals(serviceRecord.getId())){
+                    nbWebServiceModifie++;
+                    deltaArrayBuilder.add( delta.getDeltoJson());
+                }
+            }
+        }
+        double tauxModification= (new Double(nbWebServiceModifie*100) / new Double(nbwebSericeTotale));
+         nbWebService.add("scenarioName",scenarioName);
+        nbWebService.add("tauxModification",tauxModification);
+        nbWebService.add("nbmodification",nbWebServiceModifie);
+        nbWebService.add("nbwebServiceTotale",nbwebSericeTotale);
+        nbWebService.add("deltas",deltaArrayBuilder);
+        //deltaArrayBuilder1.add(Integer.toString(nbWebServiceModifie));
+        deltaArrayBuilder1.add(nbWebService);
+        return deltaArrayBuilder1;
+    }
+
+    @Override
     public JsonArrayBuilder getAllDeltaByIdeScenarioRcord(String idScenarioRecord1) {
         JsonArrayBuilder deltaArrayBuilder = Json.createArrayBuilder();
         List<ServiceRecord> serviceRecords = serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
         List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
 
-       for(Delta delta:deltaList){
-           for (ServiceRecord serviceRecord:serviceRecords){
+        for(Delta delta:deltaList){
+            for (ServiceRecord serviceRecord:serviceRecords){
                 if(delta.getServiceRecord().getId().equals(serviceRecord.getId())){
 
                     deltaArrayBuilder.add(delta.getDeltoJson());
@@ -77,6 +108,7 @@ public class DeltaServicesImpl implements  DeltaServices {
         }
         return deltaArrayBuilder;
     }
+
 
     /**
      *

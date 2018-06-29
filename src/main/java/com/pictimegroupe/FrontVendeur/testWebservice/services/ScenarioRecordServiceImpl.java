@@ -196,11 +196,11 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
    @Override
    public String compareAutomatic() throws IOException {
         JsonArrayBuilder jsonArrayBuilder =Json.createArrayBuilder();
-
+       JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
         //tetster tous les scénarios
         testerAllScenario();
         List <Scenario> scenarioList= (List<Scenario>) scenarioRepository.findAll();
-
+        int nbWstotale=scenarioList.size();
         //pour chaque scénarios je cherche sa liste de scenario records
         for(Scenario scenario :scenarioList){
             JsonObjectBuilder obj = Json.createObjectBuilder();
@@ -209,11 +209,14 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
             scenarioRecordList=findScenarioRecordsByIdScenario(scenario.getId());
              //trier la liste de scenario Record selon la date
             String idScenarioRecord=  sortListrecordByDAte(scenarioRecordList);
-            obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenarioRecord));
 
+            obj.add("modification",  deltaServices.getAllDeltaByIdeScenarioRcordAutomatictest(idScenarioRecord,scenario.getName()));
+
+           // jsonArrayBuilder.add(obj);
             jsonArrayBuilder.add(obj);
         }
-      return jsonArrayBuilder.build().toString();
+       jsonObjectBuilder.add("tests",jsonArrayBuilder);
+      return jsonObjectBuilder.build().toString();
 
    }
 
