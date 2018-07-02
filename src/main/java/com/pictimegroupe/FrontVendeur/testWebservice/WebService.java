@@ -16,9 +16,10 @@ public class WebService implements Serializable  {
     private String id =UUID.randomUUID().toString();
     private String name;
     private String url;
-
+    private String body;
     private Integer rang;
-
+    public enum  Method {post,get} ;
+    private  Method method;
     @OneToOne
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private Schema inputSchema ;
@@ -104,6 +105,22 @@ public class WebService implements Serializable  {
         this.rang = rang;
     }
 
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public Method getMethod() {
+        return method;
+    }
+
+    public void setMethod(Method method) {
+        this.method = method;
+    }
+
     public JsonObjectBuilder getWebServiceJson() {
 
         JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
@@ -114,8 +131,11 @@ public class WebService implements Serializable  {
 
         jsonObjectBuilder.add("name",this.getName());
         jsonObjectBuilder.add("url",this.getUrl());
-         jsonObjectBuilder.add("description",this.getDescription());
-
+        jsonObjectBuilder.add("description",this.getDescription());
+        jsonObjectBuilder.add("methode",this.getMethod().toString());
+        if(this.getMethod().equals("post")) {
+            jsonObjectBuilder.add("body", this.getBody());
+        }
         jsonObjectBuilderschemaInput.add("InputShemaName",this.getInputSchema().getName());
         jsonObjectBuilderschemaInput.add("InputShemapath",this.getInputSchema().getShemapath());
 

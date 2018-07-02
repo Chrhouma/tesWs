@@ -204,9 +204,8 @@ public class TestWs {
         File f = new File("/home/front-vendeur/IdeaProjects/Autotest/testWs/planingLiv/planingLiv" + date );
         FileWriter fw = new FileWriter(f);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
-                .body("{\"codeInsee\": \"59350\",\"codePays\": \"FRA\", \"codePostal\": \"59000\",\"numerosLignes\": [{\"ligne\": 1}]}")
-
-                .sessionId(RestAssured.sessionId);
+               .body("{\"codeInsee\": \"59350\",\"codePays\": \"FRA\", \"codePostal\": \"59000\",\"numerosLignes\": [{\"ligne\": 1}]}")
+               .sessionId(RestAssured.sessionId);
         Response  resp1 = request1.post("vente_panier/planning_liv");
         fw.write(resp1.asString());
         fw.close();

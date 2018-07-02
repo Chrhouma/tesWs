@@ -506,12 +506,10 @@ public class ScenarioServiceImpl implements ScenarioService {
     }
 
 
-
  @Override
  public JsonArrayBuilder getScenarioJson(String id) {
+
      JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-
-
      JsonArrayBuilder recordJsonArrayBuilder =Json.createArrayBuilder();
      List<Scenario> scenarioList=(List<Scenario>)scenarioRepository.findAll();
      for(Scenario scenario :scenarioList) {

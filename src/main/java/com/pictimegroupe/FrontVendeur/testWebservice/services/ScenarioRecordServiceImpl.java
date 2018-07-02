@@ -106,6 +106,7 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
             List<Integer> webServiceRang=scenarioService.getWebServiceRangByIdScenario(id);
         for (int rang=0;rang< webServiceRang.size();rang++) {
             String name=scenarioService.getWebServiceNamesByRang(id,rang+1).get(0);
+
             switch (name) {
                 case "produitStock":
                     scenarioService.testProduitStock(id,rang+1,scenarioRecord.getId());

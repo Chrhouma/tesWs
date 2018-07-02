@@ -35,18 +35,11 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
         for (ServiceRecord serviceRecord :serviceRecordList) {
             JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
             jsonObjectBuilder.add("id",serviceRecord.getId());
-
             jsonObjectBuilder.add("idWebService",  serviceRecord.getWebService().getId());
             jsonObjectBuilder.add("rangWebService",serviceRecord.getWebService().getRang());
-            //jsonObjectBuilder.add("idWebService",  serviceRecord.getWebService());
-          // System.out.println(serviceRecord.getWebService() +  " okk");
-          //  jsonObjectBuilder.add("date",serviceRecord.getFormattedDate(serviceRecord.getDate()));
             jsonObjectBuilder.add("date","25/02/2011");
-            //jsonObjectBuilder.add("executionTime",serviceRecord.getFormattedDate(serviceRecord.getExecutionTime()));
             jsonObjectBuilder.add("executionTime","25/02/2011");
-         //   jsonObjectBuilder.add("scenarioRecord", (JsonObjectBuilder) serviceRecord.getScenarioRecord());
-
-           jsonObjectBuilder.add("resultPath",serviceRecord.getResultPath());
+            jsonObjectBuilder.add("resultPath",serviceRecord.getResultPath());
             jsonObjectBuilder.add("status",serviceRecord.getStatus());
             List<Delta> deltaList=(List<Delta>) deltaRepository.findAll();//qppel q lq ;ethode des repository delqtq pour trouver lq liste des id de chqaue difference
             for ( Delta delta :deltaList){
@@ -80,9 +73,7 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
     @Override
     public List<ServiceRecord> getAllServiceRecordByScenarioRecord(String idScnearioRecord) {
         List <ServiceRecord> serviceRecords= (List<ServiceRecord>) serviceRecordRepository.findAll();
-
         List <ServiceRecord> serviceRecords1=new LinkedList<>();
-
             for(int i=0;i<serviceRecords.size();i++){
                 if(serviceRecords.get(i).getScenarioRecord().getId().equals(idScnearioRecord)) {
                     serviceRecords1.add(serviceRecords.get(i));

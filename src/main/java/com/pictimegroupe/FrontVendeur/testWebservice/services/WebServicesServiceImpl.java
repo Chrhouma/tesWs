@@ -25,7 +25,6 @@ public class WebServicesServiceImpl implements WebServicesServices {
     public WebServicesServiceImpl() {
     }
 
-
     @Override
     public WebService getWebService(String id) {
         List<WebService>listws= webServicesRepository.findWebServiceById(id);
@@ -39,12 +38,10 @@ public class WebServicesServiceImpl implements WebServicesServices {
         return webServiceList.get(0);
     }
 
-
     @Override
     public JsonArrayBuilder getInfoGlobalWebService(){
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
         JsonObjectBuilder jsonObjectBuilder =Json.createObjectBuilder();
-
 
         List <WebService> webServiceList=(List<WebService>) webServicesRepository.findAll();
         List <ServiceRecord> serviceRecords= (List<ServiceRecord>) serviceRecordRepository.findAll();
@@ -65,23 +62,27 @@ public class WebServicesServiceImpl implements WebServicesServices {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
         List <WebService> webServiceList=(List<WebService>) webServicesRepository.findAll();
-
-
         for(WebService webService: webServiceList){
 
             JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
             JsonObjectBuilder jsonObjectBuilderschemaInput= Json.createObjectBuilder();
             JsonObjectBuilder jsonObjectBuilderschemaOutput= Json.createObjectBuilder();
-
             jsonObjectBuilder.add("id",webService.getId());
-          jsonObjectBuilder.add("rang",webService.getRang());
-
+            jsonObjectBuilder.add("rang",webService.getRang());
             jsonObjectBuilder.add("name",webService.getName());
             jsonObjectBuilder.add("url",webService.getUrl());
+            jsonObjectBuilder.add("body",webService.getBody());
             jsonObjectBuilder.add("description",webService.getDescription());
+            jsonObjectBuilder.add("methode",webService.toString());
+            if(webService.getMethod().equals("post")) {
+                jsonObjectBuilder.add("body", webService.getBody());
+            }
+            else {
+                jsonObjectBuilder.add("body", "");
+            }
             jsonObjectBuilderschemaInput.add("id",webService.getInputSchema().getId());
-             jsonObjectBuilderschemaOutput.add("id",webService.getOutSchema().getId());
-             jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
+            jsonObjectBuilderschemaOutput.add("id",webService.getOutSchema().getId());
+            jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
             jsonObjectBuilder.add("OutputShema",jsonObjectBuilderschemaOutput);
 
             arrayBuilder.add(jsonObjectBuilder);
@@ -107,12 +108,10 @@ public class WebServicesServiceImpl implements WebServicesServices {
 
             jsonObjectBuilder.add("id", webService.getId());
             jsonObjectBuilder.add("rang", webService.getRang());
-
-
-
             jsonObjectBuilder.add("name", webService.getName());
             jsonObjectBuilder.add("url", webService.getUrl());
             jsonObjectBuilder.add("description", webService.getDescription());
+            jsonObjectBuilder.add("body",webService.getBody());
             jsonObjectBuilderschemaInput.add("id", webService.getInputSchema().getId());
             jsonObjectBuilderschemaOutput.add("id", webService.getOutSchema().getId());
             jsonObjectBuilder.add("InputShema", jsonObjectBuilderschemaInput);
