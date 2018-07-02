@@ -82,8 +82,9 @@ public class DeltaServicesImpl implements  DeltaServices {
             }
         }
         double tauxModification= (new Double(nbWebServiceModifie*100) / new Double(nbwebSericeTotale));
+         double tauxModificationArondi= Math.round((tauxModification*1000)/1000);
          nbWebService.add("scenarioName",scenarioName);
-        nbWebService.add("tauxModification",tauxModification);
+        nbWebService.add("tauxModification",tauxModificationArondi);
         nbWebService.add("nbmodification",nbWebServiceModifie);
         nbWebService.add("nbwebServiceTotale",nbwebSericeTotale);
         nbWebService.add("deltas",deltaArrayBuilder);

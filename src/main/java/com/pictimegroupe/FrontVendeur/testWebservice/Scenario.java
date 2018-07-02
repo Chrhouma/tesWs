@@ -6,6 +6,7 @@ import com.pictimegroupe.FrontVendeur.testWebservice.services.ScenarioRecordServ
 import com.pictimegroupe.FrontVendeur.testWebservice.services.ScenarioRecordServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.json.JsonObject;
 import javax.persistence.CascadeType;
 
 import javax.json.Json;
@@ -70,19 +71,25 @@ public class Scenario implements Serializable {
         JsonArrayBuilder scenarioRecordArray =Json.createArrayBuilder();
         JsonObjectBuilder idWService=Json.createObjectBuilder();
         JsonObjectBuilder idWScenarioRecord=Json.createObjectBuilder();
+
         jsonObjectBuilder.add("id",id);
         jsonObjectBuilder.add("name",name);
         jsonObjectBuilder.add("cron",cron);
 
         for (WebServiceScenario webService : webServicesScenario) {
-           jsonObjectBuilder.add("rang",webService.getRang());
+            jsonObjectBuilder.add("rang",webService.getRang());
             idWService.add("id",webService.getWebService().getId());
             idWService.add("rang",webService.getRang());
             idWService.add("name",webService.getWebService().getName());
 
             webserviceArray.add(idWService);
+
+
+
         }
+
         jsonObjectBuilder.add("webServices",webserviceArray);
+
 
         return jsonObjectBuilder;
     }

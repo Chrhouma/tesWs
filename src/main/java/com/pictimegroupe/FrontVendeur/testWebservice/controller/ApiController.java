@@ -34,7 +34,6 @@ public class ApiController {
     DeltaServices deltaServices;
     @Autowired
     DeltaRepository deltaRepository;
-    //
    private String baseURI = "http://127.0.0.1/";
     /**
      * @param login
@@ -125,6 +124,13 @@ public class ApiController {
     public String findAllWebServices() {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         obj.add("webservices", webServicesServices.getAllWebService());
+        return obj.build().toString();
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/webServices/info", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getInfoGenerale() {
+        JsonObjectBuilder obj = Json.createObjectBuilder();
+        obj.add("infogenerale", webServicesServices.getInfoGlobalWebService());
         return obj.build().toString();
     }
     @CrossOrigin(origins = "http://localhost:4200")

@@ -1,9 +1,7 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
-import com.pictimegroupe.FrontVendeur.testWebservice.Scenario;
-import com.pictimegroupe.FrontVendeur.testWebservice.ServiceRecord;
-import com.pictimegroupe.FrontVendeur.testWebservice.WebService;
-import com.pictimegroupe.FrontVendeur.testWebservice.WebServiceScenario;
+import com.pictimegroupe.FrontVendeur.testWebservice.*;
+import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ServiceRecordRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.WebServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,8 @@ public class WebServicesServiceImpl implements WebServicesServices {
     ServiceRecordRepository serviceRecordRepository;
     @Autowired
     ServiceRecordServices serviceRecordServices;
+    @Autowired
+    DeltaRepository deltaRepository;
     public WebServicesServiceImpl() {
     }
 
@@ -38,25 +38,35 @@ public class WebServicesServiceImpl implements WebServicesServices {
 
         return webServiceList.get(0);
     }
-  /*  @Override
-    public WebService getWebServiceByName(String name) {
+
+
+    @Override
+    public JsonArrayBuilder getInfoGlobalWebService(){
+        JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+        JsonObjectBuilder jsonObjectBuilder =Json.createObjectBuilder();
+
+
         List <WebService> webServiceList=(List<WebService>) webServicesRepository.findAll();
-        WebService webService1=new WebService();
+        List <ServiceRecord> serviceRecords= (List<ServiceRecord>) serviceRecordRepository.findAll();
+        List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
 
-        for(WebService webService: webServiceList){
-            if (webService.getName().equals(name)) {
-                webService1 = webService;
-            }
-        }
-        return webService1;
-    }*/
+        int nbWebServiceTotale=webServiceList.size();
+        int nbServiceRecord= serviceRecords.size();
+        int nbDelta= deltaList.size();
+        jsonObjectBuilder.add("nbWebServiceTotale",nbWebServiceTotale);
+        jsonObjectBuilder.add("nbServiceRecord",nbServiceRecord);
+        jsonObjectBuilder.add("nbDelta",nbDelta);
+        arrayBuilder.add(jsonObjectBuilder);
+        return arrayBuilder;
 
-
+    }
     @Override
     public JsonArrayBuilder getAllWebService() {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 
         List <WebService> webServiceList=(List<WebService>) webServicesRepository.findAll();
+
+
         for(WebService webService: webServiceList){
 
             JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();

@@ -22,10 +22,7 @@ import javax.json.JsonObjectBuilder;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ScenarioServiceImpl implements ScenarioService {
@@ -113,6 +110,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         ServiceRecord serviceRecord =new ServiceRecord() ;
         String status="ok";
         serviceRecord.setWebService(webServicesServices.getWebServiceByName("rechercheclient"));
+
         serviceRecord.setExecutionTime(date.executionTime);
         serviceRecord.setDate(date.actuelle);
         serviceRecord.setResultPath(resultPath);
@@ -441,7 +439,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setStatus(status);
         serviceRecord.setRang(rang);
 
-        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenario));
+        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("derniÃ¨re commande  marche bien");
     }
@@ -481,6 +479,8 @@ public class ScenarioServiceImpl implements ScenarioService {
         }
         return nameWs;
     }
+
+
     @Override
     public JsonArrayBuilder getAllScenario() {
         JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
@@ -504,6 +504,9 @@ public class ScenarioServiceImpl implements ScenarioService {
         }
         return arrayBuilder;
     }
+
+
+
  @Override
  public JsonArrayBuilder getScenarioJson(String id) {
      JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();

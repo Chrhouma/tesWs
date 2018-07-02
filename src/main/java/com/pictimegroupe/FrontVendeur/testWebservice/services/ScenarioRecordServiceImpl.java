@@ -112,8 +112,8 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
 
                     break;
                 case "rechercheclient":
-               //    scenarioService.testRechercheClient(id,i);
-                //    System.out.println("le rechercheclient c marche");
+                   scenarioService.testRechercheClient(id,rang+1,scenarioRecord.getId());
+
                     break;
                 case"PlaningLiv":
                     scenarioService.testPlaningLiv(id,rang+1,scenarioRecord.getId());
@@ -138,13 +138,13 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
                     scenarioService.testvaliderVendeur(id,rang+1,scenarioRecord.getId());
                     break;
                 case"parametrage":
-//                    scenarioService.testParametrage(scenarioRecord.getId());
+                  scenarioService.testParametrage(id,rang+1,scenarioRecord.getId());
                     break;
                 case"rechercheCp":
                     scenarioService.testRechercheCp(id,rang+1,scenarioRecord.getId());
                     break;
                 case"DerniereCommande":
-//                    scenarioService.testDerniereCommande(id,rang+1,scenarioRecord.getId());
+                    scenarioService.testDerniereCommande(id,rang+1,scenarioRecord.getId());
                     break;
                 case"valider":
                     scenarioService.testvalider(id,rang+1,scenarioRecord.getId());

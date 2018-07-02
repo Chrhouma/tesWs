@@ -6,6 +6,7 @@ import javax.json.JsonArrayBuilder;
 
 
 public interface WebServicesServices {
+     JsonArrayBuilder getInfoGlobalWebService();
      WebService getWebService(String id);
      WebService getWebServiceByName(String name);
      JsonArrayBuilder getAllWebService();
