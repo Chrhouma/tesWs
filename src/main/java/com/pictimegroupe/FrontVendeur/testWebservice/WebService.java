@@ -6,9 +6,9 @@ import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+
 
 @Entity
 public class WebService implements Serializable  {
@@ -18,8 +18,8 @@ public class WebService implements Serializable  {
     private String url;
     private String body;
     private Integer rang;
-    public enum  Method {post,get} ;
-    private  Method method;
+    private  String method;
+
     @OneToOne
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private Schema inputSchema ;
@@ -113,11 +113,11 @@ public class WebService implements Serializable  {
         this.body = body;
     }
 
-    public Method getMethod() {
+    public String getMethod() {
         return method;
     }
 
-    public void setMethod(Method method) {
+    public void setMethod(String method) {
         this.method = method;
     }
 
@@ -132,10 +132,14 @@ public class WebService implements Serializable  {
         jsonObjectBuilder.add("name",this.getName());
         jsonObjectBuilder.add("url",this.getUrl());
         jsonObjectBuilder.add("description",this.getDescription());
-        jsonObjectBuilder.add("methode",this.getMethod().toString());
-        if(this.getMethod().equals("post")) {
+        jsonObjectBuilder.add("methode",this.getMethod());
+        jsonObjectBuilder.add("body", this.getBody());
+       /* if(this.getMethod().equals("post")) {
             jsonObjectBuilder.add("body", this.getBody());
-        }
+        } else
+         {
+             jsonObjectBuilder.add("body","");
+         }*/
         jsonObjectBuilderschemaInput.add("InputShemaName",this.getInputSchema().getName());
         jsonObjectBuilderschemaInput.add("InputShemapath",this.getInputSchema().getShemapath());
 

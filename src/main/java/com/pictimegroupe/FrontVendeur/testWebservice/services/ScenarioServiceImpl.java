@@ -47,6 +47,51 @@ public class ScenarioServiceImpl implements ScenarioService {
         fw.close();
     }
     @Override
+    public void tester(String idScenario,int rang, String idScenarioRecord,String idwebServcie) throws IOException{
+        Dates date=new Dates();
+        WebService webService=webServicesServices.getWebService(idwebServcie);
+        String nameWs=webService.getName();
+        RestAssured.baseURI = "http://127.0.0.1/";
+        String url= webService.getUrl().substring(RestAssured.baseURI.length());
+        System.out.println(url);
+        String startTest=separateur+nameWs+separateur+"\n";
+        String resultPath="/home/front-vendeur/Bureau/tesWs/webservice/"+nameWs+rang+date.datestr;
+        File resultFile = new File(resultPath);
+        RequestSpecification request = RestAssured.given();
+        request.header("Content-type", "application/json");
+        request
+                .body(webService.getBody())
+                .sessionId(RestAssured.sessionId);
+        Response resp;
+        if(webService.getMethod().equals("Post")) {
+            resp = request.post(url);
+        }
+        else {
+             resp = request.get(url);
+        }
+        System.out.println("je teste mon url            "+url);
+        writeOnFile(resultFile,startTest);
+        writeOnFile(resultFile,resp.asString());
+        writeOnFile(resultFile,endWs);
+
+        ServiceRecord serviceRecord =new ServiceRecord() ;
+        String status="ok";
+        serviceRecord.setWebService(webServicesServices.getWebServiceByName(nameWs));
+
+        serviceRecord.setExecutionTime(date.executionTime);
+        serviceRecord.setDate(date.actuelle);
+        serviceRecord.setResultPath(resultPath);
+        serviceRecord.setStatus(status);
+        serviceRecord.setRang(rang);
+
+        serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
+        serviceRecordServices.addServiceRecord(serviceRecord);
+        System.out.println("le service web "+ nameWs+"   marche bien");
+
+
+    }
+
+    @Override
     public  void testLogin(String idScenario,int rang,String idScenarioRecord) throws IOException {
         Dates date=new Dates();
         String startTest=separateur+"login"+separateur+"\n";
@@ -56,17 +101,22 @@ public class ScenarioServiceImpl implements ScenarioService {
         File resultFile = new File(resultPath);
 
         JsonObject json = new JsonObject();
-        json.addProperty("matricule","120393");
-        json.addProperty("password","Soleil1!");
+        /*  json.addProperty("matricule","120393");
+        json.addProperty("password","Soleil1!");*/
         RequestSpecification request = RestAssured.given();
         request.header("Content-type", "application/json");
-        request.body(json.toString()).when().post("connexion/login").andReturn().sessionId();
+        request
+               /* .body(json.toString())*/
+                .body("{\"matricule\":\"120393\",\"password\":\"Soleil1!\"}")
+                .when().post("connexion/login").andReturn().sessionId();
         Response resp = request.post("connexion/login");
 
         //recupÃ©ration de la valeur de cookies dans une map
         Map<String,String> cookies=resp.getCookies();
         RestAssured.config = RestAssured.config().sessionConfig(new SessionConfig().sessionIdName("ID_SESSION"));
         RestAssured.sessionId=cookies.get("ID_SESSION");
+
+
         writeOnFile(resultFile,startTest);
         writeOnFile(resultFile,resp.asString());
         writeOnFile(resultFile,endWs);
@@ -94,11 +144,15 @@ public class ScenarioServiceImpl implements ScenarioService {
         JsonObject json = new JsonObject();
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/client"+rang+date.datestr);
         File resultFile = new File(resultPath);
-        json.addProperty("centrale", "0");
-        json.addProperty("numeroClient", "P0126530");
+       /* json.addProperty("centrale", "0");
+        json.addProperty("numeroClient", "P0126530");*/
 
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
+/*
                 .body(json.toString())
+*/
+                .body("{\"centrale\":\"0\",\"numeroClient\":\"P0126530\"}")
+
                 .sessionId(RestAssured.sessionId);
 
         Response  resp = request1.post("client/rech_client");
@@ -191,6 +245,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/parametrage" +rang+ date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
+                .body("")
                 .sessionId(RestAssured.sessionId);
         Response  resp = request1.get("configuration/parametrage");
 
@@ -219,6 +274,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/rafraichir" +rang+ date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
+                .body("")
                 .sessionId(RestAssured.sessionId);
         Response  resp = request1.get("vente_panier/rafraichir");
 
@@ -247,6 +303,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/valider" +rang+ date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
+                .body("")
                 .sessionId(RestAssured.sessionId);
         Response  resp = request1.post("vente_panier/valider");
 
@@ -394,6 +451,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         File resultFile = new File(resultPath);
 
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
+                .body("")
                 .sessionId(RestAssured.sessionId);
         Response  resp = request1.post("vente_panier/valider_vendeur_fin");
 
@@ -422,6 +480,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/Commande"+rang + date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
+                .body("")
                 .sessionId(RestAssured.sessionId);
         Response  resp = request1.get("/vente_panier/derniere_commande");
 
@@ -478,6 +537,17 @@ public class ScenarioServiceImpl implements ScenarioService {
             }
         }
         return nameWs;
+    }
+
+    @Override
+    public List<String> getWebServiceIdByRang(String id,int rang) {
+       List<String> ListIdWebService=new LinkedList<>();
+        for (WebServiceScenario webServiceScenario:this.getScenario(id).getWebServicesScenario()){
+            if(webServiceScenario.getRang()==rang) {
+                ListIdWebService.add(webServiceScenario.getWebService().getId());
+            }
+        }
+        return ListIdWebService;
     }
 
 

@@ -10,6 +10,8 @@ public interface ScenarioRecordService {
 
     ScenarioRecord getScenarioRecord(String id);
     List getScenarioRecordByScenario(String id);
+    void testerScenarioAut(String idScenario) throws IOException;
+
     List<ScenarioRecord> findScenarioRecordsByIdScenario(String id);
     JsonArrayBuilder getAllScenarioRecord();
     void addScenarioRecord(ScenarioRecord ScenarioRecord);

@@ -79,17 +79,13 @@ public class Scenario implements Serializable {
         for (WebServiceScenario webService : webServicesScenario) {
             jsonObjectBuilder.add("rang",webService.getRang());
             idWService.add("id",webService.getWebService().getId());
+
             idWService.add("rang",webService.getRang());
             idWService.add("name",webService.getWebService().getName());
-
             webserviceArray.add(idWService);
 
-
-
         }
-
         jsonObjectBuilder.add("webServices",webserviceArray);
-
 
         return jsonObjectBuilder;
     }

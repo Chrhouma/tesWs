@@ -14,6 +14,7 @@ public interface ScenarioService  {
     List<String> getWebServiceNamesByIdScenario(String id);
 
     List <Integer> getWebServiceRangByIdScenario(String id);
+    List<String> getWebServiceIdByRang(String id,int rang);
     List<String> getWebServiceNamesByRang(String id,int rang);
     JsonArrayBuilder getAllScenario();
      JsonArrayBuilder getScenarioJson(String id);
@@ -32,6 +33,7 @@ public interface ScenarioService  {
     void testDerniereCommande(String id,int rang,String idScenarioRecord) throws IOException;
     void testvalider(String id,int rang,String idScenarioRecord) throws IOException;
     void testLogin(String id,int rang,String idScenarioRecord) throws IOException;
+    void tester(String idScenario,int rang, String IdscenarioRecord,String idwebServcie)throws IOException;
 
 
 

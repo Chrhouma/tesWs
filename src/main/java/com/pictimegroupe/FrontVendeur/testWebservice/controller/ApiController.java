@@ -92,6 +92,8 @@ public class ApiController {
     public String addWebService(@RequestParam(value = "name", required = false) String name,
                                 @RequestParam(value = "url", required = false) String url,
                                 @RequestParam(value = "description", required = false) String description,
+                                @RequestParam(value = "methode", required = false) String methode,
+                                @RequestParam(value = "body", required = false) String body,
                                 @RequestParam(value = "inputSchemaName", required = false) String inputSchemaName,
                                 @RequestParam(value = "inputSchemapath", required = false) String inputSchemapath,
                                 @RequestParam(value = "outputSchemaName", required = false) String outputSchemaName,
@@ -109,6 +111,8 @@ public class ApiController {
         webService.setName(name);
         webService.setRang(0);
         webService.setUrl(baseURI+url);
+        webService.setMethod(methode);
+        webService.setBody(body);
         webService.setDescription(description);
         webService.setInputSchema(inputSchema);
         webService.setOutSchema(outputSchema);
@@ -315,8 +319,8 @@ public class ApiController {
     @RequestMapping(value = "scenario/tester",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String testerScenario(@RequestParam(value = "idScenario")String idScenario) throws IOException {
         JsonObjectBuilder obj = Json.createObjectBuilder();
-    scenarioRecordService.testerScenario(idScenario);
-
+          scenarioRecordService.testerScenarioAut(idScenario);
+       // scenarioRecordService.testerScenario(idScenario);
         System.out.println("je teste mon ws");
         return obj.build().toString();
 

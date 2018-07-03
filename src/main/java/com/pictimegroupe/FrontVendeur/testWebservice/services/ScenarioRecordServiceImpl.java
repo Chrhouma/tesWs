@@ -94,6 +94,32 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     }
 
     @Override
+    public void testerScenarioAut(String idScenario) throws IOException {
+
+        Dates date= new Dates();
+        ScenarioRecord scenarioRecord= new ScenarioRecord();
+        scenarioRecord.setDate(date.actuelle);
+        scenarioRecord.setScenario(scenarioService.getScenario(idScenario));
+        scenarioRecord.setExecutionTime(date.executionTime);
+        scenarioRecord.setStatus("ok");
+        addScenarioRecord(scenarioRecord);
+        List<Integer> webServiceRang=scenarioService.getWebServiceRangByIdScenario(idScenario);
+
+        for (int rang=0;rang< webServiceRang.size();rang++) {
+            if(rang<1){
+                scenarioService.testLogin(idScenario,rang,scenarioRecord.getId());
+            }
+            else {
+                String idwebServcie = scenarioService.getWebServiceIdByRang(idScenario, rang + 1).get(0);
+                scenarioService.tester(idScenario, rang + 1, scenarioRecord.getId(), idwebServcie);
+            }
+        }
+    }
+
+
+
+
+    @Override
     public void testerScenario(String id) throws IOException {
        Dates date= new Dates();
         ScenarioRecord scenarioRecord= new ScenarioRecord();

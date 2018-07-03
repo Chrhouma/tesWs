@@ -50,7 +50,13 @@ public class TestWs {
         json.addProperty("password","Soleil1!");
         RequestSpecification request = RestAssured.given();
         request.header("Content-type", "application/json");
-        request.body(json.toString()).when().post("connexion/login").andReturn().sessionId();
+        request
+               // .body(json.toString())
+                .body("{\"matricule\":\"120393\",\"password\":\"Soleil1!\"}")
+                .when()
+                .post("connexion/login")
+                .andReturn()
+                .sessionId();
         Response resp = request.post("connexion/login");
 
         //recupération de la valeur de cookies dans une map
@@ -87,7 +93,8 @@ public class TestWs {
         json.addProperty("centrale", "0");
         json.addProperty("numeroClient", "P0126530");
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
-                .body(json.toString())
+              //  .body(json.toString())
+                .body("{\"centrale\":\"0\",\"numeroClient\":\"P0126530\"}")
                 .sessionId(RestAssured.sessionId);
         Response  resp1 = request1.post("client/rech_client");
         fw1.write(resp1.asString());

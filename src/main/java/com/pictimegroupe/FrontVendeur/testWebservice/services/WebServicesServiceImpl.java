@@ -72,14 +72,15 @@ public class WebServicesServiceImpl implements WebServicesServices {
             jsonObjectBuilder.add("name",webService.getName());
             jsonObjectBuilder.add("url",webService.getUrl());
             jsonObjectBuilder.add("body",webService.getBody());
+            jsonObjectBuilder.add ("methode",webService.getMethod());
             jsonObjectBuilder.add("description",webService.getDescription());
-            jsonObjectBuilder.add("methode",webService.toString());
-            if(webService.getMethod().equals("post")) {
+
+          /*  if(webService.getMethod().equals("post")) {
                 jsonObjectBuilder.add("body", webService.getBody());
             }
             else {
                 jsonObjectBuilder.add("body", "");
-            }
+            }*/
             jsonObjectBuilderschemaInput.add("id",webService.getInputSchema().getId());
             jsonObjectBuilderschemaOutput.add("id",webService.getOutSchema().getId());
             jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
@@ -112,6 +113,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
             jsonObjectBuilder.add("url", webService.getUrl());
             jsonObjectBuilder.add("description", webService.getDescription());
             jsonObjectBuilder.add("body",webService.getBody());
+            jsonObjectBuilder.add("methode",webService.getMethod());
             jsonObjectBuilderschemaInput.add("id", webService.getInputSchema().getId());
             jsonObjectBuilderschemaOutput.add("id", webService.getOutSchema().getId());
             jsonObjectBuilder.add("InputShema", jsonObjectBuilderschemaInput);
@@ -135,7 +137,6 @@ public class WebServicesServiceImpl implements WebServicesServices {
                         jsonObjectBuilder1.add("name", "record  " + serviceRecord.getExecutionTime().toString());
                         jsonObjectBuilder1.add("date", serviceRecord.getDate().toString());
                         recordJsonArrayBuilder.add(jsonObjectBuilder1);
-
                     }
                 }
                 jsonObjectBuilder.add("scenarios",scenarioServiceJsonArrayBuilder);
