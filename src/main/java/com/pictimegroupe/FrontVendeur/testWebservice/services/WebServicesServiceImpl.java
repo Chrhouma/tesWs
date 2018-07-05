@@ -6,6 +6,7 @@ import com.pictimegroupe.FrontVendeur.testWebservice.repository.ServiceRecordRep
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.WebServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -148,7 +149,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
     }
 
     @Override
-    public void addWebService(WebService webService) {
+    public void addWebService(@RequestBody WebService webService) {
         webServicesRepository.save(webService);
     }
 }

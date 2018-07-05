@@ -89,6 +89,7 @@ public class ApiController {
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webService/add", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+
     public String addWebService(@RequestParam(value = "name", required = false) String name,
                                 @RequestParam(value = "url", required = false) String url,
                                 @RequestParam(value = "description", required = false) String description,
@@ -97,7 +98,8 @@ public class ApiController {
                                 @RequestParam(value = "inputSchemaName", required = false) String inputSchemaName,
                                 @RequestParam(value = "inputSchemapath", required = false) String inputSchemapath,
                                 @RequestParam(value = "outputSchemaName", required = false) String outputSchemaName,
-                                @RequestParam(value = "outputSchemapath", required = false) String outputSchemapath) {
+                                @RequestParam(value = "outputSchemapath", required = false) String outputSchemapath) throws IOException {
+
 
         JsonObjectBuilder obj = Json.createObjectBuilder();
         WebService webService = new WebService();

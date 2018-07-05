@@ -127,7 +127,7 @@ public class WebService implements Serializable  {
         JsonObjectBuilder jsonObjectBuilderschemaInput= Json.createObjectBuilder();
         JsonObjectBuilder jsonObjectBuilderschemaOutput= Json.createObjectBuilder();
         jsonObjectBuilder.add("id",this.getId());
-        jsonObjectBuilder.add("rang",this.getRang());
+       jsonObjectBuilder.add("rang",this.getRang());
 
         jsonObjectBuilder.add("name",this.getName());
         jsonObjectBuilder.add("url",this.getUrl());
