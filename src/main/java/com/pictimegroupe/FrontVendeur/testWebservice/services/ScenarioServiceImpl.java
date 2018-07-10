@@ -604,10 +604,14 @@ public class ScenarioServiceImpl implements ScenarioService {
      return arrayBuilder;
 
  }
+
     @Override
     public Scenario AddScenario(Scenario scenario) {
-       return scenarioRepository.save(scenario);
+
+
+        return scenarioRepository.save(scenario);
     }
+
 
 
 

@@ -20,6 +20,7 @@ public interface ScenarioService  {
      JsonArrayBuilder getScenarioJson(String id);
     //JsonArrayBuilder getScenarioJson(String id);
     Scenario AddScenario(Scenario scenario);
+
     void testProduitStock(String id ,int rang,String idScenarioRecord) throws IOException;
     void testRechercheClient(String id,int rang,String idScenarioRecord) throws IOException;
     void testPlaningLiv(String id,int rang,String idScenarioRecord) throws IOException;

@@ -4,31 +4,31 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@IdClass(WebServiceScenario.class)
 public class WebServiceScenario implements Serializable {
 
     @Id
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="ID_WEB_SERVICE")
     private WebService webService;
 
     @Id
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="ID_SCENARIO")
     private Scenario scenario;
+
     @Id
     private int rang;
-//
-
 
     public WebServiceScenario() {
     }
-
 
     public WebServiceScenario(WebService webService, Scenario scenario, int rang) {
         this.webService = webService;
         this.scenario = scenario;
         this.rang = rang;
     }
+
 
     public WebService getWebService() {
         return webService;
@@ -38,6 +38,7 @@ public class WebServiceScenario implements Serializable {
         this.webService = webService;
     }
 
+
     public Scenario getScenario() {
         return scenario;
     }
@@ -45,6 +46,7 @@ public class WebServiceScenario implements Serializable {
     public void setScenario(Scenario scenario) {
         this.scenario = scenario;
     }
+
 
     public int getRang() {
         return rang;

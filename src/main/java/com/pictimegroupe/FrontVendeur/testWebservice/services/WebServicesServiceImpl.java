@@ -66,8 +66,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
         for(WebService webService: webServiceList){
 
             JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
-            JsonObjectBuilder jsonObjectBuilderschemaInput= Json.createObjectBuilder();
-            JsonObjectBuilder jsonObjectBuilderschemaOutput= Json.createObjectBuilder();
+
             jsonObjectBuilder.add("id",webService.getId());
             jsonObjectBuilder.add("rang",webService.getRang());
             jsonObjectBuilder.add("name",webService.getName());
@@ -75,17 +74,6 @@ public class WebServicesServiceImpl implements WebServicesServices {
             jsonObjectBuilder.add("body",webService.getBody());
             jsonObjectBuilder.add ("methode",webService.getMethod());
             jsonObjectBuilder.add("description",webService.getDescription());
-
-          /*  if(webService.getMethod().equals("post")) {
-                jsonObjectBuilder.add("body", webService.getBody());
-            }
-            else {
-                jsonObjectBuilder.add("body", "");
-            }*/
-            jsonObjectBuilderschemaInput.add("id",webService.getInputSchema().getId());
-            jsonObjectBuilderschemaOutput.add("id",webService.getOutSchema().getId());
-            jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
-            jsonObjectBuilder.add("OutputShema",jsonObjectBuilderschemaOutput);
 
             arrayBuilder.add(jsonObjectBuilder);
         }
@@ -101,12 +89,10 @@ public class WebServicesServiceImpl implements WebServicesServices {
 
         for(WebService webService: webServiceList) {
             if ( webService.getId().equals(id)) {
-               // List<ServiceRecord> serviceRecords = serviceRecordServices.getWebServiceRecordByWebServiceId(webService.getId());
+
                 List<WebServiceScenario> webServiceScenarios= webService.getWebServicesScenario();
                 System.out.println(webServiceScenarios.size());
                 JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
-            JsonObjectBuilder jsonObjectBuilderschemaInput = Json.createObjectBuilder();
-            JsonObjectBuilder jsonObjectBuilderschemaOutput = Json.createObjectBuilder();
 
             jsonObjectBuilder.add("id", webService.getId());
             jsonObjectBuilder.add("rang", webService.getRang());
@@ -115,10 +101,6 @@ public class WebServicesServiceImpl implements WebServicesServices {
             jsonObjectBuilder.add("description", webService.getDescription());
             jsonObjectBuilder.add("body",webService.getBody());
             jsonObjectBuilder.add("methode",webService.getMethod());
-            jsonObjectBuilderschemaInput.add("id", webService.getInputSchema().getId());
-            jsonObjectBuilderschemaOutput.add("id", webService.getOutSchema().getId());
-            jsonObjectBuilder.add("InputShema", jsonObjectBuilderschemaInput);
-            jsonObjectBuilder.add("OutputShema", jsonObjectBuilderschemaOutput);
 
             for(WebServiceScenario  webServiceScenario:webServiceScenarios){
                 JsonObjectBuilder jsonObjectBuilder1 = Json.createObjectBuilder();
@@ -126,7 +108,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
                 jsonObjectBuilder1.add("id",webServiceScenario.getScenario().getId());
                 scenarioServiceJsonArrayBuilder.add(jsonObjectBuilder1);
             }
-                System.out.println("liste des scenarios"+ webService.getWebServicesScenario().get(0).getScenario().getName());
+//                System.out.println("liste des scenarios"+ webService.getWebServicesScenario().get(0).getScenario().getName());
 
                 for (ServiceRecord serviceRecord :serviceRecordList ) {
 
@@ -149,7 +131,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
     }
 
     @Override
-    public void addWebService(@RequestBody WebService webService) {
+    public void addWebService(WebService webService) {
         webServicesRepository.save(webService);
     }
 }

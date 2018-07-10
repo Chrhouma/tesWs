@@ -1,12 +1,5 @@
 package com.pictimegroupe.FrontVendeur.testWebservice;
 
-
-import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRecordRepository;
-import com.pictimegroupe.FrontVendeur.testWebservice.services.ScenarioRecordService;
-import com.pictimegroupe.FrontVendeur.testWebservice.services.ScenarioRecordServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.json.JsonObject;
 import javax.persistence.CascadeType;
 
 import javax.json.Json;
@@ -20,18 +13,19 @@ import java.util.*;
 @Entity
 @Table (name="Senarios")
 public class Scenario implements Serializable {
-
     @Id
     private String id =UUID.randomUUID().toString();
+
     private String name;
     private String cron;
-
-
-    @OneToMany(mappedBy="scenario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="scenario", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<WebServiceScenario> webServicesScenario;
+    @Transient
+    public List<WebServiceScenario> webServices;
 
     public Scenario() {
     }
+
 
     public List<WebServiceScenario> getWebServicesScenario() {
         return webServicesScenario;
@@ -40,6 +34,7 @@ public class Scenario implements Serializable {
     public void setWebServicesScenario(List<WebServiceScenario> webServicesScenario) {
         this.webServicesScenario = webServicesScenario;
     }
+
 
     public String getId() {
         return id;
@@ -76,14 +71,14 @@ public class Scenario implements Serializable {
         jsonObjectBuilder.add("name",name);
         jsonObjectBuilder.add("cron",cron);
 
-        for (WebServiceScenario webService : webServicesScenario) {
+        for (WebServiceScenario webService : getWebServicesScenario()) {
             jsonObjectBuilder.add("rang",webService.getRang());
             idWService.add("id",webService.getWebService().getId());
 
             idWService.add("rang",webService.getRang());
             idWService.add("name",webService.getWebService().getName());
-            webserviceArray.add(idWService);
 
+            webserviceArray.add(idWService);
         }
         jsonObjectBuilder.add("webServices",webserviceArray);
 

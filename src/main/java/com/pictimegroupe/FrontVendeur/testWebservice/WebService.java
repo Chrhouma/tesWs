@@ -11,6 +11,7 @@ import java.util.UUID;
 
 
 @Entity
+
 public class WebService implements Serializable  {
     @Id
     private String id =UUID.randomUUID().toString();
@@ -20,19 +21,12 @@ public class WebService implements Serializable  {
     private Integer rang;
     private  String method;
 
-    @OneToOne
-    @Cascade({org.hibernate.annotations.CascadeType.ALL})
-    private Schema inputSchema ;
-
-    @OneToOne
-    @Cascade({org.hibernate.annotations.CascadeType.ALL})
-    private Schema outSchema ;
-
-    @OneToMany(mappedBy="webService", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="webService", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<WebServiceScenario> webServicesScenario;
 
     public WebService() {
     }
+
 
     public List<WebServiceScenario> getWebServicesScenario() {
         return webServicesScenario;
@@ -41,6 +35,7 @@ public class WebService implements Serializable  {
     public void setWebServicesScenario(List<WebServiceScenario> webServicesScenario) {
         this.webServicesScenario = webServicesScenario;
     }
+
 
     public WebService(String id) {
         this.id = id;
@@ -74,21 +69,6 @@ public class WebService implements Serializable  {
         this.url = url;
     }
 
-    public Schema getInputSchema() {
-        return inputSchema;
-    }
-
-    public void setInputSchema(Schema inputSchema) {
-        this.inputSchema = inputSchema;
-    }
-
-    public Schema getOutSchema() {
-        return outSchema;
-    }
-
-    public void setOutSchema(Schema outSchema) {
-        this.outSchema = outSchema;
-    }
     public String getId() {
         return id;
     }
@@ -127,7 +107,7 @@ public class WebService implements Serializable  {
         JsonObjectBuilder jsonObjectBuilderschemaInput= Json.createObjectBuilder();
         JsonObjectBuilder jsonObjectBuilderschemaOutput= Json.createObjectBuilder();
         jsonObjectBuilder.add("id",this.getId());
-       jsonObjectBuilder.add("rang",this.getRang());
+        jsonObjectBuilder.add("rang",this.getRang());
 
         jsonObjectBuilder.add("name",this.getName());
         jsonObjectBuilder.add("url",this.getUrl());
@@ -140,13 +120,13 @@ public class WebService implements Serializable  {
          {
              jsonObjectBuilder.add("body","");
          }*/
-        jsonObjectBuilderschemaInput.add("InputShemaName",this.getInputSchema().getName());
+        /*jsonObjectBuilderschemaInput.add("InputShemaName",this.getInputSchema().getName());
         jsonObjectBuilderschemaInput.add("InputShemapath",this.getInputSchema().getShemapath());
 
-        jsonObjectBuilderschemaOutput.add("OutputSchemaName",this.getOutSchema().getName());
+        jsonObjectBuilderschemaOutput.add("OutputSchemaName",this.getOutSchema().getName());*/
 //        jsonObjectBuilderschemaOutput.add("Outputshemapath",this.getOutSchema().getShemapath());
-        jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
-        jsonObjectBuilder.add("OutputShema",jsonObjectBuilderschemaOutput);
+   /*     jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
+        jsonObjectBuilder.add("OutputShema",jsonObjectBuilderschemaOutput);*/
         return jsonObjectBuilder;
     }
 }
