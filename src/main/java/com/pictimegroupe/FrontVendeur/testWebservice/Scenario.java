@@ -1,5 +1,7 @@
 package com.pictimegroupe.FrontVendeur.testWebservice;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.CascadeType;
 
 import javax.json.Json;
@@ -71,10 +73,10 @@ public class Scenario implements Serializable {
         jsonObjectBuilder.add("name",name);
         jsonObjectBuilder.add("cron",cron);
 
-        for (WebServiceScenario webService : getWebServicesScenario()) {
+        for (WebServiceScenario webService : webServicesScenario) {
             jsonObjectBuilder.add("rang",webService.getRang());
-            idWService.add("id",webService.getWebService().getId());
 
+            idWService.add("id",webService.getWebService().getId());
             idWService.add("rang",webService.getRang());
             idWService.add("name",webService.getWebService().getName());
 

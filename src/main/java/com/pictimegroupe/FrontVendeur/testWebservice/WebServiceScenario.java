@@ -1,10 +1,13 @@
 package com.pictimegroupe.FrontVendeur.testWebservice;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @IdClass(WebServiceScenario.class)
+@ResponseBody
 public class WebServiceScenario implements Serializable {
 
     @Id

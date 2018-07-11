@@ -1,5 +1,6 @@
 package com.pictimegroupe.FrontVendeur.testWebservice;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cascade;
 import javax.persistence.Entity;
 import javax.json.Json;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public class WebService implements Serializable  {
     @Id
     private String id =UUID.randomUUID().toString();
+
     private String name;
     private String url;
     private String body;

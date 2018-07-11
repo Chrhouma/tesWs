@@ -2,6 +2,7 @@ package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
 import com.pictimegroupe.FrontVendeur.testWebservice.Scenario;
 import com.pictimegroupe.FrontVendeur.testWebservice.WebService;
+import com.pictimegroupe.FrontVendeur.testWebservice.WebServiceScenario;
 
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;

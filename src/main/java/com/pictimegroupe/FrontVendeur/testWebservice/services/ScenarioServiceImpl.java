@@ -604,9 +604,15 @@ public class ScenarioServiceImpl implements ScenarioService {
      return arrayBuilder;
 
  }
-
     @Override
     public Scenario AddScenario(Scenario scenario) {
+       /* List<WebServiceScenario> webServiceScenarios= new LinkedList<>();
+        webServiceScenarios.add(webServiceScenario);
+        scenario.setWebServicesScenario(webServiceScenarios);
+        System.out.println("name  "+scenario.getName());
+        System.out.println("cron  "+scenario.getCron());
+        System.out.println("webservice    "+scenario.getWebServicesScenario().size());*/
+
 
 
         return scenarioRepository.save(scenario);
