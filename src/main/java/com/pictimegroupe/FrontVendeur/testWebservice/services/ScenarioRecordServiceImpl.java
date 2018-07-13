@@ -232,11 +232,10 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         for(Scenario scenario :scenarioList){
             JsonObjectBuilder obj = Json.createObjectBuilder();
             //trouver les scenario record pour chaque scenrio
-            List<ScenarioRecord> scenarioRecordList=new LinkedList<>();
+            List<ScenarioRecord> scenarioRecordList;
             scenarioRecordList=findScenarioRecordsByIdScenario(scenario.getId());
              //trier la liste de scenario Record selon la date
             String idScenarioRecord=  sortListrecordByDAte(scenarioRecordList);
-
             obj.add("modification",  deltaServices.getAllDeltaByIdeScenarioRcordAutomatictest(idScenarioRecord,scenario.getName()));
 
            // jsonArrayBuilder.add(obj);
