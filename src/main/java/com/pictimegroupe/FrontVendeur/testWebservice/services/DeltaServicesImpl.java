@@ -73,7 +73,6 @@ public class DeltaServicesImpl implements  DeltaServices {
         int nbwebSericeTotale=serviceRecords.size();
 
          for(Delta delta:deltaList){
-
            for (ServiceRecord serviceRecord:serviceRecords){
                 if(delta.getServiceRecord().getId().equals(serviceRecord.getId())){
                     nbWebServiceModifie++;
@@ -82,8 +81,8 @@ public class DeltaServicesImpl implements  DeltaServices {
             }
         }
         double tauxModification= (new Double(nbWebServiceModifie*100) / new Double(nbwebSericeTotale));
-         double tauxModificationArondi= Math.round((tauxModification*1000)/1000);
-         nbWebService.add("scenarioName",scenarioName);
+        double tauxModificationArondi= Math.round((tauxModification*1000)/1000);
+        nbWebService.add("scenarioName",scenarioName);
         nbWebService.add("tauxModification",tauxModificationArondi);
         nbWebService.add("nbmodification",nbWebServiceModifie);
         nbWebService.add("nbwebServiceTotale",nbwebSericeTotale);
@@ -91,6 +90,23 @@ public class DeltaServicesImpl implements  DeltaServices {
         //deltaArrayBuilder1.add(Integer.toString(nbWebServiceModifie));
         deltaArrayBuilder1.add(nbWebService);
         return deltaArrayBuilder1;
+    }
+
+    //Ecrire une méthode qui permet de renvoyer de le taux de modification totale
+
+    @Override
+    public int  getNbDelta(String idScenarioRecord){
+        List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
+        List<ServiceRecord> serviceRecords = serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord);
+        int nbdelta=0;
+        for(Delta delta:deltaList){
+            for (ServiceRecord serviceRecord:serviceRecords){
+                if(delta.getServiceRecord().getId().equals(serviceRecord.getId())){
+                    nbdelta++;
+                }
+            }
+        }
+        return nbdelta;
     }
 
     @Override

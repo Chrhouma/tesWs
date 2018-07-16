@@ -36,6 +36,8 @@ public class ApiController {
     DeltaServices deltaServices;
     @Autowired
     DeltaRepository deltaRepository;
+    @Autowired
+    SendEmailService sendEmailService;
    private String baseURI = "http://127.0.0.1/";
     /**
      * @param login
@@ -334,6 +336,7 @@ public class ApiController {
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value="/sendEmail")
     public void send(){
-        System.out.println("envoi mail");
+        sendEmailService.sendDelta();
+
     }
 }

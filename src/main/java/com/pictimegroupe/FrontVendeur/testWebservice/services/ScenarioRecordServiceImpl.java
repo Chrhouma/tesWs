@@ -5,6 +5,7 @@ import com.pictimegroupe.FrontVendeur.testWebservice.ScenarioRecord;
 import com.pictimegroupe.FrontVendeur.testWebservice.ServiceRecord;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRecordRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import javax.json.JsonObjectBuilder;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.*;
+import com.pictimegroupe.FrontVendeur.testWebservice.Util.Const;
 
 /**
  *
@@ -33,7 +35,8 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
      DeltaServices deltaServices;
     @Autowired
      ScenarioRepository scenarioRepository;
-
+    @Autowired
+    SendEmailService sendEmailService;
 
     /**
      *
@@ -116,12 +119,9 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         }
     }
 
-
-
-
     @Override
     public void testerScenario(String id) throws IOException {
-       Dates date= new Dates();
+        Dates date= new Dates();
         ScenarioRecord scenarioRecord= new ScenarioRecord();
         scenarioRecord.setDate(date.actuelle);
         scenarioRecord.setScenario(scenarioService.getScenario(id));
@@ -220,10 +220,10 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
      * @return
      * @throws IOException
      */
-   @Override
-   public String compareAutomatic() throws IOException {
+    @Override
+    public String compareAutomatic() throws IOException {
         JsonArrayBuilder jsonArrayBuilder =Json.createArrayBuilder();
-       JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
+        JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
         //tetster tous les scénarios
         testerAllScenario();
         List <Scenario> scenarioList= (List<Scenario>) scenarioRepository.findAll();
@@ -231,37 +231,55 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
         //pour chaque scénarios je cherche sa liste de scenario records
         for(Scenario scenario :scenarioList){
             JsonObjectBuilder obj = Json.createObjectBuilder();
-            //trouver les scenario record pour chaque scenrio
+            // trouver les scenario record pour chaque scenrio
             List<ScenarioRecord> scenarioRecordList;
             scenarioRecordList=findScenarioRecordsByIdScenario(scenario.getId());
-             //trier la liste de scenario Record selon la date
+            //trier la liste de scenario Record selon la date
             String idScenarioRecord=  sortListrecordByDAte(scenarioRecordList);
             obj.add("modification",  deltaServices.getAllDeltaByIdeScenarioRcordAutomatictest(idScenarioRecord,scenario.getName()));
-
-           // jsonArrayBuilder.add(obj);
+            // jsonArrayBuilder.add(obj);
             jsonArrayBuilder.add(obj);
         }
-       jsonObjectBuilder.add("tests",jsonArrayBuilder);
-      return jsonObjectBuilder.build().toString();
+        jsonObjectBuilder.add("tests",jsonArrayBuilder);
+        return jsonObjectBuilder.build().toString();
+    }
+    // methode qui permet de calculer le nombre de modificaton pour envoyer un mail
+    @Override
+    public void sendingDeltaMail()throws IOException{
+        testerAllScenario();
+        List <Scenario> scenarioList= (List<Scenario>) scenarioRepository.findAll();
+        for(Scenario scenario :scenarioList){
+            List<ScenarioRecord> scenarioRecordList;
+            scenarioRecordList=findScenarioRecordsByIdScenario(scenario.getId());
+            String idScenarioRecord=  sortListrecordByDAte(scenarioRecordList);
+            int nbdelta=deltaServices.getNbDelta(idScenarioRecord);
+            if(nbdelta>Const.TAUXMODIFICATION){
+                sendEmailService.sendDelta();
+                System.out.println("mail envoyé");
+            }
+            else{
+                System.out.println("taux de modification négligeable");
+            }
+        }
 
-   }
+    }
 
     /**
      *
      * @param id
      * @return
      */
-   @Override
-   public List<ScenarioRecord> findScenarioRecordsByIdScenario(String id){
+    @Override
+    public List<ScenarioRecord> findScenarioRecordsByIdScenario(String id){
         List <ScenarioRecord> recordList= new LinkedList<>();
-       List<ScenarioRecord>AllscenarioRecords= (List<ScenarioRecord>) scenarioRecordRepository.findAll();
-       for(ScenarioRecord scenarioRecord:AllscenarioRecords){
-           if(scenarioRecord.getScenario().getId().equals(id)){
-               recordList.add(scenarioRecord);
-           }
-       }
-       return recordList;
-   }
+        List<ScenarioRecord>AllscenarioRecords= (List<ScenarioRecord>) scenarioRecordRepository.findAll();
+        for(ScenarioRecord scenarioRecord:AllscenarioRecords){
+            if(scenarioRecord.getScenario().getId().equals(id)){
+                recordList.add(scenarioRecord);
+            }
+        }
+        return recordList;
+    }
 
     /**
      *
