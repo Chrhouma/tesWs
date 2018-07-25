@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -19,7 +20,8 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
 
     public ServiceRecordServicesImpl() {
     }
-
+    @Autowired
+    Compare compare;
     @Autowired
     DeltaRepository deltaRepository;
     @Override
@@ -79,8 +81,31 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
                     serviceRecords1.add(serviceRecords.get(i));
                 }
              }
-
              return serviceRecords1;
+    }
+    @Override
+    public void comparerWebservice(String idWebserviceRecord1, String idWebserviceRecord2) throws IOException {
+       /* List<ServiceRecord> serviceRecords1 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
+        List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord2);
+
+        for(int i=0; i<serviceRecords1.size();i++) {
+
+            for (int j = 0; j < serviceRecords2.size(); j++) {
+
+                if (serviceRecords1.get(i).getRang() == serviceRecords2.get(j).getRang()) {
+                    String path1=serviceRecords1.get(i).getResultPath();
+                    String path2=serviceRecords2.get(j).getResultPath();
+                    compare.comparaison(path1,path2,serviceRecords1.get(i).getId());
+                }
+            }
+        }*/
+        String path1=this.getServiceRecord(idWebserviceRecord1).getResultPath();
+        String path2= this.getServiceRecord(idWebserviceRecord2).getResultPath();
+
+
+     // System.out.println( path1 + "     "  +path2 + "   "+idServiceRecord);
+      compare.comparaison(path1,path2,idWebserviceRecord1);
+
     }
 
 

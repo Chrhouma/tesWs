@@ -46,6 +46,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         fw.write(txt);
         fw.close();
     }
+
     @Override
     public void tester(String idScenario,int rang, String idScenarioRecord,String idwebServcie) throws IOException{
         Dates date=new Dates();
@@ -508,7 +509,11 @@ public class ScenarioServiceImpl implements ScenarioService {
         List<Scenario>listScenarios= scenarioRepository.findScenarioById(id);
         return listScenarios.get(0);
     }
-
+    @Override
+    public  int getNbScenario(){
+        List<Scenario>listScenarios= (List<Scenario>) scenarioRepository.findAll();
+        return listScenarios.size();
+    }
     @Override
     public List<String> getWebServiceNamesByIdScenario(String id) {
         List<String> webservicesNames= new LinkedList<>();

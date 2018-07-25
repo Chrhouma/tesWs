@@ -187,6 +187,7 @@ public class ApiController {
     @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllScenarios() {
         JsonObjectBuilder obj = Json.createObjectBuilder();
+        obj.add("nbScenario",scenarioService.getNbScenario());
         obj.add("scenarios", scenarioService.getAllScenario());
         return obj.build().toString();
     }
@@ -247,7 +248,15 @@ public class ApiController {
         obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario1));
         return obj.build().toString();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "serviceRecord/comparer",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String comparerWebservice(@RequestParam(value = "idServiceRecord1")String idServiceRecord1,
+                                     @RequestParam(value = "idServiceRecord2")String idServiceRecord2)throws  IOException{
+       JsonObjectBuilder obj = Json.createObjectBuilder();
+        serviceRecordServices.comparerWebservice(idServiceRecord1,idServiceRecord2);
+        obj.add("deltas", deltaServices.getAllDeltaByIdServiceRecord(idServiceRecord1));
+        return obj.build().toString();
+    }
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "home", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String compareAlone() throws IOException {
@@ -339,4 +348,5 @@ public class ApiController {
         sendEmailService.sendDelta();
 
     }
+
 }

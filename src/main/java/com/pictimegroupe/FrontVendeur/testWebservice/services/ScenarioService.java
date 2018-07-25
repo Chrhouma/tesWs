@@ -17,9 +17,10 @@ public interface ScenarioService  {
     List <Integer> getWebServiceRangByIdScenario(String id);
     List<String> getWebServiceIdByRang(String id,int rang);
     List<String> getWebServiceNamesByRang(String id,int rang);
+    int getNbScenario();
     JsonArrayBuilder getAllScenario();
-     JsonArrayBuilder getScenarioJson(String id);
-    //JsonArrayBuilder getScenarioJson(String id);
+    JsonArrayBuilder getScenarioJson(String id);
+
     Scenario AddScenario(Scenario scenario);
 
     void testProduitStock(String id ,int rang,String idScenarioRecord) throws IOException;

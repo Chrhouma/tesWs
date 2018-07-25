@@ -1,4 +1,4 @@
-package com.pictimegroupe.FrontVendeur.testWebservice.DAO;
+package com.pictimegroupe.FrontVendeur.testWebservice.Util;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

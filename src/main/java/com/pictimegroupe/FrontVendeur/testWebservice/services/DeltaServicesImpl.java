@@ -125,6 +125,19 @@ public class DeltaServicesImpl implements  DeltaServices {
         }
         return deltaArrayBuilder;
     }
+    @Override
+    public JsonArrayBuilder getAllDeltaByIdServiceRecord(String idServiceRecord1) {
+        JsonArrayBuilder deltaArrayBuilder = Json.createArrayBuilder();
+        List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
+        for(Delta delta:deltaList) {
+
+            if(delta.getServiceRecord().getId().equals(idServiceRecord1)){
+
+                deltaArrayBuilder.add(delta.getDeltoJson());
+            }
+        }
+        return deltaArrayBuilder;
+    }
 
 
     /**

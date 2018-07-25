@@ -15,4 +15,5 @@ public interface DeltaServices  {
     public int  getNbDelta(String idScenarioRecord);
     JsonArrayBuilder getAllDeltaByIdeScenarioRcordAutomatictest(String idScenarioRecord1,String scenarioName);
     JsonArrayBuilder getAllDeltaByIdeScenarioRcord(String idScenarioRecord1);
+    JsonArrayBuilder getAllDeltaByIdServiceRecord(String idServiceRecord1);
 }
