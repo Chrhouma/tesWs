@@ -209,10 +209,7 @@ public class CompareImpl implements Compare {
           nbligne1 = chargerParagraphe(path1, ftmp1);
            nbLigne2 = chargerParagraphe(path2, ftmp2);
             simpleCompare(ftmp1, ftmp2);
-           // deleteComparedWs(path1, nbligne1);
-           // deleteComparedWs(path2, nbLigne2);
-           // clearFile(ftmp1);
-            //clearFile(ftmp2);
+
     System.out.println("yes");
         }
     }
@@ -226,49 +223,37 @@ public class CompareImpl implements Compare {
      */
     @Override
     public void comparaison(String path1,String path2,String idServiceRecord) throws IOException {
-        Delta delta= new Delta();
-        delta.setServiceRecord(serviceRecordServices.getServiceRecord(idServiceRecord));
+
         BufferedReader reader1 = new BufferedReader(new FileReader(path1));
         BufferedReader reader2 = new BufferedReader(new FileReader(path2));
         String line1 = reader1.readLine();
         String line2 = reader2.readLine();
         String noeud="";
-
-        boolean areEqual = true;
-
         while (line1 != null || line2 != null){
             if(line1!=null) {
                 if (isNoeud(line1)){
                     noeud = line1;
                 }
-
             }
             if(line1 == null || line2 == null){
-                areEqual = false;
-                break;
+               break;
             }
-            else if(! line1.equalsIgnoreCase(line2)){
-                areEqual = false;
-                delta.setNode(noeud);
-                delta.setExpctedValue(line1);
-                delta.setRegisteedValue(line2);
-                deltaServices.addDelta(delta);
-
+            //avant de rajouter un delta on doit tester si elle existe dans la bas eou nn pour reduire la redondence
+            else if(! line1.equalsIgnoreCase(line2)&&(!deltaServices.existedDelta(line1, line2,idServiceRecord))){
+                  Delta delta= new Delta();
+                  delta.setServiceRecord(serviceRecordServices.getServiceRecord(idServiceRecord));
+                  delta.setNode(noeud);
+                  delta.setExpctedValue(line1);
+                  delta.setRegisteedValue(line2);
+                  deltaServices.addDelta(delta);
             }
             line1 = reader1.readLine();
             line2 = reader2.readLine();
-
         }
         reader1.close();
         reader2.close();
-//afficher toutes les deltas
-
-
-
 
     }
-
-
     }
 
 

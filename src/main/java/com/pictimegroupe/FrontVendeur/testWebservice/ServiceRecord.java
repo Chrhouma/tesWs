@@ -29,7 +29,7 @@ public class ServiceRecord  {
    private Scenario scenario;*/
     private String status;
 
-    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "serviceRecord")
+    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "serviceRecord", cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private List<Delta> deltas=new LinkedList();
 

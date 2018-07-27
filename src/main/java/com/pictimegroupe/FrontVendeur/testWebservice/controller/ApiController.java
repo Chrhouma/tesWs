@@ -160,6 +160,14 @@ public class ApiController {
         return obj.build().toString();
     }
     @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/webServices/delete", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteWebService(
+        @RequestParam(value = "idWebservice", required = false) String id){
+        webServicesServices.deleteWebservice(id);
+
+
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webServices", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllWebServices() {
         JsonObjectBuilder obj = Json.createObjectBuilder();

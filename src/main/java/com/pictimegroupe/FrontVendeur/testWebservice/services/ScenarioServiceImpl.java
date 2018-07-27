@@ -54,7 +54,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         String nameWs=webService.getName();
         RestAssured.baseURI = "http://127.0.0.1/";
         String url= webService.getUrl().substring(RestAssured.baseURI.length());
-        System.out.println(url);
+
         String startTest=separateur+nameWs+separateur+"\n";
         String resultPath="/home/front-vendeur/Bureau/tesWs/webservice/"+nameWs+rang+date.datestr;
         File resultFile = new File(resultPath);
@@ -70,9 +70,10 @@ public class ScenarioServiceImpl implements ScenarioService {
         else {
              resp = request.get(url);
         }
-        System.out.println("je teste mon url            "+url);
+
         writeOnFile(resultFile,startTest);
         writeOnFile(resultFile,resp.asString());
+        writeOnFile(resultFile,"\n");
         writeOnFile(resultFile,endWs);
 
         ServiceRecord serviceRecord =new ServiceRecord() ;
@@ -88,7 +89,6 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("le service web "+ nameWs+"   marche bien");
-
 
     }
 

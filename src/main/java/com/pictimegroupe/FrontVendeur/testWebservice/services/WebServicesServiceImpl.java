@@ -134,4 +134,9 @@ public class WebServicesServiceImpl implements WebServicesServices {
     public void addWebService(WebService webService) {
         webServicesRepository.save(webService);
     }
+    @Override
+    public void deleteWebservice(String id) {
+        webServicesRepository.deleteById(id);
+        System.out.println("web service suprimé");
+    }
 }

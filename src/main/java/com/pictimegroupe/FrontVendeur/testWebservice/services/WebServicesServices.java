@@ -12,4 +12,5 @@ public interface WebServicesServices {
      JsonArrayBuilder getAllWebService();
      JsonArrayBuilder getWebserviceJson(String id);
      void addWebService(WebService webService);
+     void deleteWebservice(String id);
 }

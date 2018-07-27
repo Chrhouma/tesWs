@@ -71,7 +71,6 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
     public void addServiceRecord(ServiceRecord serviceRecord) {
         serviceRecordRepository.save(serviceRecord);
     }
-
     @Override
     public List<ServiceRecord> getAllServiceRecordByScenarioRecord(String idScnearioRecord) {
         List <ServiceRecord> serviceRecords= (List<ServiceRecord>) serviceRecordRepository.findAll();

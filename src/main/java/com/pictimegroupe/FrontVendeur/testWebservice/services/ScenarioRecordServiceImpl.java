@@ -211,7 +211,8 @@ public class ScenarioRecordServiceImpl implements ScenarioRecordService {
     public void testerAllScenario() throws IOException {
         List <Scenario> scenarioList= (List<Scenario>) scenarioRepository.findAll();
         for(Scenario scenario:scenarioList){
-            this.testerScenario(scenario.getId());
+            //this.testerScenario(scenario.getId());
+            this.testerScenarioAut(scenario.getId());
         }
     }
 

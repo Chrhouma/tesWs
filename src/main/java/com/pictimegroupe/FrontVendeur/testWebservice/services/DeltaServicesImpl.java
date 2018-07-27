@@ -148,4 +148,23 @@ public class DeltaServicesImpl implements  DeltaServices {
     public void addDelta(Delta delta) {
   deltaRepository.save(delta);
     }
+
+    @Override
+    public boolean existedDelta(String expectedValue, String registeredValue,String  idserviceRecord){
+        List<Delta> deltaList= (List<Delta>) deltaRepository.findAll();
+        System.out.println("taille de deltat"+deltaList.size());
+        boolean exist= false;
+        int i=0;
+        while(exist==false && i<deltaList.size()){
+
+            Delta delta=deltaList.get(i);
+
+            if(delta.getServiceRecord().getId().equals(idserviceRecord) && delta.getExpctedValue().equals(expectedValue) && delta.getRegisteedValue().equals(registeredValue)) {
+                exist= true;
+                System.out.println("okk delta existe");
+            }
+            i++;
+        }
+        return exist;
+    }
 }

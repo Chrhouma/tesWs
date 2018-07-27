@@ -41,9 +41,6 @@ public class TestWs {
     public  void testLogin() {
         String startTest=separateur+"login"+separateur+"\n";
         RestAssured.baseURI = "http://127.0.0.1/";
-       // String resultPath="/home/front-vendeur/Bureau/FrontVendeur.testWebservice/tesWs/login"+date.date1;
-
-        //File resultFile = new File(resultPath);
 
         JsonObject json = new JsonObject();
         json.addProperty("matricule","120393");
