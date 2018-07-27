@@ -117,6 +117,15 @@ public class ApiController {
 
         return obj.build().toString();
     }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/scenario/delete", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteScenario(
+            @RequestParam(value = "idScenario", required = false) String id){
+            scenarioService.deleteScenario(id);
+        System.out.println("le scenario est supprimé");
+
+
+    }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webService/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

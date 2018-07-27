@@ -23,7 +23,7 @@ public class ServiceRecord  {
     private Date executionTime;
     private String resultPath;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     private  ScenarioRecord scenarioRecord;
    /*@ManyToOne (fetch = FetchType.LAZY)
    private Scenario scenario;*/

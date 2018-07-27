@@ -11,12 +11,12 @@ import java.io.Serializable;
 public class WebServiceScenario implements Serializable {
 
     @Id
-    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name="ID_WEB_SERVICE")
     private WebService webService;
 
     @Id
-    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch=FetchType.LAZY, cascade={CascadeType.MERGE,CascadeType.PERSIST})
     @JoinColumn(name="ID_SCENARIO")
     private Scenario scenario;
 

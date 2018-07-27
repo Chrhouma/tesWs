@@ -20,7 +20,7 @@ public class Scenario implements Serializable {
 
     private String name;
     private String cron;
-    @OneToMany(mappedBy="scenario", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy="scenario", cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     private List<WebServiceScenario> webServicesScenario;
     @Transient
     public List<WebServiceScenario> webServices;

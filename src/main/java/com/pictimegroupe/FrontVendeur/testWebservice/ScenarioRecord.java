@@ -2,9 +2,7 @@ package com.pictimegroupe.FrontVendeur.testWebservice;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -24,7 +22,7 @@ public class ScenarioRecord {
     }
 
     private Date date;
-    @OneToOne
+    @OneToOne (fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Scenario scenario;
 
     private String status;

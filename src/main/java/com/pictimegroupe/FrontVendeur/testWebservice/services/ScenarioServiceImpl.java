@@ -600,6 +600,7 @@ public class ScenarioServiceImpl implements ScenarioService {
                  jsonObjectBuilder1.add("id", scenarioRecord.getId());
                  jsonObjectBuilder1.add("status",scenarioRecord.getStatus());
                  jsonObjectBuilder1.add("name","record  "+scenarioRecord.getExecutionTime().toString());
+                 jsonObjectBuilder1.add("executionTime",scenarioRecord.getExecutionTime().toString());
                  recordJsonArrayBuilder.add(jsonObjectBuilder1);
              }
              jsonObjectBuilder.add("records", recordJsonArrayBuilder);
@@ -611,16 +612,12 @@ public class ScenarioServiceImpl implements ScenarioService {
  }
     @Override
     public Scenario AddScenario(Scenario scenario) {
-       /* List<WebServiceScenario> webServiceScenarios= new LinkedList<>();
-        webServiceScenarios.add(webServiceScenario);
-        scenario.setWebServicesScenario(webServiceScenarios);
-        System.out.println("name  "+scenario.getName());
-        System.out.println("cron  "+scenario.getCron());
-        System.out.println("webservice    "+scenario.getWebServicesScenario().size());*/
+             return scenarioRepository.save(scenario);
+    }
+    @Override
+    public  void deleteScenario(String id){
+        scenarioRepository.deleteById(id);
 
-
-
-        return scenarioRepository.save(scenario);
     }
 
 

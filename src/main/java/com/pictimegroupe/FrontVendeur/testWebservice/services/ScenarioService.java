@@ -22,7 +22,7 @@ public interface ScenarioService  {
     JsonArrayBuilder getScenarioJson(String id);
 
     Scenario AddScenario(Scenario scenario);
-
+    void deleteScenario(String id);
     void testProduitStock(String id ,int rang,String idScenarioRecord) throws IOException;
     void testRechercheClient(String id,int rang,String idScenarioRecord) throws IOException;
     void testPlaningLiv(String id,int rang,String idScenarioRecord) throws IOException;
@@ -37,8 +37,6 @@ public interface ScenarioService  {
     void testvalider(String id,int rang,String idScenarioRecord) throws IOException;
     void testLogin(String id,int rang,String idScenarioRecord) throws IOException;
     void tester(String idScenario,int rang, String IdscenarioRecord,String idwebServcie)throws IOException;
-
-
 
 
 
