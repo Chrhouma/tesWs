@@ -254,6 +254,7 @@ public class CompareImpl implements Compare {
         reader2.close();
 
     }
+
     }
 
 

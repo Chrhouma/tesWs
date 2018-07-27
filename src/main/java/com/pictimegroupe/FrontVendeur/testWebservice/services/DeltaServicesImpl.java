@@ -161,7 +161,7 @@ public class DeltaServicesImpl implements  DeltaServices {
 
             if(delta.getServiceRecord().getId().equals(idserviceRecord) && delta.getExpctedValue().equals(expectedValue) && delta.getRegisteedValue().equals(registeredValue)) {
                 exist= true;
-                System.out.println("okk delta existe");
+
             }
             i++;
         }

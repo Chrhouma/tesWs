@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
@@ -106,6 +108,7 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
       compare.comparaison(path1,path2,idWebserviceRecord1);
 
     }
+
 
 
 }
