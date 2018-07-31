@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 
+import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioWebServiceRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.Dates;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.ServiceRecordServices;
 
@@ -14,6 +15,7 @@ import io.restassured.specification.RequestSpecification;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRepository;
 import io.restassured.RestAssured;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.json.Json;
@@ -36,6 +38,8 @@ public class ScenarioServiceImpl implements ScenarioService {
     ServiceRecordServices serviceRecordServices;
     @Autowired
     ScenarioRecordService scenarioRecordService;
+    @Autowired
+    ScenarioWebServiceRepository scenarioWebServiceRepository;
     TestWs testWs=new TestWs();
 
     private  String separateur="*****************************";
@@ -614,12 +618,23 @@ public class ScenarioServiceImpl implements ScenarioService {
     public Scenario AddScenario(Scenario scenario) {
              return scenarioRepository.save(scenario);
     }
+
     @Override
     public  void deleteScenario(String id){
         scenarioRepository.deleteById(id);
-
     }
-
+    // cette methode permet de transformer la valeur d'un cron en ms
+    @Override
+    public Integer convertCron(String idScenario){
+        Scenario scenario= scenarioService.getScenario(idScenario);
+        String cron= scenario.getCron();
+        Integer ms= Integer.parseInt(cron)*3600000;
+     return  ms;
+    }
+    @Override
+    public void deleteWebServiceScenario(String idScenario){
+       // scenarioWebServiceRepository.delteAllWebserviceScenarioByIdscenario(idScenario);
+    }
 
 
 

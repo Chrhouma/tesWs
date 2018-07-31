@@ -11,4 +11,5 @@ public interface ScenarioRepository extends CrudRepository<Scenario,String> {
 
    List<Scenario> findAllById(String id);
    List<Scenario> findScenarioById(String id);
+
 }

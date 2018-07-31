@@ -10,17 +10,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SendEmailServiceImpl implements  SendEmailService {
-    private JavaMailSender javaMailSender;
+    @Autowired
+    public JavaMailSender javaMailSender;
 
     @Autowired
     public void NotificationService(JavaMailSender javaMailSender){
         this.javaMailSender=javaMailSender;
     }
 
+
     public void sendDelta() throws MailException {
-        System.out.println("je commence l'envoi du mail");
+
+     System.out.println("je commence l'envoi du mail");
         SimpleMailMessage mail= new SimpleMailMessage();
-        mail.setTo("charfeddine91@hotmail.fr");
+        mail.setTo("gabaroski@gmail.com");
         mail.setFrom("gabaroski@gmail.com");
         mail.setSubject("test web service");
         mail.setText( "Notre application a détectée un changement au niveau du scénario  ");

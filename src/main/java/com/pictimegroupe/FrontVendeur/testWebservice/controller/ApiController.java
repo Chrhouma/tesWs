@@ -117,6 +117,42 @@ public class ApiController {
 
         return obj.build().toString();
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value="/scenario/update", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE )
+
+    public String  UpdateScenario(@RequestParam(value = "id")String id,
+                                  @RequestParam(value = "name")String name,
+                                  @RequestParam(value= "cron")String cron,
+                                  @RequestBody List<WebServiceScenario> webServiceScenario)
+    {
+
+        Scenario newscenario=scenarioService.getScenario(id);
+        newscenario.setName(name);
+        newscenario.setCron(cron);
+
+        //List <WebServiceScenario> webServiceScenarios= new LinkedList<>();
+        List<WebServiceScenario> newWebsServiceScenarios= newscenario.getWebServicesScenario();
+        System.out.println(newWebsServiceScenarios.size());
+        newWebsServiceScenarios.clear();
+            // implementer la methode qui permet de supprimer tt les web service scénario d'un scenario
+        // delete * from webservice scénario where webservice.scenario=
+        scenarioService.deleteWebServiceScenario(id);
+       for(int i =0; i<webServiceScenario.size();i++) {
+            WebServiceScenario webServiceScenario1= new WebServiceScenario();
+            webServiceScenario1.setScenario(newscenario);
+            webServiceScenario1.setWebService(webServicesServices.getWebService(webServiceScenario.get(i).getWebService().getId()));
+            webServiceScenario1.setRang(webServiceScenario.get(i).getRang());
+            newWebsServiceScenarios.add(webServiceScenario1);
+        }
+        newscenario.setWebServicesScenario(webServiceScenario);
+      newscenario.setWebServicesScenario(newWebsServiceScenarios);
+        scenarioService.AddScenario(newscenario);
+        JsonObjectBuilder obj = Json.createObjectBuilder();
+        obj.add("Scenario",scenarioService.getAllScenario());
+
+        return obj.build().toString();
+    }
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenario/delete", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteScenario(
@@ -124,8 +160,7 @@ public class ApiController {
             scenarioService.deleteScenario(id);
         System.out.println("le scenario est supprimé");
 
-
-    }
+        }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webService/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -225,25 +260,6 @@ public class ApiController {
         return webService;
     }
 
-
-
-    @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value = "/scenario/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String addScenario(@RequestParam(value = "name", required = false) String name,
-                              @RequestParam(value = "corn", required = false) String corn) {
-
-        List<WebServiceScenario> arrayWebserviceScenario = new ArrayList<WebServiceScenario>();
-        JsonObjectBuilder obj = Json.createObjectBuilder();
-        Scenario scenario = new Scenario();
-        scenario.setName(name);
-        scenario.setCron(corn);
-           arrayWebserviceScenario.add(new WebServiceScenario(webServicesServices.getWebService("1c018f8b-5eaa-4743-b615-3b08b0124b0c"),scenario,10));
-           arrayWebserviceScenario.add(new WebServiceScenario(webServicesServices.getWebService("87c713a0-fc75-493b-a7dc-99e5efdbcd1e") , scenario, 20));
-           arrayWebserviceScenario.add(new WebServiceScenario(webServicesServices.getWebService("1c018f8b-5eaa-4743-b615-3b08b0124b0c"),scenario,30));
-              scenario.setWebServicesScenario(arrayWebserviceScenario);
-        scenario.setWebServicesScenario(arrayWebserviceScenario);
-               return obj.build().toString();
-    }
 
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -365,5 +381,15 @@ public class ApiController {
         sendEmailService.sendDelta();
 
     }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/scenario/cron", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void cron(
+            @RequestParam(value = "idScenario", required = false) String id){
+        scenarioService.convertCron(id);
+        System.out.println("le scenario est cron");
+
+
+    }
+
 
 }
