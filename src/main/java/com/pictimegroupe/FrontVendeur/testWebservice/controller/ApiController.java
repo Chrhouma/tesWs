@@ -219,6 +219,43 @@ public class ApiController {
         return obj.build().toString();
     }
     @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/webService/update", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public String updateWebservice(@RequestParam(value = "id", required = false) String id,
+                                   @RequestParam(value = "name", required = false) String name,
+                                     @RequestParam(value = "url", required = false) String url,
+                                @RequestParam(value = "description", required = false) String description,
+                                @RequestParam(value = "methode", required = false) String methode,
+                                // @RequestParam(value = "body", required = false) String body,
+
+                                @RequestParam(value = "inputSchemaName", required = false) String inputSchemaName,
+                                @RequestParam(value = "inputSchemapath", required = false) String inputSchemapath,
+                                @RequestParam(value = "outputSchemaName", required = false) String outputSchemaName,
+                                @RequestParam(value = "outputSchemapath", required = false) String outputSchemapath,
+                                @RequestBody  String body)  {
+
+
+        JsonObjectBuilder obj = Json.createObjectBuilder();
+        WebService webService = webServicesServices.getWebService(id);
+
+        webService.setName(name);
+        webService.setRang(0);
+        webService.setUrl(baseURI+url);
+        webService.setMethod(methode);
+        webService.setBody(body);
+        webService.setDescription(description);
+
+       /* webService.setInputSchema(inputSchema);
+        webService.setOutSchema(outputSchema);*/
+
+
+        webServicesServices.addWebService(webService);
+
+        obj.add("webservice", webService.getWebServiceJson());
+
+        return obj.build().toString();
+    }
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webServices/delete", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteWebService(
         @RequestParam(value = "idWebservice", required = false) String id){
