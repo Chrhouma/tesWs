@@ -23,7 +23,7 @@ public interface ScenarioService  {
 
     Scenario AddScenario(Scenario scenario);
     void deleteScenario(String id);
-    void deleteWebServiceScenario(String idScenario);
+   void deleteWebServiceScenario(String idScenario);
     Integer convertCron(String idScenario);
     void testProduitStock(String id ,int rang,String idScenarioRecord) throws IOException;
     void testRechercheClient(String id,int rang,String idScenarioRecord) throws IOException;

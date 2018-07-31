@@ -632,8 +632,11 @@ public class ScenarioServiceImpl implements ScenarioService {
      return  ms;
     }
     @Override
+
     public void deleteWebServiceScenario(String idScenario){
-       // scenarioWebServiceRepository.delteAllWebserviceScenarioByIdscenario(idScenario);
+
+
+
     }
 
 

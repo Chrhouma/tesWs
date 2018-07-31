@@ -4,9 +4,11 @@ package com.pictimegroupe.FrontVendeur.testWebservice.controller;
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 import com.pictimegroupe.FrontVendeur.testWebservice.Exception.GestionRoleException;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
+import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioWebServiceRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.json.Json;
@@ -38,6 +40,8 @@ public class ApiController {
     DeltaRepository deltaRepository;
     @Autowired
     SendEmailService sendEmailService;
+    @Autowired
+    ScenarioWebServiceRepository scenarioWebServiceRepository;
    private String baseURI = "http://127.0.0.1/";
     /**
      * @param login
@@ -117,7 +121,18 @@ public class ApiController {
 
         return obj.build().toString();
     }
+    @Transactional
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value="/scenario/delet", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE )
 
+    public void  delete(@RequestParam(value = "id")String id){
+        Scenario newscenario=scenarioService.getScenario(id);
+         scenarioWebServiceRepository.deleteByScenario(newscenario);
+         System.out.println("yees");
+    }
+
+
+    @Transactional
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value="/scenario/update", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE )
 
@@ -136,8 +151,8 @@ public class ApiController {
         System.out.println(newWebsServiceScenarios.size());
         newWebsServiceScenarios.clear();
             // implementer la methode qui permet de supprimer tt les web service scénario d'un scenario
-        // delete * from webservice scénario where webservice.scenario=
-        scenarioService.deleteWebServiceScenario(id);
+       scenarioWebServiceRepository.deleteByScenario(newscenario);
+
        for(int i =0; i<webServiceScenario.size();i++) {
             WebServiceScenario webServiceScenario1= new WebServiceScenario();
             webServiceScenario1.setScenario(newscenario);
@@ -145,8 +160,8 @@ public class ApiController {
             webServiceScenario1.setRang(webServiceScenario.get(i).getRang());
             newWebsServiceScenarios.add(webServiceScenario1);
         }
-        newscenario.setWebServicesScenario(webServiceScenario);
-      newscenario.setWebServicesScenario(newWebsServiceScenarios);
+
+        newscenario.setWebServicesScenario(newWebsServiceScenarios);
         scenarioService.AddScenario(newscenario);
         JsonObjectBuilder obj = Json.createObjectBuilder();
         obj.add("Scenario",scenarioService.getAllScenario());
