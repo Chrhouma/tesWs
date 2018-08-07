@@ -101,7 +101,6 @@ public class CompareImpl implements Compare {
         }
         return nb;
     }
-
     /**
      *
      * @param path
@@ -113,8 +112,6 @@ public class CompareImpl implements Compare {
         writer.print("");
         writer.close();
     }
-
-
     /**
      *
      * @param path1
@@ -149,7 +146,7 @@ public class CompareImpl implements Compare {
      */
     @Override
     public void  simpleCompare(String path1, String path2) throws IOException {
-        String pathResult="/home/front-vendeur/Bureau/tesWs/webservice/resultat1"+date.date1;
+        String pathResult="webservice/resultat1"+date.date1;
         BufferedReader reader1 = new BufferedReader(new FileReader(new File(path1)));
         BufferedReader reader2 = new BufferedReader(new FileReader(new File(path2)));
         String line1 = reader1.readLine();
@@ -200,20 +197,18 @@ public class CompareImpl implements Compare {
      */
    @Override
     public void CompareWs(String path1, String path2) throws IOException {
-        String ftmp1 = "/home/front-vendeur/Bureau/tesWs/webservice/ftmp01";
-        String ftmp2 = "/home/front-vendeur/Bureau/tesWs/webservice/ftmp02";
+        String ftmp1 = "webservice/ftmp01";
+        String ftmp2 = "webservice/ftmp02";
         int nbligne1=0;
         int nbLigne2=0;
         int nbWs=nbWebService(path1);
         for(int i=0; i<nbWs;i++) {
-          nbligne1 = chargerParagraphe(path1, ftmp1);
+           nbligne1 = chargerParagraphe(path1, ftmp1);
            nbLigne2 = chargerParagraphe(path2, ftmp2);
-            simpleCompare(ftmp1, ftmp2);
+           simpleCompare(ftmp1, ftmp2);
 
-    System.out.println("yes");
         }
     }
-
     /**
      *
      * @param path1
@@ -252,9 +247,7 @@ public class CompareImpl implements Compare {
         }
         reader1.close();
         reader2.close();
-
     }
-
     }
 
 

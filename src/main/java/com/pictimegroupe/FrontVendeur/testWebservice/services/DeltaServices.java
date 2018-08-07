@@ -13,7 +13,7 @@ public interface DeltaServices  {
     JsonArrayBuilder getDeltaByIdServiceRecord(String id);
     void addDelta(Delta delta);
     boolean existedDelta(String expectedValue, String registeredValue,String  idserviceRecord);
-    public int  getNbDelta(String idScenarioRecord);
+    int  getNbDelta(String idScenarioRecord);
     JsonArrayBuilder getAllDeltaByIdeScenarioRcordAutomatictest(String idScenarioRecord1,String scenarioName);
     JsonArrayBuilder getAllDeltaByIdeScenarioRcord(String idScenarioRecord1);
     JsonArrayBuilder getAllDeltaByIdServiceRecord(String idServiceRecord1);

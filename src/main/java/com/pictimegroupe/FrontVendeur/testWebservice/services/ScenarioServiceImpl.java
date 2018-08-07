@@ -60,7 +60,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         String url= webService.getUrl().substring(RestAssured.baseURI.length());
 
         String startTest=separateur+nameWs+separateur+"\n";
-        String resultPath="/home/front-vendeur/Bureau/tesWs/webservice/"+nameWs+rang+date.datestr;
+        String resultPath="src/main/resources/webservice/"+nameWs+rang+date.datestr;
         File resultFile = new File(resultPath);
         RequestSpecification request = RestAssured.given();
         request.header("Content-type", "application/json");
@@ -101,7 +101,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
         String startTest=separateur+"login"+separateur+"\n";
         RestAssured.baseURI = "http://127.0.0.1/";
-        String resultPath="/home/front-vendeur/Bureau/tesWs/webservice/login"+rang+date.datestr;
+        String resultPath="src/main/resources/webservice/login"+rang+date.datestr;
 
         File resultFile = new File(resultPath);
 
@@ -147,7 +147,7 @@ public class ScenarioServiceImpl implements ScenarioService {
 
         String startTest=separateur+"rech_client"+separateur+"\n";
         JsonObject json = new JsonObject();
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/client"+rang+date.datestr);
+        String resultPath=("webservice/client"+rang+date.datestr);
         File resultFile = new File(resultPath);
        /* json.addProperty("centrale", "0");
         json.addProperty("numeroClient", "P0126530");*/
@@ -187,7 +187,7 @@ public class ScenarioServiceImpl implements ScenarioService {
 
         String startTest=separateur+"stock_produits"+separateur+"\n";
         JsonObject json = new JsonObject();
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/stock"+rang + date.datestr);
+        String resultPath=("webservice/stock"+rang + date.datestr);
         File resultFile = new File(resultPath);
         json.addProperty("references", "[\"0000100108\"]");
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
@@ -219,7 +219,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"ajout_produit"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/addProduct" + rang+date.datestr );
+        String resultPath=("webservice/addProduct" + rang+date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("{\"eanPrincipal\": \"1000000117\", \"omnicanal\": false, \"produits\": [{\"numeroComposant\": 0}]}")
@@ -247,7 +247,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"parametrage"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/parametrage" +rang+ date.datestr );
+        String resultPath=("webservice/parametrage" +rang+ date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("")
@@ -276,7 +276,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"rafraichir"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/rafraichir" +rang+ date.datestr);
+        String resultPath=("webservice/rafraichir" +rang+ date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("")
@@ -305,7 +305,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"valider"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/valider" +rang+ date.datestr );
+        String resultPath=("webservice/valider" +rang+ date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("")
@@ -334,7 +334,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest = separateur + "associer_panier" + separateur + "\n";
-        String resultPath = ("/home/front-vendeur/Bureau/tesWs/webservice/associerCLient" +rang+ date.datestr);
+        String resultPath = ("webservice/associerCLient" +rang+ date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1 = RestAssured.given().headers("Content-type", "application/json")
                 .body("{\"numeroClient\": \"P0126530\"}")
@@ -363,7 +363,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"valider_mode_liv"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/validerModeLiv" +rang+ date.datestr );
+        String resultPath=("webservice/validerModeLiv" +rang+ date.datestr );
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("{ \"codeSiteReservation\": \"\",\"codeTransporteur\": \"LVB\",\"dateDelivrance\": 20391231,\"commandeEntrepot\": true, \"quantite\": 1, \"codeDelivrance\": \"L\",\"numeroLigne\": 1\n}")
@@ -392,7 +392,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"planning_liv"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/planingLiv" +rang+ date .datestr);
+        String resultPath=("webservice/planingLiv" +rang+ date .datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("{\"codeInsee\": \"59350\",\"codePays\": \"FRA\", \"codePostal\": \"59000\",\"numerosLignes\": [{\"ligne\": 1}]}")
@@ -422,7 +422,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"rechercher_CP"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/RechercheCp" +rang+ date.datestr);
+        String resultPath=("webservice/RechercheCp" +rang+ date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("{\"codePays\": \"FRA\",\"codePostal\": \"62000\"}")
@@ -452,7 +452,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"valider_vendeur_fin"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/validerVendeur" +rang+ date.datestr );
+        String resultPath=("webservice/validerVendeur" +rang+ date.datestr );
         File resultFile = new File(resultPath);
 
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
@@ -482,7 +482,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         Dates date=new Dates();
 
         String startTest=separateur+"derniere_commande"+separateur+"\n";
-        String resultPath=("/home/front-vendeur/Bureau/tesWs/webservice/Commande"+rang + date.datestr);
+        String resultPath=("webservice/Commande"+rang + date.datestr);
         File resultFile = new File(resultPath);
         RequestSpecification request1= RestAssured.given().headers("Content-type", "application/json")
                 .body("")

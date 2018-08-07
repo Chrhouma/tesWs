@@ -19,15 +19,24 @@ public class SendEmailServiceImpl implements  SendEmailService {
     }
 
 
-    public void sendDelta() throws MailException {
+    public void sendDelta() {
 
      System.out.println("je commence l'envoi du mail");
         SimpleMailMessage mail= new SimpleMailMessage();
+
         mail.setTo("gabaroski@gmail.com");
         mail.setFrom("gabaroski@gmail.com");
         mail.setSubject("test web service");
         mail.setText( "Notre application a détectée un changement au niveau du scénario  ");
-        javaMailSender.send(mail);
+        try {
+            javaMailSender.send(mail);
+        }
+        catch (Exception e){
+            System.out.println("exception  "+e);
+        }
+
+
+
         System.out.println("envoi terminé");
 
     }

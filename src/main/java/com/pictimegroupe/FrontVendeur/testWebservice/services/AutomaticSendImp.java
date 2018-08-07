@@ -9,13 +9,13 @@ public class AutomaticSendImp implements AutomaticSend {
 @Autowired
 SendEmailService  sendEmailService;
 
- // public static final int nbmS = 86400000;
- //   @Override
+     // public static final int nbmS = 86400000;
+    //   @Override
    // @Scheduled(fixedRate = nbmS)
     public void testAutomatic() {
        // System.out.println("Automatic test");
         //  sendEmailService.sendDelta();
-        System.out.println("");
+
     }
 
 }

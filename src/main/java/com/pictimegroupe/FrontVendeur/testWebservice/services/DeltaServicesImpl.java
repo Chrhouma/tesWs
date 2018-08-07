@@ -32,7 +32,6 @@ public class DeltaServicesImpl implements  DeltaServices {
         return deltaList.get(0);
 
     }
-
     /**
      *
      * @param id
@@ -52,7 +51,6 @@ public class DeltaServicesImpl implements  DeltaServices {
             }
              arrayBuilder.add(jsonObjectBuilder);
          }
-
         return arrayBuilder;
     }
 
@@ -68,7 +66,6 @@ public class DeltaServicesImpl implements  DeltaServices {
         JsonObjectBuilder nbWebService=Json.createObjectBuilder();
         List<ServiceRecord> serviceRecords = serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
         List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
-
         int nbWebServiceModifie=0;
         int nbwebSericeTotale=serviceRecords.size();
 
@@ -114,7 +111,6 @@ public class DeltaServicesImpl implements  DeltaServices {
         JsonArrayBuilder deltaArrayBuilder = Json.createArrayBuilder();
         List<ServiceRecord> serviceRecords = serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
         List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
-
         for(Delta delta:deltaList){
             for (ServiceRecord serviceRecord:serviceRecords){
                 if(delta.getServiceRecord().getId().equals(serviceRecord.getId())){
@@ -125,14 +121,13 @@ public class DeltaServicesImpl implements  DeltaServices {
         }
         return deltaArrayBuilder;
     }
+
     @Override
     public JsonArrayBuilder getAllDeltaByIdServiceRecord(String idServiceRecord1) {
         JsonArrayBuilder deltaArrayBuilder = Json.createArrayBuilder();
         List <Delta> deltaList= (List<Delta>) deltaRepository.findAll();
         for(Delta delta:deltaList) {
-
             if(delta.getServiceRecord().getId().equals(idServiceRecord1)){
-
                 deltaArrayBuilder.add(delta.getDeltoJson());
             }
         }
@@ -149,19 +144,22 @@ public class DeltaServicesImpl implements  DeltaServices {
   deltaRepository.save(delta);
     }
 
+    /**
+     * la mrthode qui permet de véréfier si une différence existe déja
+     * @param expectedValue
+     * @param registeredValue
+     * @param idserviceRecord
+     * @return
+     */
     @Override
     public boolean existedDelta(String expectedValue, String registeredValue,String  idserviceRecord){
         List<Delta> deltaList= (List<Delta>) deltaRepository.findAll();
-        System.out.println("taille de deltat"+deltaList.size());
         boolean exist= false;
         int i=0;
         while(exist==false && i<deltaList.size()){
-
             Delta delta=deltaList.get(i);
-
             if(delta.getServiceRecord().getId().equals(idserviceRecord) && delta.getExpctedValue().equals(expectedValue) && delta.getRegisteedValue().equals(registeredValue)) {
                 exist= true;
-
             }
             i++;
         }

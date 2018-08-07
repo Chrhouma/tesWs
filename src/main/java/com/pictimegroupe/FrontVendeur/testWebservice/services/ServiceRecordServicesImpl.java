@@ -45,7 +45,7 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
             jsonObjectBuilder.add("executionTime","25/02/2011");
             jsonObjectBuilder.add("resultPath",serviceRecord.getResultPath());
             jsonObjectBuilder.add("status",serviceRecord.getStatus());
-            List<Delta> deltaList=(List<Delta>) deltaRepository.findAll();//qppel q lq ;ethode des repository delqtq pour trouver lq liste des id de chqaue difference
+            List<Delta> deltaList=(List<Delta>) deltaRepository.findAll();//appel a la methode des repository delqtq pour trouver lq liste des id de chqaue difference
             for ( Delta delta :deltaList){
                 if(delta.getServiceRecord().getId().equals(serviceRecord.getId())) {
                     jsonObjectBuilder.add("delta", delta.getId());
@@ -86,27 +86,10 @@ public class ServiceRecordServicesImpl implements ServiceRecordServices {
     }
     @Override
     public void comparerWebservice(String idWebserviceRecord1, String idWebserviceRecord2) throws IOException {
-       /* List<ServiceRecord> serviceRecords1 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord1);
-        List<ServiceRecord> serviceRecords2 =serviceRecordServices.getAllServiceRecordByScenarioRecord(idScenarioRecord2);
 
-        for(int i=0; i<serviceRecords1.size();i++) {
-
-            for (int j = 0; j < serviceRecords2.size(); j++) {
-
-                if (serviceRecords1.get(i).getRang() == serviceRecords2.get(j).getRang()) {
-                    String path1=serviceRecords1.get(i).getResultPath();
-                    String path2=serviceRecords2.get(j).getResultPath();
-                    compare.comparaison(path1,path2,serviceRecords1.get(i).getId());
-                }
-            }
-        }*/
         String path1=this.getServiceRecord(idWebserviceRecord1).getResultPath();
         String path2= this.getServiceRecord(idWebserviceRecord2).getResultPath();
-
-
-     // System.out.println( path1 + "     "  +path2 + "   "+idServiceRecord);
-      compare.comparaison(path1,path2,idWebserviceRecord1);
-
+        compare.comparaison(path1,path2,idWebserviceRecord1);
     }
 
 

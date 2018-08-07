@@ -1,7 +1,10 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
+import com.pictimegroupe.FrontVendeur.testWebservice.Role;
 import com.pictimegroupe.FrontVendeur.testWebservice.User;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.UserRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.UserServices;
+
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +12,7 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -67,6 +71,27 @@ public  class UserServicesImpl implements UserServices {
       //  else{
        //  throw  new GestionRoleException("vous n'avez pas le droit d'ajouter un utilisateur");
      //  }
+
+    }
+    @Override
+    public void testerJackson(){
+        ObjectMapper mapper= new ObjectMapper();
+        User user = new User();
+        user.setId(10);
+        user.setLogin("testjackson");
+        user.setPassword("testPassword");
+        Role role = new Role();
+        role.setId(1);
+        role.setName("roel1");
+        role.setRights("admin");
+
+        user.setRole(role);
+        try {
+            String jsonINstring = mapper.writeValueAsString(user);
+            System.out.println(jsonINstring);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

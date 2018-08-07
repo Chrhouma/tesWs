@@ -5,7 +5,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 
 public interface SendEmailService {
-    public void NotificationService(JavaMailSender javaMailSender);
-    public void sendDelta() throws MailException;
+    void NotificationService(JavaMailSender javaMailSender);
+  void sendDelta();
 }
 

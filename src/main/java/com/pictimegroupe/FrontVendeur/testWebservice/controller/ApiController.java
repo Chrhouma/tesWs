@@ -8,6 +8,7 @@ import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioWebServi
 import com.pictimegroupe.FrontVendeur.testWebservice.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.lang.Nullable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -160,12 +161,10 @@ public class ApiController {
             webServiceScenario1.setRang(webServiceScenario.get(i).getRang());
             newWebsServiceScenarios.add(webServiceScenario1);
         }
-
         newscenario.setWebServicesScenario(newWebsServiceScenarios);
         scenarioService.AddScenario(newscenario);
         JsonObjectBuilder obj = Json.createObjectBuilder();
         obj.add("Scenario",scenarioService.getAllScenario());
-
         return obj.build().toString();
     }
     @CrossOrigin(origins = "http://localhost:4200")
@@ -174,7 +173,6 @@ public class ApiController {
             @RequestParam(value = "idScenario", required = false) String id){
             scenarioService.deleteScenario(id);
         System.out.println("le scenario est supprimé");
-
         }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -185,13 +183,11 @@ public class ApiController {
                                 @RequestParam(value = "description", required = false) String description,
                                 @RequestParam(value = "methode", required = false) String methode,
                                // @RequestParam(value = "body", required = false) String body,
-
                                 @RequestParam(value = "inputSchemaName", required = false) String inputSchemaName,
                                 @RequestParam(value = "inputSchemapath", required = false) String inputSchemapath,
                                 @RequestParam(value = "outputSchemaName", required = false) String outputSchemaName,
                                 @RequestParam(value = "outputSchemapath", required = false) String outputSchemapath,
-                                @RequestBody  String body)  {
-
+                                @RequestBody  (required=false) String body ) {
 
         JsonObjectBuilder obj = Json.createObjectBuilder();
         WebService webService = new WebService();
@@ -206,9 +202,15 @@ public class ApiController {
         webService.setRang(0);
         webService.setUrl(baseURI+url);
         webService.setMethod(methode);
-        webService.setBody(body);
-        webService.setDescription(description);
+        if("Post".equals(methode)){
+            webService.setBody(body);
+        }
+        else{
 
+            webService.setBody(" ");
+        }
+
+        webService.setDescription(description);
        /* webService.setInputSchema(inputSchema);
         webService.setOutSchema(outputSchema);*/
 
@@ -220,37 +222,35 @@ public class ApiController {
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webService/update", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-
     public String updateWebservice(@RequestParam(value = "id", required = false) String id,
                                    @RequestParam(value = "name", required = false) String name,
                                      @RequestParam(value = "url", required = false) String url,
                                 @RequestParam(value = "description", required = false) String description,
                                 @RequestParam(value = "methode", required = false) String methode,
                                 // @RequestParam(value = "body", required = false) String body,
-
                                 @RequestParam(value = "inputSchemaName", required = false) String inputSchemaName,
                                 @RequestParam(value = "inputSchemapath", required = false) String inputSchemapath,
                                 @RequestParam(value = "outputSchemaName", required = false) String outputSchemaName,
                                 @RequestParam(value = "outputSchemapath", required = false) String outputSchemapath,
-                                @RequestBody  String body)  {
-
+                                @RequestBody (required = false) String body)  {
 
         JsonObjectBuilder obj = Json.createObjectBuilder();
         WebService webService = webServicesServices.getWebService(id);
-
         webService.setName(name);
         webService.setRang(0);
         webService.setUrl(baseURI+url);
         webService.setMethod(methode);
-        webService.setBody(body);
-        webService.setDescription(description);
+        if("Post".equals(methode)){
+            webService.setBody(body);
+        }
+        else{
 
+            webService.setBody(" ");
+        }
+        webService.setDescription(description);
        /* webService.setInputSchema(inputSchema);
         webService.setOutSchema(outputSchema);*/
-
-
         webServicesServices.addWebService(webService);
-
         obj.add("webservice", webService.getWebServiceJson());
 
         return obj.build().toString();
@@ -287,6 +287,34 @@ public class ApiController {
         return obj.build().toString();
     }
 
+
+
+
+
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "webService/tester",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String testerWebservice(@RequestParam(value = "idWebservice")String idWebservice) throws IOException {
+        JsonObjectBuilder obj = Json.createObjectBuilder();
+
+
+        // je fait appel a la methode qui permet de tester un web service n utilisant son identifiant
+
+
+        webServicesServices.testerWebservice(idWebservice);
+        //scenarioRecordService.testerScenario(idScenario);
+        System.out.println("je teste mon ws");
+        return obj.build().toString();
+    }
+
+
+
+
+
+
+
+
+
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String findAllScenarios() {
@@ -305,12 +333,6 @@ public class ApiController {
     }
 
 
-    public WebService createWs(String id,int  rang){
-        WebService webService = new WebService();
-        webService=webServicesServices.getWebService(id);
-        webService.setRang(rang);
-        return webService;
-    }
 
 
 
@@ -428,7 +450,7 @@ public class ApiController {
         return jsonObjectBuilder.build().toString();
     }
     @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value="/sendEmail")
+    @RequestMapping(value="/sendEmail", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public void send(){
         sendEmailService.sendDelta();
 
@@ -439,9 +461,12 @@ public class ApiController {
             @RequestParam(value = "idScenario", required = false) String id){
         scenarioService.convertCron(id);
         System.out.println("le scenario est cron");
-
-
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value="/testjackson", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void tstjackson(){
+       userServices.testerJackson();
 
+    }
 }

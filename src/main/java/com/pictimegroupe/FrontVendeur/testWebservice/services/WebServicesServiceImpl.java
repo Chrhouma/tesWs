@@ -1,9 +1,14 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
+import com.google.gson.JsonObject;
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ServiceRecordRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.WebServicesRepository;
+import io.restassured.RestAssured;
+import io.restassured.config.SessionConfig;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,10 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WebServicesServiceImpl implements WebServicesServices {
+    private  String separateur="*****************************";
+    private  String endWs="################################################################\n";
     @Autowired
     WebServicesRepository webServicesRepository;
     @Autowired
@@ -24,6 +35,11 @@ public class WebServicesServiceImpl implements WebServicesServices {
     @Autowired
     DeltaRepository deltaRepository;
     public WebServicesServiceImpl() {
+    }
+    public  void writeOnFile(File f, String txt) throws IOException {
+        FileWriter fw = new FileWriter(f,true);
+        fw.write(txt);
+        fw.close();
     }
 
     @Override
@@ -138,5 +154,76 @@ public class WebServicesServiceImpl implements WebServicesServices {
     public void deleteWebservice(String id) {
         webServicesRepository.deleteById(id);
         System.out.println("web service suprimé");
+    }
+
+
+     /*cette methode doit etre exécutée pour récupérer la valeur de la session */
+
+    public  void getSession() {
+
+        RestAssured.baseURI = "http://127.0.0.1/";
+        RequestSpecification request = RestAssured.given();
+        request.header("Content-type", "application/json");
+        request.body("{\"matricule\":\"120393\",\"password\":\"Soleil1!\"}")
+                .when().post("connexion/login").andReturn().sessionId();
+        Response resp = request.post("connexion/login");
+
+        //recupÃ©ration de la valeur de cookies dans une map
+        Map<String,String> cookies=resp.getCookies();
+        RestAssured.config = RestAssured.config().sessionConfig(new SessionConfig().sessionIdName("ID_SESSION"));
+        RestAssured.sessionId=cookies.get("ID_SESSION");
+
+        System.out.println("la valeur de la session est "+ RestAssured.sessionId.toString());
+    }
+
+
+
+    @Override
+    public void testerWebservice(String idwebServcie) throws IOException {
+        //appel à la methode qui permet de recupérer la session
+        getSession();
+
+        Dates date=new Dates();
+        WebService webService=getWebService(idwebServcie);
+        String nameWs=webService.getName();
+        RestAssured.baseURI = "http://127.0.0.1/";
+        String url= webService.getUrl().substring(RestAssured.baseURI.length());
+
+        String startTest=separateur+nameWs+separateur+"\n";
+        String resultPath="src/main/resources/webservice/"+nameWs+date.datestr;
+        File resultFile = new File(resultPath);
+        RequestSpecification request = RestAssured.given();
+        request.header("Content-type", "application/json");
+        request
+                .body(webService.getBody())
+                .sessionId(RestAssured.sessionId);
+        Response resp;
+        System.out.println("tester unitairement");
+        if(webService.getMethod().equals("Post")) {
+            resp = request.post(url);
+        }
+        else {
+            resp = request.get(url);
+        }
+
+        writeOnFile(resultFile,startTest);
+        writeOnFile(resultFile,resp.asString());
+        writeOnFile(resultFile,"\n");
+        writeOnFile(resultFile,endWs);
+
+        ServiceRecord serviceRecord =new ServiceRecord() ;
+        String status="ok";
+        serviceRecord.setWebService(getWebServiceByName(nameWs));
+
+        serviceRecord.setExecutionTime(date.executionTime);
+        serviceRecord.setDate(date.actuelle);
+        serviceRecord.setResultPath(resultPath);
+        serviceRecord.setStatus(status);
+        serviceRecord.setRang(0);
+        serviceRecord.setScenarioRecord(null);
+    //    serviceRecord.setScenarioRecord(getScenarioRecord(idScenarioRecord));
+        serviceRecordServices.addServiceRecord(serviceRecord);
+        System.out.println("le service web "+ nameWs+"  est tester unitairement");
+
     }
 }
