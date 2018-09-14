@@ -64,9 +64,13 @@ public class ScenarioRecord {
     }
     public String getFormattedDate(Date date) {
         SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy � HH:mm");
-        return formater.format(this.date);
+        return formater.format(date);
     }
 
+    /**
+     *
+     * methode permt de retourner un scenarioRecord sous format Json
+     */
     public JsonObjectBuilder getSenarioRecordJson(){
         JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
         jsonObjectBuilder.add("id",this.getId());
@@ -74,12 +78,7 @@ public class ScenarioRecord {
         jsonObjectBuilder.add("executionTime", this.getFormattedDate(this.getExecutionTime()));
         jsonObjectBuilder.add("status", this.getStatus());
         jsonObjectBuilder.add("scenarioId",  this.getScenario().getId());
-
         return jsonObjectBuilder;
-    }
-
-    public int compareScenarioRecordWithDate(ScenarioRecord scenarioRecord){
-        return  getDate().compareTo(scenarioRecord.getDate());
     }
 
 }

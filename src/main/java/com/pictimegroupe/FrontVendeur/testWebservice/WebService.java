@@ -106,8 +106,12 @@ public class WebService implements Serializable  {
     public JsonObjectBuilder getWebServiceJson() {
 
         JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
+
+        // jsonObjectBuilderschemaInput  et jsonObjectBuilderschemaOutput vont être utilisés quand on introduit la notion des schéma
+
         JsonObjectBuilder jsonObjectBuilderschemaInput= Json.createObjectBuilder();
         JsonObjectBuilder jsonObjectBuilderschemaOutput= Json.createObjectBuilder();
+
         jsonObjectBuilder.add("id",this.getId());
         jsonObjectBuilder.add("rang",this.getRang());
 
@@ -116,18 +120,14 @@ public class WebService implements Serializable  {
         jsonObjectBuilder.add("description",this.getDescription());
         jsonObjectBuilder.add("methode",this.getMethod());
         jsonObjectBuilder.add("body", this.getBody());
-       /* if(this.getMethod().equals("post")) {
-            jsonObjectBuilder.add("body", this.getBody());
-        } else
-         {
-             jsonObjectBuilder.add("body","");
-         }*/
+
         /*jsonObjectBuilderschemaInput.add("InputShemaName",this.getInputSchema().getName());
         jsonObjectBuilderschemaInput.add("InputShemapath",this.getInputSchema().getShemapath());
 
-        jsonObjectBuilderschemaOutput.add("OutputSchemaName",this.getOutSchema().getName());*/
-//        jsonObjectBuilderschemaOutput.add("Outputshemapath",this.getOutSchema().getShemapath());
-   /*     jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
+        jsonObjectBuilderschemaOutput.add("OutputSchemaName",this.getOutSchema().getName());
+        jsonObjectBuilderschemaOutput.add("Outputshemapath",this.getOutSchema().getShemapath());
+
+        jsonObjectBuilder.add("InputShema",jsonObjectBuilderschemaInput);
         jsonObjectBuilder.add("OutputShema",jsonObjectBuilderschemaOutput);*/
         return jsonObjectBuilder;
     }

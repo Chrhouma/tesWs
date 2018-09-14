@@ -8,6 +8,6 @@ import javax.json.JsonArrayBuilder;
 public interface UserServices {
     JsonArrayBuilder connect(String login, String password)throws GestionRoleException;
     void addUser(User user) throws GestionRoleException;
-    void testerJackson();
+
 }
 

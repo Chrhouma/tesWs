@@ -47,7 +47,7 @@ public class DeltaServicesImpl implements  DeltaServices {
                 jsonObjectBuilder.add("idDelta",delta.getId());
                 jsonObjectBuilder.add("node",delta.getNode());
                 jsonObjectBuilder.add("expctedValue",delta.getExpctedValue());
-                jsonObjectBuilder.add("registeredValue",delta.getRegisteedValue());
+                jsonObjectBuilder.add("registeredValue",delta.getRegisteredValue());
             }
              arrayBuilder.add(jsonObjectBuilder);
          }
@@ -158,7 +158,7 @@ public class DeltaServicesImpl implements  DeltaServices {
         int i=0;
         while(exist==false && i<deltaList.size()){
             Delta delta=deltaList.get(i);
-            if(delta.getServiceRecord().getId().equals(idserviceRecord) && delta.getExpctedValue().equals(expectedValue) && delta.getRegisteedValue().equals(registeredValue)) {
+            if(delta.getServiceRecord().getId().equals(idserviceRecord) && delta.getExpctedValue().equals(expectedValue) && delta.getRegisteredValue().equals(registeredValue)) {
                 exist= true;
             }
             i++;

@@ -22,12 +22,9 @@ public class ServiceRecord  {
     private Date date;
     private Date executionTime;
     private String resultPath;
-
+    private String status;
     @ManyToOne (fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     private  ScenarioRecord scenarioRecord;
-   /*@ManyToOne (fetch = FetchType.LAZY)
-   private Scenario scenario;*/
-    private String status;
 
     @OneToMany(fetch = FetchType.LAZY ,mappedBy = "serviceRecord", cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
@@ -110,6 +107,7 @@ public class ServiceRecord  {
         SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy � HH:mm");
         return formater.format(this.date);
     }
+
     public JsonObjectBuilder getServiceRecordJson(){
         JsonArrayBuilder deltasArray =Json.createArrayBuilder();
         JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
@@ -119,10 +117,6 @@ public class ServiceRecord  {
         jsonObjectBuilder.add("executionTime", this.getFormattedDate(this.getExecutionTime()));
         jsonObjectBuilder.add("resultPath",this.getResultPath());
         jsonObjectBuilder.add("status", this.getStatus());
-
-       /* for (Delta delta: Deltas) {
-            deltasArray.add(delta.getDeltaJson());
-        }*/
         jsonObjectBuilder.add("deltas",deltasArray);
         return jsonObjectBuilder;
     }

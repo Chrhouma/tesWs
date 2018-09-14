@@ -14,7 +14,7 @@ public class Delta {
   private ServiceRecord serviceRecord;
   private String node;
   private String expctedValue;
-  private String registeedValue;
+  private String registeredValue;
 
     public Delta() {
     }
@@ -51,23 +51,21 @@ public class Delta {
         this.expctedValue = expctedValue;
     }
 
-    public String getRegisteedValue() {
-        return registeedValue;
+    public String getRegisteredValue() {
+        return registeredValue;
     }
 
-    public void setRegisteedValue(String registeedValue) {
-        this.registeedValue = registeedValue;
+    public void setRegisteredValue(String registeredValue) {
+        this.registeredValue = registeredValue;
     }
 
     public JsonObjectBuilder getDeltoJson(){
-
         JsonObjectBuilder jsonObjectBuilder= Json.createObjectBuilder();
         jsonObjectBuilder.add("id",id);
         jsonObjectBuilder.add("node",node);
         jsonObjectBuilder.add("expctedValue",expctedValue);
-        jsonObjectBuilder.add("registeredValue",registeedValue);
+        jsonObjectBuilder.add("registeredValue", registeredValue);
         jsonObjectBuilder.add("serviceRecordId",serviceRecord.getWebService().getName());
-
         return jsonObjectBuilder;
     }
 }

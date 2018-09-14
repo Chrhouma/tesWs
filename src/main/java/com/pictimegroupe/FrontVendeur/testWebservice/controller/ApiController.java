@@ -3,19 +3,18 @@ package com.pictimegroupe.FrontVendeur.testWebservice.controller;
 
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 import com.pictimegroupe.FrontVendeur.testWebservice.Exception.GestionRoleException;
+import com.pictimegroupe.FrontVendeur.testWebservice.Util.Const;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioWebServiceRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.lang.Nullable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,7 +42,7 @@ public class ApiController {
     SendEmailService sendEmailService;
     @Autowired
     ScenarioWebServiceRepository scenarioWebServiceRepository;
-   private String baseURI = "http://127.0.0.1/";
+
     /**
      * @param login
      * @param password
@@ -63,7 +62,7 @@ public class ApiController {
     }
 
     /**
-     * Cette methode de faire l'ajout d'un user par un autrex
+     * Cette methode de faire l'ajout d'un user par un autre administrateur
      *
      * @param login
      * @param password
@@ -96,6 +95,14 @@ public class ApiController {
         }
         return obj.build().toString();
     }
+
+    /**
+     * methode pour la création d'un nouveau scénario
+     * @param name
+     * @param cron
+     * @param webServiceScenario
+     * @return
+     */
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value="/scenario/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE )
 
@@ -107,8 +114,9 @@ public class ApiController {
         scenario.setName(name);
         scenario.setCron(cron);
         List <WebServiceScenario> webServiceScenarios= new LinkedList<>();
-
+        // creation de la liste des WebServiceScenario pour ce nouveau scénario
         for(int i =0; i<webServiceScenario.size();i++){
+
             WebServiceScenario webServiceScenario1= new WebServiceScenario();
             webServiceScenario1.setScenario(scenario);
             webServiceScenario1.setWebService(webServicesServices.getWebService(webServiceScenario.get(i).getWebService().getId()));
@@ -122,17 +130,27 @@ public class ApiController {
 
         return obj.build().toString();
     }
+
+    /**
+     * methode pour la suppression d'un scénario
+     * @param id
+     */
     @Transactional
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value="/scenario/delet", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE )
-
     public void  delete(@RequestParam(value = "id")String id){
         Scenario newscenario=scenarioService.getScenario(id);
          scenarioWebServiceRepository.deleteByScenario(newscenario);
-         System.out.println("yees");
     }
 
-
+    /**
+     * modification d'un scénario
+     * @param id
+     * @param name
+     * @param cron
+     * @param webServiceScenario
+     * @return
+     */
     @Transactional
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value="/scenario/update", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE )
@@ -146,10 +164,7 @@ public class ApiController {
         Scenario newscenario=scenarioService.getScenario(id);
         newscenario.setName(name);
         newscenario.setCron(cron);
-
-        //List <WebServiceScenario> webServiceScenarios= new LinkedList<>();
         List<WebServiceScenario> newWebsServiceScenarios= newscenario.getWebServicesScenario();
-        System.out.println(newWebsServiceScenarios.size());
         newWebsServiceScenarios.clear();
             // implementer la methode qui permet de supprimer tt les web service scénario d'un scenario
        scenarioWebServiceRepository.deleteByScenario(newscenario);
@@ -172,8 +187,7 @@ public class ApiController {
     public void deleteScenario(
             @RequestParam(value = "idScenario", required = false) String id){
             scenarioService.deleteScenario(id);
-        System.out.println("le scenario est supprimé");
-        }
+               }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/webService/add", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -182,7 +196,7 @@ public class ApiController {
                                 @RequestParam(value = "url", required = false) String url,
                                 @RequestParam(value = "description", required = false) String description,
                                 @RequestParam(value = "methode", required = false) String methode,
-                               // @RequestParam(value = "body", required = false) String body,
+                                // @RequestParam(value = "body", required = false) String body,
                                 @RequestParam(value = "inputSchemaName", required = false) String inputSchemaName,
                                 @RequestParam(value = "inputSchemapath", required = false) String inputSchemapath,
                                 @RequestParam(value = "outputSchemaName", required = false) String outputSchemaName,
@@ -200,7 +214,7 @@ public class ApiController {
 
         webService.setName(name);
         webService.setRang(0);
-        webService.setUrl(baseURI+url);
+        webService.setUrl(Const.BASEURL +url);
         webService.setMethod(methode);
         if("Post".equals(methode)){
             webService.setBody(body);
@@ -238,7 +252,7 @@ public class ApiController {
         WebService webService = webServicesServices.getWebService(id);
         webService.setName(name);
         webService.setRang(0);
-        webService.setUrl(baseURI+url);
+        webService.setUrl(Const.BASEURL+url);
         webService.setMethod(methode);
         if("Post".equals(methode)){
             webService.setBody(body);
@@ -287,33 +301,13 @@ public class ApiController {
         return obj.build().toString();
     }
 
-
-
-
-
-
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "webService/tester",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String testerWebservice(@RequestParam(value = "idWebservice")String idWebservice) throws IOException {
         JsonObjectBuilder obj = Json.createObjectBuilder();
-
-
-        // je fait appel a la methode qui permet de tester un web service n utilisant son identifiant
-
-
         webServicesServices.testerWebservice(idWebservice);
-        //scenarioRecordService.testerScenario(idScenario);
-        System.out.println("je teste mon ws");
-        return obj.build().toString();
+       return obj.build().toString();
     }
-
-
-
-
-
-
-
-
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -332,17 +326,11 @@ public class ApiController {
         return obj.build().toString();
     }
 
-
-
-
-
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "scenario/tester",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String testerScenario(@RequestParam(value = "idScenario")String idScenario) throws IOException {
         JsonObjectBuilder obj = Json.createObjectBuilder();
         scenarioRecordService.testerScenarioAut(idScenario);
-        //scenarioRecordService.testerScenario(idScenario);
-        System.out.println("je teste mon ws");
         return obj.build().toString();
     }
 
@@ -355,6 +343,7 @@ public class ApiController {
         obj.add("deltas",  deltaServices.getAllDeltaByIdeScenarioRcord(idScenario1));
         return obj.build().toString();
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "serviceRecord/comparer",method =  RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String comparerWebservice(@RequestParam(value = "idServiceRecord1")String idServiceRecord1,
@@ -364,6 +353,7 @@ public class ApiController {
         obj.add("deltas", deltaServices.getAllDeltaByIdServiceRecord(idServiceRecord1));
         return obj.build().toString();
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "home", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String compareAlone() throws IOException {
@@ -442,7 +432,7 @@ public class ApiController {
         Delta delta=new Delta();
         delta.setExpctedValue(expectedValue);
         delta.setNode(node);
-        delta.setRegisteedValue(registeedValue);
+        delta.setRegisteredValue(registeedValue);
         delta.setServiceRecord(serviceRecordServices.getServiceRecord(serviceRecordId));
 
         deltaServices.addDelta(delta);
@@ -463,10 +453,4 @@ public class ApiController {
         System.out.println("le scenario est cron");
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @RequestMapping(value="/testjackson", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void tstjackson(){
-       userServices.testerJackson();
-
-    }
 }

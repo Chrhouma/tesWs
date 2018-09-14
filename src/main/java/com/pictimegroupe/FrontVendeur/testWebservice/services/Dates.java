@@ -14,12 +14,11 @@ public class Dates {
 
     String datestr=dateFormat.format(cal.getTime());
 
-
-
      Date actuelle = new Date();
      DateFormat dateFormat1 = new SimpleDateFormat( "yyyy-MM-dd-hh:MM");
      DateFormat dateFormat2 = new SimpleDateFormat( "yyyy-MM-dd");
      String date1 = dateFormat1.format(actuelle.getTime());
+
      String date2 = dateFormat2.format(actuelle.getTime());
 
      Date  executionTime=actuelle;
@@ -27,9 +26,11 @@ public class Dates {
         final Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -1);
         return cal.getTime();
+
     }
-    public  String getYesterdayDateString() {
+      public  String getYesterdayDateString() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(yesterday());
     }
+
 }

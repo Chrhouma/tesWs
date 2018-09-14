@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -239,7 +237,7 @@ public class CompareImpl implements Compare {
                   delta.setServiceRecord(serviceRecordServices.getServiceRecord(idServiceRecord));
                   delta.setNode(noeud);
                   delta.setExpctedValue(line1);
-                  delta.setRegisteedValue(line2);
+                  delta.setRegisteredValue(line2);
                   deltaServices.addDelta(delta);
             }
             line1 = reader1.readLine();

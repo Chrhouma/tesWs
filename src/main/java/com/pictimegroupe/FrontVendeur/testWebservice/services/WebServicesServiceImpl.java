@@ -1,7 +1,8 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
-import com.google.gson.JsonObject;
+
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
+import com.pictimegroupe.FrontVendeur.testWebservice.Util.Const;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.DeltaRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ServiceRecordRepository;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.WebServicesRepository;
@@ -11,8 +12,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
@@ -24,8 +23,7 @@ import java.util.Map;
 
 @Service
 public class WebServicesServiceImpl implements WebServicesServices {
-    private  String separateur="*****************************";
-    private  String endWs="################################################################\n";
+
     @Autowired
     WebServicesRepository webServicesRepository;
     @Autowired
@@ -105,11 +103,8 @@ public class WebServicesServiceImpl implements WebServicesServices {
 
         for(WebService webService: webServiceList) {
             if ( webService.getId().equals(id)) {
-
                 List<WebServiceScenario> webServiceScenarios= webService.getWebServicesScenario();
-                System.out.println(webServiceScenarios.size());
                 JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
-
             jsonObjectBuilder.add("id", webService.getId());
             jsonObjectBuilder.add("rang", webService.getRang());
             jsonObjectBuilder.add("name", webService.getName());
@@ -124,12 +119,8 @@ public class WebServicesServiceImpl implements WebServicesServices {
                 jsonObjectBuilder1.add("id",webServiceScenario.getScenario().getId());
                 scenarioServiceJsonArrayBuilder.add(jsonObjectBuilder1);
             }
-//                System.out.println("liste des scenarios"+ webService.getWebServicesScenario().get(0).getScenario().getName());
-
                 for (ServiceRecord serviceRecord :serviceRecordList ) {
-
                     if(serviceRecord.getWebService().getId().equals(id)) {
-
                         JsonObjectBuilder jsonObjectBuilder1 = Json.createObjectBuilder();
                         jsonObjectBuilder1.add("id", serviceRecord.getId());
                         jsonObjectBuilder1.add("status", serviceRecord.getStatus());
@@ -161,7 +152,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
 
     public  void getSession() {
 
-        RestAssured.baseURI = "http://127.0.0.1/";
+        RestAssured.baseURI = Const.BASEURL;
         RequestSpecification request = RestAssured.given();
         request.header("Content-type", "application/json");
         request.body("{\"matricule\":\"120393\",\"password\":\"Soleil1!\"}")
@@ -186,10 +177,11 @@ public class WebServicesServiceImpl implements WebServicesServices {
         Dates date=new Dates();
         WebService webService=getWebService(idwebServcie);
         String nameWs=webService.getName();
-        RestAssured.baseURI = "http://127.0.0.1/";
+        RestAssured.baseURI = Const.BASEURL;
         String url= webService.getUrl().substring(RestAssured.baseURI.length());
 
-        String startTest=separateur+nameWs+separateur+"\n";
+
+        String startTest=Const.separateur+nameWs+Const.separateur+"\n";
         String resultPath="src/main/resources/webservice/"+nameWs+date.datestr;
         File resultFile = new File(resultPath);
         RequestSpecification request = RestAssured.given();
@@ -198,7 +190,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
                 .body(webService.getBody())
                 .sessionId(RestAssured.sessionId);
         Response resp;
-        System.out.println("tester unitairement");
+
         if(webService.getMethod().equals("Post")) {
             resp = request.post(url);
         }
@@ -209,7 +201,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
         writeOnFile(resultFile,startTest);
         writeOnFile(resultFile,resp.asString());
         writeOnFile(resultFile,"\n");
-        writeOnFile(resultFile,endWs);
+        writeOnFile(resultFile,Const.endWs);
 
         ServiceRecord serviceRecord =new ServiceRecord() ;
         String status="ok";
@@ -221,7 +213,7 @@ public class WebServicesServiceImpl implements WebServicesServices {
         serviceRecord.setStatus(status);
         serviceRecord.setRang(0);
         serviceRecord.setScenarioRecord(null);
-    //    serviceRecord.setScenarioRecord(getScenarioRecord(idScenarioRecord));
+    //  serviceRecord.setScenarioRecord(getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("le service web "+ nameWs+"  est tester unitairement");
 

@@ -1,21 +1,17 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import com.pictimegroupe.FrontVendeur.testWebservice.*;
 
+import com.pictimegroupe.FrontVendeur.testWebservice.Util.Const;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioWebServiceRepository;
-import com.pictimegroupe.FrontVendeur.testWebservice.services.Dates;
-import com.pictimegroupe.FrontVendeur.testWebservice.services.ServiceRecordServices;
 
 import io.restassured.RestAssured;
 import io.restassured.config.SessionConfig;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import com.pictimegroupe.FrontVendeur.testWebservice.repository.ScenarioRepository;
-import io.restassured.RestAssured;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.json.Json;
@@ -53,10 +49,11 @@ public class ScenarioServiceImpl implements ScenarioService {
 
     @Override
     public void tester(String idScenario,int rang, String idScenarioRecord,String idwebServcie) throws IOException{
+        int status;
         Dates date=new Dates();
         WebService webService=webServicesServices.getWebService(idwebServcie);
         String nameWs=webService.getName();
-        RestAssured.baseURI = "http://127.0.0.1/";
+        RestAssured.baseURI = Const.BASEURL;
         String url= webService.getUrl().substring(RestAssured.baseURI.length());
 
         String startTest=separateur+nameWs+separateur+"\n";
@@ -73,26 +70,25 @@ public class ScenarioServiceImpl implements ScenarioService {
         }
         else {
              resp = request.get(url);
+             resp = request.get(url);
         }
 
+        status= resp.statusCode();
         writeOnFile(resultFile,startTest);
         writeOnFile(resultFile,resp.asString());
         writeOnFile(resultFile,"\n");
         writeOnFile(resultFile,endWs);
-
         ServiceRecord serviceRecord =new ServiceRecord() ;
-        String status="ok";
+
         serviceRecord.setWebService(webServicesServices.getWebServiceByName(nameWs));
 
         serviceRecord.setExecutionTime(date.executionTime);
         serviceRecord.setDate(date.actuelle);
         serviceRecord.setResultPath(resultPath);
-        serviceRecord.setStatus(status);
+        serviceRecord.setStatus(Integer.toString(status));
         serviceRecord.setRang(rang);
-
         serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
-        System.out.println("le service web "+ nameWs+"   marche bien");
 
     }
 
@@ -100,18 +96,15 @@ public class ScenarioServiceImpl implements ScenarioService {
     public  void testLogin(String idScenario,int rang,String idScenarioRecord) throws IOException {
         Dates date=new Dates();
         String startTest=separateur+"login"+separateur+"\n";
-        RestAssured.baseURI = "http://127.0.0.1/";
+        RestAssured.baseURI = Const.BASEURL;
         String resultPath="src/main/resources/webservice/login"+rang+date.datestr;
-
+        int status;
         File resultFile = new File(resultPath);
 
         JsonObject json = new JsonObject();
-        /*  json.addProperty("matricule","120393");
-        json.addProperty("password","Soleil1!");*/
         RequestSpecification request = RestAssured.given();
         request.header("Content-type", "application/json");
         request
-               /* .body(json.toString())*/
                 .body("{\"matricule\":\"120393\",\"password\":\"Soleil1!\"}")
                 .when().post("connexion/login").andReturn().sessionId();
         Response resp = request.post("connexion/login");
@@ -121,25 +114,20 @@ public class ScenarioServiceImpl implements ScenarioService {
         RestAssured.config = RestAssured.config().sessionConfig(new SessionConfig().sessionIdName("ID_SESSION"));
         RestAssured.sessionId=cookies.get("ID_SESSION");
 
-
         writeOnFile(resultFile,startTest);
         writeOnFile(resultFile,resp.asString());
         writeOnFile(resultFile,endWs);
-
+        status=resp.statusCode();
         ServiceRecord serviceRecord =new ServiceRecord() ;
-
-        String status="ok";
-
         serviceRecord.setExecutionTime(date.executionTime);
         serviceRecord.setDate(date.actuelle);
         serviceRecord.setWebService(webServicesServices.getWebServiceByName("login"));
         serviceRecord.setResultPath(resultPath);
-        serviceRecord.setStatus(status);
+        serviceRecord.setStatus(Integer.toString(status));
         serviceRecord.setRang(rang);
         serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
        serviceRecordServices.addServiceRecord(serviceRecord);
 
-        System.out.println("le login marcvhe bien ");
     }
     @Override
     public  void testRechercheClient(String idScenario,int rang,String idScenarioRecord)throws IOException{
@@ -270,6 +258,7 @@ public class ScenarioServiceImpl implements ScenarioService {
         serviceRecord.setScenarioRecord(scenarioRecordService.getScenarioRecord(idScenarioRecord));
         serviceRecordServices.addServiceRecord(serviceRecord);
         System.out.println("le prametrage marche bien ");
+
     }
     @Override
     public  void  testrafraichir(String idScenario ,int rang,String idScenarioRecord) throws IOException {

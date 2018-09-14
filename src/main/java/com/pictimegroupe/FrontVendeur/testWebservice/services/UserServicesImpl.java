@@ -47,7 +47,6 @@ public  class UserServicesImpl implements UserServices {
                 System.out.println("je teset"+ user.getLogin()+user.getPassword());
                 userSession=httpSession.getAttribute("userr").toString();
                 userRole=httpSession.getAttribute("roleUser").toString();
-
             }
         }
         jsonObjectBuilder.add("session",userSession);
@@ -66,32 +65,12 @@ public  class UserServicesImpl implements UserServices {
        if(httpSession.getAttribute("roleUser").equals("add")) {
 
             userRepository.save(user);
-            System.out.println("je rajoute");
+
       }
       //  else{
        //  throw  new GestionRoleException("vous n'avez pas le droit d'ajouter un utilisateur");
      //  }
 
     }
-    @Override
-    public void testerJackson(){
-        ObjectMapper mapper= new ObjectMapper();
-        User user = new User();
-        user.setId(10);
-        user.setLogin("testjackson");
-        user.setPassword("testPassword");
-        Role role = new Role();
-        role.setId(1);
-        role.setName("roel1");
-        role.setRights("admin");
 
-        user.setRole(role);
-        try {
-            String jsonINstring = mapper.writeValueAsString(user);
-            System.out.println(jsonINstring);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 }
