@@ -1,0 +1,88 @@
+*****************************rafraichir*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": {
+        "header": {
+            "nbProduits": 0,
+            "centPourcentAcompteLivraison": false
+        },
+        "customer": {
+            "typologie": ""
+        },
+        "commentaireGlobal": {
+            "protection": false,
+            "lignes": [
+
+            ]
+        },
+        "financement": {
+            "affichable": false
+        },
+        "total": 0.00,
+        "eco": 0.00,
+        "paiementsEnCours": [
+
+        ],
+        "totalCondition": 0.00,
+        "totalDejaPaye": 0.00,
+        "resteAPayer": 0.00,
+        "totalAVerserCeJour": 0.00,
+        "totalAPayer": 0.00,
+        "protectionAdresseDeLivraison": false,
+        "commandeEnCours": {
+            "codeSite": "F012",
+            "numeroCommande": "0170942"
+        },
+        "client": {
+            "numeroClient": "",
+            "idClientPartenaire": "",
+            "type": null,
+            "nom": "",
+            "prenom": "",
+            "raisonSociale": "",
+            "codePostal": "",
+            "ville": "",
+            "mail": "",
+            "telephone": "",
+            "civilite": "",
+            "dateNaissance": 0,
+            "numeroVoie": "",
+            "nomVoie": "",
+            "pays": "",
+            "voie": "",
+            "batiment": "",
+            "appartement": "",
+            "lieuDit": "",
+            "codeRfm": "",
+            "complement": "",
+            "codeINSEE": "",
+            "commentaire": "",
+            "sdf": true,
+            "matricule": "",
+            "clientGrandCompte": true,
+            "carteBPlus": {
+                "libelle": "",
+                "date": 0
+            },
+            "dematerialisation": {
+                "etat": true,
+                "dateMaj": 0
+            },
+            "optin": {
+                "diffusion": "",
+                "mailing": "",
+                "rappel": "",
+                "eMailing": ""
+            },
+            "comptesWeb": [
+
+            ]
+        },
+        "produits": [
+
+        ]
+    }
+}
+
+################################################################

@@ -1,0 +1,213 @@
+*****************************rafraichir*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": {
+        "header": {
+            "nbProduits": 1,
+            "centPourcentAcompteLivraison": false
+        },
+        "customer": {
+            "typologie": ""
+        },
+        "commentaireGlobal": {
+            "protection": false,
+            "lignes": [
+
+            ]
+        },
+        "financement": {
+            "affichable": false
+        },
+        "total": 1854.01,
+        "eco": 4.01,
+        "paiementsEnCours": [
+
+        ],
+        "totalCondition": 0.00,
+        "totalDejaPaye": 0.00,
+        "resteAPayer": 1854.01,
+        "totalAVerserCeJour": 1854.01,
+        "totalAPayer": 1854.01,
+        "protectionAdresseDeLivraison": false,
+        "commandeEnCours": {
+            "codeSite": "F012",
+            "numeroCommande": "0170538"
+        },
+        "client": {
+            "numeroClient": "P0126530",
+            "type": 1,
+            "nom": "BARCA",
+            "prenom": "BASTIENI",
+            "raisonSociale": "",
+            "codePostal": "59100",
+            "ville": "ROUBAIX",
+            "mail": "sdfsdf@fgfd.kj",
+            "telephone": "LR/0000000000/0000000000",
+            "civilite": "1",
+            "dateNaissance": 19530703,
+            "numeroVoie": "15",
+            "nomVoie": "DXFGHAZ",
+            "pays": "FRA",
+            "voie": "AGL",
+            "batiment": "XFGH",
+            "appartement": "XFGH",
+            "lieuDit": "GFXHXFGHE",
+            "codeRfm": "",
+            "complement": "VIDE",
+            "codeINSEE": "59512",
+            "commentaire": "TAGAGAGAGA",
+            "sdf": false,
+            "matricule": "",
+            "clientGrandCompte": false,
+            "carteBPlus": {
+                "libelle": "",
+                "date": 0
+            },
+            "carteFidelitee": [
+                {
+                    "type": "025",
+                    "texte": " Avec la carte B+, l'achat de cet article rapporterait environ 0  points sur le compte fidélité (sous réserve des conditions de calcul en vigueur)."
+                },
+                {
+                    "type": "045",
+                    "texte": " Avec la carte Club, l'achat de cet article rapporterait environ 0  points sur le compte fidélité (sous réserve des conditions de calcul en vigueur)."
+                }
+            ],
+            "dematerialisation": {
+                "etat": false,
+                "dateMaj": 20180706
+            },
+            "optin": {
+                "diffusion": "0",
+                "mailing": "1",
+                "rappel": "0",
+                "eMailing": "0"
+            },
+            "comptesWeb": [
+
+            ],
+            "adresseDeLivraisonGeneral": {
+                "nom": "BARCA",
+                "prenom": "BASTIENI",
+                "codeLangue": "FR",
+                "codeCivilite": "1",
+                "numeroTelephone": "0000000000",
+                "numeroDeVoie": "15",
+                "complement": "",
+                "codeTypeVoie": "AGL",
+                "nomDeVoie": "DXFGHAZ",
+                "lieuDit": "GFXHXFGHE",
+                "codePays": "FRA",
+                "codePostal": "59100",
+                "codeINSEE": "59512",
+                "batiment": "XFGH",
+                "ville": "ROUBAIX",
+                "appartement": "XFGH",
+                "commentaire": "",
+                "protectionCommentaire": false
+            }
+        },
+        "produits": [
+            {
+                "reference": "1000000117",
+                "eanPrincipal": "",
+                "codeStatut": "ATT",
+                "libelle": "TV SONY KDL46HX800AEP 3 D ready",
+                "lP": "04",
+                "rayon": "10",
+                "famille": "59",
+                "gm": "04",
+                "segment": "C",
+                "cycleVie": "AC",
+                "typeProduit": "ZPHY",
+                "nbMoisGarantie": 24,
+                "numeroLigne": 1,
+                "prix": 1854.01,
+                "omnicanal": false,
+                "sousTotal": 0,
+                "annule": false,
+                "quantite": {
+                    "protection": true,
+                    "quantite": 1
+                },
+                "vendeur": {
+                    "matricule": "",
+                    "nom": "",
+                    "prenom": ""
+                },
+                "stocks": {
+                    "affichage": true,
+                    "stocks": ""
+                },
+                "redevance": {
+                    "active": true,
+                    "codeUsage": ""
+                },
+                "specificites": {
+                    "active": false
+                },
+                "conditions": [
+
+                ],
+                "livraison": {
+                    "modeDelivrance": "E",
+                    "codeComptoir": "T",
+                    "referenceCommandeEntrepot": "",
+                    "commandeEntrepot": false,
+                    "code": "E",
+                    "libelle": "Emporte Surface ET",
+                    "date": 0,
+                    "creneauHoraire": null,
+                    "prix": 0.00,
+                    "gratuit": true,
+                    "offert": false,
+                    "protection": true,
+                    "quantiteCommandeEntrepot": 0,
+                    "quantiteRelicat": 0,
+                    "libelleStatusCommande": "",
+                    "validPanier": true,
+                    "codeSiteReservation": "",
+                    "codeModeLivraison": "TE",
+                    "adresseDeLivraison": {
+                        "nom": "BARCA",
+                        "prenom": "BASTIENI",
+                        "codeLangue": "FR",
+                        "codeCivilite": "1",
+                        "numeroTelephone": "0000000000",
+                        "numeroDeVoie": "15",
+                        "complement": "",
+                        "codeTypeVoie": "AGL",
+                        "nomDeVoie": "DXFGHAZ",
+                        "lieuDit": "GFXHXFGHE",
+                        "codePays": "FRA",
+                        "codePostal": "59100",
+                        "codeINSEE": "59512",
+                        "batiment": "XFGH",
+                        "ville": "ROUBAIX",
+                        "appartement": "XFGH",
+                        "commentaire": "",
+                        "protectionCommentaire": false
+                    }
+                },
+                "services": {
+                    "protection": false,
+                    "liste": [
+
+                    ]
+                },
+                "espaceBPlus": {
+                    "montant": ""
+                },
+                "commentaireProduit": {
+                    "protection": true,
+                    "lignes": [
+
+                    ]
+                }
+            }
+        ]
+    }
+}
+
+################################################################

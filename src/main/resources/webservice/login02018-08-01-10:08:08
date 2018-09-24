@@ -1,0 +1,20 @@
+*****************************login*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": {
+        "prenom": "GROUPE DEUX",
+        "nom": "PICTIME",
+        "autorisations": [
+            {
+                "type": "CORRECTION_VENTE",
+                "autorise": false
+            },
+            {
+                "type": "CORRECTION_VENTE",
+                "autorise": false
+            }
+        ]
+    }
+}
+################################################################

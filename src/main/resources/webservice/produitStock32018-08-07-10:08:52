@@ -1,0 +1,26 @@
+*****************************produitStock*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": [
+        {
+            "reference": "1000000117",
+            "stocks": "7947/84015/3748/0",
+            "stocksMagasinsProximite": [
+                {
+                    "libelle": "F023 - BETHUNE",
+                    "quantite": 1310
+                },
+                {
+                    "libelle": "F022 - ENGLOS",
+                    "quantite": 84015
+                }
+            ],
+            "stocksEntrepot": [
+
+            ]
+        }
+    ]
+}
+
+################################################################

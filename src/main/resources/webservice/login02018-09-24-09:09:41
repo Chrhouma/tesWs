@@ -1,0 +1,40 @@
+*****************************login*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": {
+        "prenom": "GROUPE DEUX",
+        "nom": "PICTIME",
+        "autorisations": [
+            {
+                "type": "PREVISION_REPRISE",
+                "autorise": true
+            },
+            {
+                "type": "PREVISION_REPRISE",
+                "autorise": true
+            }
+        ]
+    }
+}
+################################################################
+*****************************login*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": {
+        "prenom": "GROUPE DEUX",
+        "nom": "PICTIME",
+        "autorisations": [
+            {
+                "type": "PREVISION_REPRISE",
+                "autorise": true
+            },
+            {
+                "type": "PREVISION_REPRISE",
+                "autorise": true
+            }
+        ]
+    }
+}
+################################################################

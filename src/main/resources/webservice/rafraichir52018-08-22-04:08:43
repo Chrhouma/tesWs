@@ -1,0 +1,108 @@
+*****************************rafraichir*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": {
+        "header": {
+            "nbProduits": 0,
+            "centPourcentAcompteLivraison": false
+        },
+        "customer": {
+            "typologie": ""
+        },
+        "commentaireGlobal": {
+            "protection": false,
+            "lignes": [
+
+            ]
+        },
+        "financement": {
+            "affichable": false
+        },
+        "total": 0.00,
+        "eco": 0.00,
+        "paiementsEnCours": [
+
+        ],
+        "totalCondition": 0.00,
+        "totalDejaPaye": 0.00,
+        "resteAPayer": 0.00,
+        "totalAVerserCeJour": 0.00,
+        "totalAPayer": 0.00,
+        "protectionAdresseDeLivraison": true,
+        "commandeEnCours": {
+            "codeSite": "",
+            "numeroCommande": ""
+        },
+        "client": {
+            "numeroClient": "P0126530",
+            "idClientPartenaire": "",
+            "type": 1,
+            "nom": "BARCA",
+            "prenom": "BASTIENI",
+            "raisonSociale": "",
+            "codePostal": "59100",
+            "ville": "ROUBAIX",
+            "mail": "sdfsdf@fgfd.kj",
+            "telephone": "LR/0000000000/0000000000",
+            "civilite": "1",
+            "dateNaissance": 19350706,
+            "numeroVoie": "15",
+            "nomVoie": "DXFGHAZ",
+            "pays": "FRA",
+            "voie": "AGL",
+            "batiment": "XFGH",
+            "appartement": "XFGH",
+            "lieuDit": "GFXHXFGHE",
+            "codeRfm": "",
+            "complement": "VIDE",
+            "codeINSEE": "59512",
+            "commentaire": "TAGAGAGAGA",
+            "sdf": true,
+            "matricule": "",
+            "clientGrandCompte": false,
+            "carteBPlus": {
+                "libelle": "SANS CARTE",
+                "date": 0
+            },
+            "dematerialisation": {
+                "etat": false,
+                "dateMaj": 20180821
+            },
+            "optin": {
+                "diffusion": "0",
+                "mailing": "1",
+                "rappel": "0",
+                "eMailing": "0"
+            },
+            "comptesWeb": [
+
+            ],
+            "adresseDeLivraisonGeneral": {
+                "nom": "BARCA",
+                "prenom": "BASTIENI",
+                "codeLangue": "FR",
+                "codeCivilite": "1",
+                "numeroTelephone": "0000000000",
+                "numeroDeVoie": "15",
+                "complement": "VIDE",
+                "codeTypeVoie": "AGL",
+                "nomDeVoie": "DXFGHAZ",
+                "lieuDit": "GFXHXFGHE",
+                "codePays": "FRA",
+                "codePostal": "59100",
+                "codeINSEE": "59512",
+                "batiment": "XFGH",
+                "ville": "ROUBAIX",
+                "appartement": "XFGH",
+                "commentaire": "",
+                "protectionCommentaire": true
+            }
+        },
+        "produits": [
+
+        ]
+    }
+}
+
+################################################################

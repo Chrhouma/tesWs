@@ -1,0 +1,54 @@
+*****************************rechercheclient*****************************
+{
+    "errCode": "0",
+    "errMessage": null,
+    "donnees": [
+        {
+            "numeroClient": "P0126530",
+            "nom": "BARCA",
+            "prenom": "BASTIENI",
+            "codePostal": "59100",
+            "ville": "ROUBAIX",
+            "mail": "sdfsdf@fgfd.kj",
+            "telephone": "LR/0000000000/0000000000",
+            "civilite": "1",
+            "dateNaissance": "19530703",
+            "numeroVoie": "15",
+            "nomVoie": "DXFGHAZ",
+            "pays": "FRA",
+            "voie": "AGL",
+            "batiment": "XFGH",
+            "appartement": "XFGH",
+            "lieuDit": "GFXHXFGHE",
+            "codeRfm": "0",
+            "complement": "VIDE",
+            "commentaire": {
+                "Ligne 1": "TAGAGAGAGA",
+                "Ligne 2": ""
+            },
+            "sdf": false,
+            "afficherRefusMail": true,
+            "afficherRefusTelephone": true,
+            "matricule": "",
+            "carteBPlus": {
+                "libelle": "",
+                "date": "0"
+            },
+            "dematerialisation": {
+                "etat": false,
+                "dateMaj": "20180706"
+            },
+            "optin": {
+                "diffusion": "0",
+                "mailing": "1",
+                "rappel": "0",
+                "eMailing": "0"
+            },
+            "comptesWeb": [
+
+            ]
+        }
+    ]
+}
+
+################################################################

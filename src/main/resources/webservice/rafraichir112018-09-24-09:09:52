@@ -1,0 +1,47 @@
+*****************************rafraichir*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": {
+        "header": {
+            "nbProduits": ,
+            "centPourcentAcompteLivraison": true,
+            "venteAnonyme": true
+        },
+        "customer": {
+            "typologie": ""
+        },
+        "commentaireGlobal": {
+            "protection": true,
+            "lignes": [
+
+            ]
+        },
+        "financement": {
+            "affichable": true
+        },
+        "total": ,
+        "eco": ,
+        "paiementsEnCours": [
+
+        ],
+        "totalCondition": ,
+        "totalDejaPaye": ,
+        "resteAPayer": ,
+        "totalAVerserCeJour": ,
+        "totalAPayer": ,
+        "protectionAdresseDeLivraison": true,
+        "commandeEnCours": {
+            "codeSite": "",
+            "numeroCommande": ""
+        },
+        "carteFidelitee": [
+
+        ],
+        "produits": [
+
+        ]
+    }
+}
+
+################################################################

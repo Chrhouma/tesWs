@@ -1,0 +1,3791 @@
+*****************************parametrage*****************************
+{
+    "errCode": "0",
+    "errMessage": "",
+    "donnees": {
+        "parametrage": {
+            "devise": "EUR",
+            "activationCatalogue": false,
+            "APIKeyBCBG": "cd78db3b-8b8e-4d34-91e7-13f070c56bc0",
+            "APIKeyCatalogue": "b1de0df3-d621-4431-9098-b3afcd65814f",
+            "APIKeyFidelite": "cd78db3b-8b8e-4d34-91e7-13f070c56bc0",
+            "clientIdPfs": "8bcc5eb6-df66-4a97-a3b6-bf1f70cba535",
+            "delaiBoutonStopMonetique": 15,
+            "delaiMessageAttention": 5,
+            "delaiPollingMonetique": 2,
+            "ssId": "BL-PRD_045",
+            "timeoutActivity": 10,
+            "timeoutServeur": 20,
+            "activerEteoInstore": true,
+            "NbrProduitAfficher": 10,
+            "checkActivityDelay": 40,
+            "activationRefus": true,
+            "payerMaintenantActif": true,
+            "activationCarteClub": true,
+            "BCBGactif": true,
+            "donneesParam": [
+                {
+                    "nom": "SSID",
+                    "valeur": "Pictime Groupe"
+                },
+                {
+                    "nom": "SSID",
+                    "valeur": "BL-PRD_045"
+                },
+                {
+                    "nom": "SSID",
+                    "valeur": "BL-PRD"
+                }
+            ],
+            "magasinLocal": {
+                "code": "F012",
+                "libelle": "LENS"
+            },
+            "urlWebServices": [
+                {
+                    "environnement": "catalogueAPIContext",
+                    "url": "https://dev1.gateway.api.boulnet.com/merchmock/v1/display/context/"
+                },
+                {
+                    "environnement": "catalogueAPISearch",
+                    "url": "https://dev1.gateway.api.boulnet.com/merchmock/v1/product/search"
+                },
+                {
+                    "environnement": "easyCredit",
+                    "url": "http://easycredit.itroom.fr/"
+                },
+                {
+                    "environnement": "eteo",
+                    "url": "https://qetoas1b.boulnet.com:9080/supervision/"
+                },
+                {
+                    "environnement": "financementEasyCredit",
+                    "url": "http://easycredit.itroom.fr/angular/"
+                },
+                {
+                    "environnement": "panierWeb",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/basket/v1/"
+                },
+                {
+                    "environnement": "pfsLogin",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/user/v1/user/login"
+                },
+                {
+                    "environnement": "racine",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/"
+                },
+                {
+                    "environnement": "sav",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/customercare/v1/"
+                },
+                {
+                    "environnement": "Adhesion_CarteB",
+                    "url": "https://qua1.gateway.api.boulnet.com/fidelity/fidelity/"
+                },
+                {
+                    "environnement": "ASS_creationContratBase",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/order/v1/insurance/<companyName>/subscribe/<internalContractId>"
+                },
+                {
+                    "environnement": "ASS_signatureElectronique",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/order/v1/insurance/<companyName>/<internalContractId>/checkConfirmationCode"
+                },
+                {
+                    "environnement": "ASS_supp_contrat_signe",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/order/v1/insurance/<companyName>/<internalContractId>"
+                },
+                {
+                    "environnement": "ASS_supp_ctrat_non_signe",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/order/v1/insurance/<companyName>/<internalContractId>/unsubscribe"
+                },
+                {
+                    "environnement": "ASS_CGV",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/order/v1/insurance/<companyName>/terms/<insuranceProductCode>"
+                },
+                {
+                    "environnement": "ASS_EnvoiCodeConfirmation",
+                    "url": "https://ws.developers.boulnet.com/internalqua1/sb/order/v1/insurance/<companyName>/<internalContractId>/sendConfirmationCode"
+                },
+                {
+                    "environnement": "BCBGidentClient",
+                    "url": "https://dev1.gateway.api.boulnet.com/outbound/loyalty/bhv/mock/accounts/byidentifier/"
+                },
+                {
+                    "environnement": "Instore_eteo_list",
+                    "url": "https://eteo.boulanger.com/sandbox/api_magasin/v1.0/screens/F947"
+                },
+                {
+                    "environnement": "Instore_eteo_listSAV",
+                    "url": "https://instore-boulanger-staging.stackhero.io/sandbox/api_magasin/v1.0/screens/F045"
+                },
+                {
+                    "environnement": "Instore_eteo_push",
+                    "url": "https://eteo.boulanger.com/sandbox/api_magasin/v1.0/screens/<eteoId>"
+                },
+                {
+                    "environnement": "Instore_eteo_pushSAV",
+                    "url": "https://instore-boulanger-staging.stackhero.io/sandbox/api_magasin/v1.0/screens/<eteoId>"
+                },
+                {
+                    "environnement": "Recherche_CarteB",
+                    "url": "https://qua1.gateway.api.boulnet.com/fidelity/fidelity/search"
+                },
+                {
+                    "environnement": "Resiliation_CarteB",
+                    "url": "https://qua1.gateway.api.boulnet.com/fidelity/fidelity/"
+                }
+            ]
+        },
+        "liensProduit": [
+            {
+                "image": "boulanger.jpg",
+                "libelle": "Voir sur Boulanger.com",
+                "urlEAN": "https://www.qualivev2.boulanger.com/ref/<code_produit_SAP>",
+                "urlDesign": "",
+                "position": 1,
+                "affichable": true
+            },
+            {
+                "image": "sprite_darty_logo.png",
+                "libelle": "Voir D",
+                "urlEAN": "http://www.darty.com/nav/recherche?srctype=list&text=<code_EAN>",
+                "urlDesign": "http://www.darty.com/nav/recherche?srctype=list&text=<designation_produit>",
+                "position": 2,
+                "affichable": false
+            },
+            {
+                "image": "fnac.png",
+                "libelle": "Voir F",
+                "urlEAN": "http://recherche.fnac.com/SearchResult/ResultList.aspx?Search=<code_EAN>",
+                "urlDesign": "http://recherche.fnac.com/SearchResult/ResultList.aspx?Search=<designation_produit>",
+                "position": 3,
+                "affichable": false
+            },
+            {
+                "image": "boulanger.png",
+                "libelle": "Voir U",
+                "urlEAN": "http://www.ubaldi.com/recherche/<code_EAN>.php",
+                "urlDesign": "http://www.ubaldi.com/recherche/<designation_produit>.php",
+                "position": 4,
+                "affichable": false
+            }
+        ],
+        "homePage": {
+            "adressesWeb": [
+                {
+                    "image": "incidents.jpg",
+                    "libelle": "Déclaration d'incidents",
+                    "url": "https://docs.google.com/forms/d/1CXxfrWRggcInpqtIdkFur0HQjc6wssNibB5o3LlTzPY/prefill",
+                    "position": 1,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "RA"
+                },
+                {
+                    "image": "clic-rdv.jpg",
+                    "libelle": "RDV",
+                    "url": "https://www.clicrdv.com/pro/login",
+                    "position": 8,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "CA"
+                },
+                {
+                    "image": "reprise.jpg",
+                    "libelle": "Reprise",
+                    "url": "https://boulanger.recyclez-moi.fr/",
+                    "position": 9,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "RA"
+                },
+                {
+                    "image": "retraitmagasin.png",
+                    "libelle": "Retrait magasin",
+                    "url": "master.search-takeout-order",
+                    "position": 10,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "XX"
+                },
+                {
+                    "image": "coursier.jpg",
+                    "libelle": "Coursier",
+                    "url": "http://api.colisweb.com/auth_login?auth_token=fff2af59ccd457a0a6617f89297f1337&client_new_delivery=true",
+                    "position": 12,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "RA"
+                },
+                {
+                    "image": "coursier.jpg",
+                    "libelle": "Coursier",
+                    "url": "http://api.colisweb.com/auth_login?auth_token=fff2af59ccd457a0a6617f89297f1337&client_new_delivery=true",
+                    "position": 13,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "XX"
+                },
+                {
+                    "image": "appel_client.png",
+                    "libelle": "Rappel client",
+                    "url": "https://www.boulanger.com",
+                    "position": 14,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "XX"
+                },
+                {
+                    "image": "accessoire.jpg",
+                    "libelle": "Choix d'accessoires",
+                    "url": "http://boulanger-test.ufp-international.fr/",
+                    "position": 17,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "XX"
+                },
+                {
+                    "image": "boulanger.jpg",
+                    "libelle": "Edition étiquette éco-énergie",
+                    "url": "http://balisage.boulnet.com/etiquetteNRJ/",
+                    "position": 20,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "XX"
+                },
+                {
+                    "image": "prime.png",
+                    "libelle": "Prime vendeur",
+                    "url": "https://www.boulanger.com",
+                    "position": 22,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "XX"
+                },
+                {
+                    "image": "boulanger.jpg",
+                    "libelle": "Relance ticket TPE",
+                    "url": "relance_ticket_TPE",
+                    "position": 24,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "XX"
+                },
+                {
+                    "image": "changer.jpg",
+                    "libelle": "Changer le mot de passe",
+                    "url": "changer_mot_de_passe",
+                    "position": 25,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "RA"
+                },
+                {
+                    "image": "boulanger_augmente2.png",
+                    "libelle": "C B.COM + QUAV2 Fixe",
+                    "url": "https://www.qualive.boulanger.com?T=C&S=T012099946&A=N0821",
+                    "position": 74,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "BP"
+                },
+                {
+                    "image": "boulanger_augmente2.png",
+                    "libelle": "M B.COM + QUAV2 Fixe",
+                    "url": "https://www.qualive.boulanger.com?T=M&S=T012099946&A=N0821",
+                    "position": 75,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "BP"
+                },
+                {
+                    "image": "recherche_cde.jpg",
+                    "libelle": "Rechercher une commande",
+                    "url": "rechercher_commande",
+                    "position": 80,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "OM"
+                },
+                {
+                    "image": "init_monetique.jpg",
+                    "libelle": "Initialisation de la monétique",
+                    "url": "init_monetique",
+                    "position": 81,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "MO"
+                },
+                {
+                    "image": "init_monetique.jpg",
+                    "libelle": "Relance dernier ticket TPE",
+                    "url": "relance_dernier_ticket_TPE",
+                    "position": 82,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "MO"
+                },
+                {
+                    "image": "infos_version.jpg",
+                    "libelle": "Infos Version NEW",
+                    "url": "https://sites.google.com/domaine-principal-htm.com/infosversionsfrontvendeur/dans-cette-version",
+                    "position": 91,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "IV"
+                },
+                {
+                    "image": "rappel_client.jpg",
+                    "libelle": "Rappel clients",
+                    "url": "rappel_client",
+                    "position": 92,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "OM"
+                },
+                {
+                    "image": "primes_vendeur.jpg",
+                    "libelle": "Primes vendeur",
+                    "url": "primes_vendeur",
+                    "position": 93,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "OV"
+                },
+                {
+                    "image": "palmares_vendeur.jpg",
+                    "libelle": "Palmares vendeur",
+                    "url": "palmares_vendeur",
+                    "position": 94,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "OV"
+                },
+                {
+                    "image": "visu_periodes.jpg",
+                    "libelle": "Visualisation periodes",
+                    "url": "visu_periodes",
+                    "position": 95,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "OV"
+                },
+                {
+                    "image": "taches_vendeur.jpg",
+                    "libelle": "Mes tâches",
+                    "url": "taches_vendeur",
+                    "position": 96,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "RA"
+                },
+                {
+                    "image": "gestion_imprimante.jpg",
+                    "libelle": "Gestion des imprimantes",
+                    "url": "liste_imprimantes",
+                    "position": 98,
+                    "lienExterne": false,
+                    "valide": true,
+                    "theme": "PA"
+                },
+                {
+                    "image": "versions.jpg",
+                    "libelle": "Infos versions",
+                    "url": "./external/infos/info.html",
+                    "position": 99,
+                    "lienExterne": true,
+                    "valide": true,
+                    "theme": "OT"
+                }
+            ]
+        },
+        "referentiel": {
+            "moyensPaiements": [
+                {
+                    "code": "",
+                    "libelle": "",
+                    "annulable": true,
+                    "badgeRemboursement": true
+                }
+            ],
+            "documentKDO": {
+                "affichable": true,
+                "libelle": "Impression Papier",
+                "valeurParDefaut": false,
+                "texteExplicatif": [
+                    {
+                        "ligne": "1",
+                        "texteInfo": "Si il s'agit d'un cadeau, vous pouvez demander"
+                    },
+                    {
+                        "ligne": "2",
+                        "texteInfo": "l'impression papier de la facture ou du bon de commande"
+                    }
+                ]
+            },
+            "magasins": [
+                {
+                    "code": "F002",
+                    "libelle": "MONS",
+                    "postal": "59370",
+                    "proximite": false
+                },
+                {
+                    "code": "F004",
+                    "libelle": "TEST NEW BM BIS",
+                    "postal": "59000",
+                    "proximite": false
+                },
+                {
+                    "code": "F007",
+                    "libelle": "DOUAI",
+                    "postal": "59500",
+                    "proximite": true
+                },
+                {
+                    "code": "F010",
+                    "libelle": "CAMBRAI",
+                    "postal": "59400",
+                    "proximite": false
+                },
+                {
+                    "code": "F011",
+                    "libelle": "ST ANDRE",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F012",
+                    "libelle": "LENS",
+                    "postal": "62880",
+                    "proximite": false
+                },
+                {
+                    "code": "F015",
+                    "libelle": "RONCQ",
+                    "postal": "59200",
+                    "proximite": true
+                },
+                {
+                    "code": "F017",
+                    "libelle": "PETITE FORET",
+                    "postal": "59494",
+                    "proximite": false
+                },
+                {
+                    "code": "F018",
+                    "libelle": "DUNKERQUE",
+                    "postal": "59760",
+                    "proximite": false
+                },
+                {
+                    "code": "F019",
+                    "libelle": "BOULOGNE",
+                    "postal": "62200",
+                    "proximite": true
+                },
+                {
+                    "code": "F020",
+                    "libelle": "NOYELLES",
+                    "postal": "62950",
+                    "proximite": true
+                },
+                {
+                    "code": "F021",
+                    "libelle": "CALAIS",
+                    "postal": "62231",
+                    "proximite": false
+                },
+                {
+                    "code": "F022",
+                    "libelle": "ENGLOS",
+                    "postal": "59320",
+                    "proximite": true
+                },
+                {
+                    "code": "F023",
+                    "libelle": "BETHUNE",
+                    "postal": "62400",
+                    "proximite": true
+                },
+                {
+                    "code": "F030",
+                    "libelle": "COMPIEGNE",
+                    "postal": "60880",
+                    "proximite": false
+                },
+                {
+                    "code": "F031",
+                    "libelle": "V2",
+                    "postal": "59650",
+                    "proximite": true
+                },
+                {
+                    "code": "F032",
+                    "libelle": "V.ASCQ  MICRO",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F033",
+                    "libelle": "LEERS",
+                    "postal": "59115",
+                    "proximite": false
+                },
+                {
+                    "code": "F034",
+                    "libelle": "SAINT QUENTIN",
+                    "postal": "02100",
+                    "proximite": false
+                },
+                {
+                    "code": "F035",
+                    "libelle": "AMIENS",
+                    "postal": "80000",
+                    "proximite": false
+                },
+                {
+                    "code": "F040",
+                    "libelle": "ST OMER",
+                    "postal": "62510",
+                    "proximite": false
+                },
+                {
+                    "code": "F041",
+                    "libelle": "FACHES THUMESNIL",
+                    "postal": "59155",
+                    "proximite": false
+                },
+                {
+                    "code": "F048",
+                    "libelle": "S.M.S",
+                    "postal": "59810",
+                    "proximite": false
+                },
+                {
+                    "code": "F100",
+                    "libelle": "PARIS BEAUGRENELLE",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F106",
+                    "libelle": "GROSLAY",
+                    "postal": "95410",
+                    "proximite": false
+                },
+                {
+                    "code": "F109",
+                    "libelle": "CLAYE SOUILLY",
+                    "postal": "77410",
+                    "proximite": false
+                },
+                {
+                    "code": "F114",
+                    "libelle": "THIAIS",
+                    "postal": "94320",
+                    "proximite": false
+                },
+                {
+                    "code": "F115",
+                    "libelle": "VILLIERS SUR MARNE",
+                    "postal": "94350",
+                    "proximite": false
+                },
+                {
+                    "code": "F116",
+                    "libelle": "MONTEVRAIN",
+                    "postal": "77144",
+                    "proximite": false
+                },
+                {
+                    "code": "F117",
+                    "libelle": "CRETEIL",
+                    "postal": "94000",
+                    "proximite": false
+                },
+                {
+                    "code": "F118",
+                    "libelle": "ST DOULCHARD",
+                    "postal": "18230",
+                    "proximite": false
+                },
+                {
+                    "code": "F119",
+                    "libelle": "COIGNIERES",
+                    "postal": "78310",
+                    "proximite": false
+                },
+                {
+                    "code": "F123",
+                    "libelle": "BETHUNE",
+                    "postal": "62400",
+                    "proximite": false
+                },
+                {
+                    "code": "F135",
+                    "libelle": "CORMONTREUIL",
+                    "postal": "51350",
+                    "proximite": true
+                },
+                {
+                    "code": "F137",
+                    "libelle": "NANCY VANDOEUVRE",
+                    "postal": "54512",
+                    "proximite": false
+                },
+                {
+                    "code": "F138",
+                    "libelle": "METZ METZANINE",
+                    "postal": "57070",
+                    "proximite": false
+                },
+                {
+                    "code": "F141",
+                    "libelle": "VENDENHEIM",
+                    "postal": "67550",
+                    "proximite": false
+                },
+                {
+                    "code": "F142",
+                    "libelle": "MULHOUSE",
+                    "postal": "51350",
+                    "proximite": false
+                },
+                {
+                    "code": "F145",
+                    "libelle": "a parametrer",
+                    "postal": "76600",
+                    "proximite": false
+                },
+                {
+                    "code": "F148",
+                    "libelle": "LE HAVRE",
+                    "postal": "51350",
+                    "proximite": false
+                },
+                {
+                    "code": "F150",
+                    "libelle": "AUBERGENVILLE",
+                    "postal": "51350",
+                    "proximite": false
+                },
+                {
+                    "code": "F152",
+                    "libelle": "TOULON LA VALETTE",
+                    "postal": "83160",
+                    "proximite": false
+                },
+                {
+                    "code": "F159",
+                    "libelle": "DOMUS ROSNY SOUS BOIS",
+                    "postal": "93110",
+                    "proximite": false
+                },
+                {
+                    "code": "F167",
+                    "libelle": "VILLEFRANCHE SUR SAONE",
+                    "postal": "69400",
+                    "proximite": false
+                },
+                {
+                    "code": "F171",
+                    "libelle": "AULNAY",
+                    "postal": "93600",
+                    "proximite": true
+                },
+                {
+                    "code": "F173",
+                    "libelle": "MONTIGNY",
+                    "postal": "95370",
+                    "proximite": false
+                },
+                {
+                    "code": "F174",
+                    "libelle": "FONTENAY",
+                    "postal": "94120",
+                    "proximite": false
+                },
+                {
+                    "code": "F175",
+                    "libelle": "LES CLAYES SOUS BOIS",
+                    "postal": "78340",
+                    "proximite": false
+                },
+                {
+                    "code": "F176",
+                    "libelle": "MELUN",
+                    "postal": "77240",
+                    "proximite": false
+                },
+                {
+                    "code": "F178",
+                    "libelle": "MANTES",
+                    "postal": "78200",
+                    "proximite": false
+                },
+                {
+                    "code": "F181",
+                    "libelle": "MASSY",
+                    "postal": "91300",
+                    "proximite": false
+                },
+                {
+                    "code": "F182",
+                    "libelle": "LOGNES",
+                    "postal": "77185",
+                    "proximite": false
+                },
+                {
+                    "code": "F183",
+                    "libelle": "ORMESSON",
+                    "postal": "94510",
+                    "proximite": false
+                },
+                {
+                    "code": "F184",
+                    "libelle": "OSNY",
+                    "postal": "95520",
+                    "proximite": false
+                },
+                {
+                    "code": "F185",
+                    "libelle": "TROYES",
+                    "postal": "10410",
+                    "proximite": false
+                },
+                {
+                    "code": "F188",
+                    "libelle": "CREIL",
+                    "postal": "60740",
+                    "proximite": false
+                },
+                {
+                    "code": "F189",
+                    "libelle": "STE GENEVIEVE",
+                    "postal": "91700",
+                    "proximite": false
+                },
+                {
+                    "code": "F191",
+                    "libelle": "ORGEVAL",
+                    "postal": "78630",
+                    "proximite": false
+                },
+                {
+                    "code": "F192",
+                    "libelle": "GENNEVILLIERS",
+                    "postal": "92230",
+                    "proximite": false
+                },
+                {
+                    "code": "F193",
+                    "libelle": "LA VILLE DU BOIS",
+                    "postal": "91620",
+                    "proximite": false
+                },
+                {
+                    "code": "F195",
+                    "libelle": "ANGOULEME",
+                    "postal": "16430",
+                    "proximite": false
+                },
+                {
+                    "code": "F198",
+                    "libelle": "SERVICE CLIENT",
+                    "postal": "59810",
+                    "proximite": false
+                },
+                {
+                    "code": "F203",
+                    "libelle": "LIBOURNE",
+                    "postal": "33500",
+                    "proximite": false
+                },
+                {
+                    "code": "F204",
+                    "libelle": "REZE",
+                    "postal": "44400",
+                    "proximite": false
+                },
+                {
+                    "code": "F205",
+                    "libelle": "B LE LAC",
+                    "postal": "33300",
+                    "proximite": false
+                },
+                {
+                    "code": "F208",
+                    "libelle": "ATLANTIS",
+                    "postal": "44800",
+                    "proximite": false
+                },
+                {
+                    "code": "F209",
+                    "libelle": "TOULOUSE",
+                    "postal": "31100",
+                    "proximite": false
+                },
+                {
+                    "code": "F213",
+                    "libelle": "MONTAUBAN",
+                    "postal": "82000",
+                    "proximite": false
+                },
+                {
+                    "code": "F214",
+                    "libelle": "PARIDIS",
+                    "postal": "44300",
+                    "proximite": false
+                },
+                {
+                    "code": "F215",
+                    "libelle": "VANNES",
+                    "postal": "56000",
+                    "proximite": false
+                },
+                {
+                    "code": "F216",
+                    "libelle": "ST BRIEUC",
+                    "postal": "22360",
+                    "proximite": false
+                },
+                {
+                    "code": "F217",
+                    "libelle": "CAEN",
+                    "postal": "14120",
+                    "proximite": false
+                },
+                {
+                    "code": "F219",
+                    "libelle": "LA ROCHE S/ YON",
+                    "postal": "85000",
+                    "proximite": false
+                },
+                {
+                    "code": "F220",
+                    "libelle": "ANGERS",
+                    "postal": "49070",
+                    "proximite": false
+                },
+                {
+                    "code": "F222",
+                    "libelle": "PAU",
+                    "postal": "64230",
+                    "proximite": false
+                },
+                {
+                    "code": "F223",
+                    "libelle": "RENNES",
+                    "postal": "35135",
+                    "proximite": false
+                },
+                {
+                    "code": "F224",
+                    "libelle": "LE MANS",
+                    "postal": "72650",
+                    "proximite": false
+                },
+                {
+                    "code": "F225",
+                    "libelle": "LE MANS SUD",
+                    "postal": "72100",
+                    "proximite": false
+                },
+                {
+                    "code": "F227",
+                    "libelle": "LORIENT",
+                    "postal": "56100",
+                    "proximite": false
+                },
+                {
+                    "code": "F235",
+                    "libelle": "TOURS",
+                    "postal": "37100",
+                    "proximite": false
+                },
+                {
+                    "code": "F236",
+                    "libelle": "VILLENAVE D'ORNON",
+                    "postal": "33140",
+                    "proximite": false
+                },
+                {
+                    "code": "F238",
+                    "libelle": "CHOLET",
+                    "postal": "49303",
+                    "proximite": false
+                },
+                {
+                    "code": "F242",
+                    "libelle": "CHASSENEUIL",
+                    "postal": "86360",
+                    "proximite": false
+                },
+                {
+                    "code": "F244",
+                    "libelle": "COLOMIERS",
+                    "postal": "31770",
+                    "proximite": false
+                },
+                {
+                    "code": "F245",
+                    "libelle": "TRIGNAC",
+                    "postal": "44570",
+                    "proximite": false
+                },
+                {
+                    "code": "F252",
+                    "libelle": "CHAMBRAY LES TOURS",
+                    "postal": "37170",
+                    "proximite": false
+                },
+                {
+                    "code": "F253",
+                    "libelle": "TOULON",
+                    "postal": "83130",
+                    "proximite": false
+                },
+                {
+                    "code": "F256",
+                    "libelle": "BREST",
+                    "postal": "29490",
+                    "proximite": false
+                },
+                {
+                    "code": "F257",
+                    "libelle": "SAINT ORENS",
+                    "postal": "31650",
+                    "proximite": false
+                },
+                {
+                    "code": "F260",
+                    "libelle": "BEZIERS",
+                    "postal": "34500",
+                    "proximite": false
+                },
+                {
+                    "code": "F263",
+                    "libelle": "CHALON SUR SAONE",
+                    "postal": "71100",
+                    "proximite": false
+                },
+                {
+                    "code": "F265",
+                    "libelle": "AUBIERE",
+                    "postal": "63170",
+                    "proximite": false
+                },
+                {
+                    "code": "F269",
+                    "libelle": "TRELISSAC",
+                    "postal": "24750",
+                    "proximite": false
+                },
+                {
+                    "code": "F270",
+                    "libelle": "BIGANOS",
+                    "postal": "33380",
+                    "proximite": false
+                },
+                {
+                    "code": "F271",
+                    "libelle": "ANGOULINS",
+                    "postal": "17690",
+                    "proximite": false
+                },
+                {
+                    "code": "F287",
+                    "libelle": "NICE",
+                    "postal": "06200",
+                    "proximite": false
+                },
+                {
+                    "code": "F289",
+                    "libelle": "ANGLET",
+                    "postal": "64600",
+                    "proximite": false
+                },
+                {
+                    "code": "F290",
+                    "libelle": "F290",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F291",
+                    "libelle": "F291",
+                    "postal": "59810",
+                    "proximite": false
+                },
+                {
+                    "code": "F292",
+                    "libelle": "F292  14:15:00",
+                    "postal": "59560",
+                    "proximite": false
+                },
+                {
+                    "code": "F293",
+                    "libelle": "F293",
+                    "postal": "77777",
+                    "proximite": false
+                },
+                {
+                    "code": "F295",
+                    "libelle": "SITE F295",
+                    "postal": "59560",
+                    "proximite": false
+                },
+                {
+                    "code": "F298",
+                    "libelle": "SITE F298",
+                    "postal": "59560",
+                    "proximite": false
+                },
+                {
+                    "code": "F299",
+                    "libelle": "SITE F299",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F302",
+                    "libelle": "SAINT PRIEST",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F307",
+                    "libelle": "BEYNOST",
+                    "postal": "01700",
+                    "proximite": false
+                },
+                {
+                    "code": "F309",
+                    "libelle": "LIMONEST",
+                    "postal": "69760",
+                    "proximite": false
+                },
+                {
+                    "code": "F312",
+                    "libelle": "ROANNE",
+                    "postal": "42300",
+                    "proximite": false
+                },
+                {
+                    "code": "F313",
+                    "libelle": "ST EGREVE",
+                    "postal": "38120",
+                    "proximite": false
+                },
+                {
+                    "code": "F314",
+                    "libelle": "ECHIROLLES",
+                    "postal": "38130",
+                    "proximite": false
+                },
+                {
+                    "code": "F315",
+                    "libelle": "ST PRIEST",
+                    "postal": "69800",
+                    "proximite": false
+                },
+                {
+                    "code": "F316",
+                    "libelle": "NIMES",
+                    "postal": "30900",
+                    "proximite": false
+                },
+                {
+                    "code": "F317",
+                    "libelle": "LE PONTET",
+                    "postal": "84130",
+                    "proximite": false
+                },
+                {
+                    "code": "F319",
+                    "libelle": "VITROLLES",
+                    "postal": "13127",
+                    "proximite": false
+                },
+                {
+                    "code": "F321",
+                    "libelle": "AUBAGNE",
+                    "postal": "13400",
+                    "proximite": false
+                },
+                {
+                    "code": "F322",
+                    "libelle": "MULHOUSE",
+                    "postal": "68260",
+                    "proximite": false
+                },
+                {
+                    "code": "F323",
+                    "libelle": "PLAN DE CAMPAGNE",
+                    "postal": "13480",
+                    "proximite": false
+                },
+                {
+                    "code": "F325",
+                    "libelle": "VALENCE",
+                    "postal": "26000",
+                    "proximite": false
+                },
+                {
+                    "code": "F327",
+                    "libelle": "MANDELIEU",
+                    "postal": "06210",
+                    "proximite": false
+                },
+                {
+                    "code": "F328",
+                    "libelle": "QUETIGNY",
+                    "postal": "21800",
+                    "proximite": false
+                },
+                {
+                    "code": "F329",
+                    "libelle": "BELFORT",
+                    "postal": "90400",
+                    "proximite": false
+                },
+                {
+                    "code": "F331",
+                    "libelle": "TERVILLE",
+                    "postal": "57180",
+                    "proximite": false
+                },
+                {
+                    "code": "F332",
+                    "libelle": "MACON",
+                    "postal": "71000",
+                    "proximite": false
+                },
+                {
+                    "code": "F334",
+                    "libelle": "VILLARS",
+                    "postal": "42390",
+                    "proximite": false
+                },
+                {
+                    "code": "F335",
+                    "libelle": "CHALONS EN CHAMPAGNE",
+                    "postal": "51000",
+                    "proximite": false
+                },
+                {
+                    "code": "F336",
+                    "libelle": "METZ",
+                    "postal": "57685",
+                    "proximite": false
+                },
+                {
+                    "code": "F337",
+                    "libelle": "BESANCON",
+                    "postal": "25000",
+                    "proximite": false
+                },
+                {
+                    "code": "F338",
+                    "libelle": "ISLE D'ABEAU",
+                    "postal": "38080",
+                    "proximite": false
+                },
+                {
+                    "code": "F339",
+                    "libelle": "REIMS",
+                    "postal": "51350",
+                    "proximite": false
+                },
+                {
+                    "code": "F400",
+                    "libelle": "TEST",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F554",
+                    "libelle": "TEST INGRID",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F555",
+                    "libelle": "TEST EMERIC",
+                    "postal": "59000",
+                    "proximite": false
+                },
+                {
+                    "code": "F666",
+                    "libelle": "PAR",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F777",
+                    "libelle": "7777",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F805",
+                    "libelle": "F805 TTTTTTTTTTTTTTTTTTTTTTTTT",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F806",
+                    "libelle": "SITE F806 PW",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F807",
+                    "libelle": "80777777777777777777777777777T",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F820",
+                    "libelle": "SITE F820   TEST 820",
+                    "postal": "62590",
+                    "proximite": false
+                },
+                {
+                    "code": "F888",
+                    "libelle": "XDXCDCDSCSDCDD",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F905",
+                    "libelle": "WWW.BOULANGER.COM",
+                    "postal": "59810",
+                    "proximite": false
+                },
+                {
+                    "code": "F926",
+                    "libelle": "SITE 926",
+                    "postal": "",
+                    "proximite": false
+                },
+                {
+                    "code": "F943",
+                    "libelle": "PARTENARIATS",
+                    "postal": "59810",
+                    "proximite": false
+                },
+                {
+                    "code": "F945",
+                    "libelle": "COMPTOIR MERLIMONT",
+                    "postal": "62155",
+                    "proximite": false
+                },
+                {
+                    "code": "F947",
+                    "libelle": "COMPTOIR WASQUEHAL",
+                    "postal": "59290",
+                    "proximite": false
+                },
+                {
+                    "code": "F950",
+                    "libelle": "COMPTOIR HUB",
+                    "postal": "59811",
+                    "proximite": false
+                },
+                {
+                    "code": "F987",
+                    "libelle": "ENGLOS",
+                    "postal": "59320",
+                    "proximite": false
+                }
+            ],
+            "pays": [
+                {
+                    "code": "AFG",
+                    "libelle": "AFGHANISTAN"
+                },
+                {
+                    "code": "ZAF",
+                    "libelle": "AFRIQUE DU SUD"
+                },
+                {
+                    "code": "ALB",
+                    "libelle": "ALBANIE"
+                },
+                {
+                    "code": "DZA",
+                    "libelle": "ALGÉRIE"
+                },
+                {
+                    "code": "DEU",
+                    "libelle": "ALLEMAGNE"
+                },
+                {
+                    "code": "AND",
+                    "libelle": "ANDORRE"
+                },
+                {
+                    "code": "AGO",
+                    "libelle": "ANGOLA"
+                },
+                {
+                    "code": "AIA",
+                    "libelle": "ANGUILLA"
+                },
+                {
+                    "code": "ATF",
+                    "libelle": "ANTARCT. FR."
+                },
+                {
+                    "code": "ATA",
+                    "libelle": "ANTARCTIQUE"
+                },
+                {
+                    "code": "ATG",
+                    "libelle": "ANTIGUA/BARBUDA"
+                },
+                {
+                    "code": "ANT",
+                    "libelle": "ANTILLES NÉERL."
+                },
+                {
+                    "code": "SAU",
+                    "libelle": "ARABIE SAOUDITE"
+                },
+                {
+                    "code": "ARG",
+                    "libelle": "ARGENTINE"
+                },
+                {
+                    "code": "ARM",
+                    "libelle": "ARMÉNIE"
+                },
+                {
+                    "code": "ABW",
+                    "libelle": "ARUBA"
+                },
+                {
+                    "code": "AUS",
+                    "libelle": "AUSTRALIE"
+                },
+                {
+                    "code": "AUT",
+                    "libelle": "AUTRICHE"
+                },
+                {
+                    "code": "AZE",
+                    "libelle": "AZERBAÏDJAN"
+                },
+                {
+                    "code": "BLZ",
+                    "libelle": "BÉLIZE"
+                },
+                {
+                    "code": "BEN",
+                    "libelle": "BÉNIN"
+                },
+                {
+                    "code": "BHS",
+                    "libelle": "BAHAMAS"
+                },
+                {
+                    "code": "BHR",
+                    "libelle": "BAHREÏN"
+                },
+                {
+                    "code": "BGD",
+                    "libelle": "BANGLADESH"
+                },
+                {
+                    "code": "BRB",
+                    "libelle": "BARBADE"
+                },
+                {
+                    "code": "BEL",
+                    "libelle": "BELGIQUE"
+                },
+                {
+                    "code": "BMU",
+                    "libelle": "BERMUDES"
+                },
+                {
+                    "code": "BTN",
+                    "libelle": "BHOUTAN"
+                },
+                {
+                    "code": "BLR",
+                    "libelle": "BIÉLORUSSIE"
+                },
+                {
+                    "code": "MMR",
+                    "libelle": "BIRMANIE (MYAN)"
+                },
+                {
+                    "code": "BOL",
+                    "libelle": "BOLIVIE"
+                },
+                {
+                    "code": "BIH",
+                    "libelle": "BOSNIE-HERZ."
+                },
+                {
+                    "code": "BWA",
+                    "libelle": "BOTSWANA"
+                },
+                {
+                    "code": "BRA",
+                    "libelle": "BRÉSIL"
+                },
+                {
+                    "code": "BRN",
+                    "libelle": "BRUNÉI"
+                },
+                {
+                    "code": "BGR",
+                    "libelle": "BULGARIE"
+                },
+                {
+                    "code": "BFA",
+                    "libelle": "BURKINA FASO"
+                },
+                {
+                    "code": "BDI",
+                    "libelle": "BURUNDI"
+                },
+                {
+                    "code": "KHM",
+                    "libelle": "CAMBODGE"
+                },
+                {
+                    "code": "CMR",
+                    "libelle": "CAMEROUN"
+                },
+                {
+                    "code": "CAN",
+                    "libelle": "CANADA"
+                },
+                {
+                    "code": "CPV",
+                    "libelle": "CAP-VERT"
+                },
+                {
+                    "code": "CAF",
+                    "libelle": "CENTRAFR. (RÉP)"
+                },
+                {
+                    "code": "CHL",
+                    "libelle": "CHILI"
+                },
+                {
+                    "code": "CHN",
+                    "libelle": "CHINE"
+                },
+                {
+                    "code": "CYP",
+                    "libelle": "CHYPRE"
+                },
+                {
+                    "code": "COL",
+                    "libelle": "COLOMBIE"
+                },
+                {
+                    "code": "COM",
+                    "libelle": "COMORES"
+                },
+                {
+                    "code": "COG",
+                    "libelle": "CONGO"
+                },
+                {
+                    "code": "PRK",
+                    "libelle": "CORÉE DU NORD"
+                },
+                {
+                    "code": "KOR",
+                    "libelle": "CORÉE DU SUD"
+                },
+                {
+                    "code": "CRI",
+                    "libelle": "COSTA RICA"
+                },
+                {
+                    "code": "HRV",
+                    "libelle": "CROATIE"
+                },
+                {
+                    "code": "CUB",
+                    "libelle": "CUBA"
+                },
+                {
+                    "code": "CIV",
+                    "libelle": "CÔTE D'IVOIRE"
+                },
+                {
+                    "code": "DNK",
+                    "libelle": "DANEMARK"
+                },
+                {
+                    "code": "DJI",
+                    "libelle": "DJIBOUTI"
+                },
+                {
+                    "code": "DMA",
+                    "libelle": "DOMINIQUE"
+                },
+                {
+                    "code": "EGY",
+                    "libelle": "EGYPTE"
+                },
+                {
+                    "code": "ARE",
+                    "libelle": "EMIRATS ARABES"
+                },
+                {
+                    "code": "ECU",
+                    "libelle": "EQUATEUR"
+                },
+                {
+                    "code": "ERI",
+                    "libelle": "ERYTHRÉE"
+                },
+                {
+                    "code": "ESP",
+                    "libelle": "ESPAGNE"
+                },
+                {
+                    "code": "EST",
+                    "libelle": "ESTONIE"
+                },
+                {
+                    "code": "USA",
+                    "libelle": "ETATS-UNIS"
+                },
+                {
+                    "code": "ETH",
+                    "libelle": "ETHIOPIE"
+                },
+                {
+                    "code": "FRO",
+                    "libelle": "FÉROÉ (ILES)"
+                },
+                {
+                    "code": "FJI",
+                    "libelle": "FIDJI"
+                },
+                {
+                    "code": "FIN",
+                    "libelle": "FINLANDE"
+                },
+                {
+                    "code": "FRA",
+                    "libelle": "FRANCE"
+                },
+                {
+                    "code": "GEO",
+                    "libelle": "GÉORGIE"
+                },
+                {
+                    "code": "GAB",
+                    "libelle": "GABON"
+                },
+                {
+                    "code": "GMB",
+                    "libelle": "GAMBIE"
+                },
+                {
+                    "code": "GHA",
+                    "libelle": "GHANA"
+                },
+                {
+                    "code": "GIB",
+                    "libelle": "GIBRALTAR"
+                },
+                {
+                    "code": "GRC",
+                    "libelle": "GRÈCE"
+                },
+                {
+                    "code": "GRD",
+                    "libelle": "GRENADE"
+                },
+                {
+                    "code": "GRL",
+                    "libelle": "GROENLAND"
+                },
+                {
+                    "code": "GLP",
+                    "libelle": "GUADELOUPE"
+                },
+                {
+                    "code": "GUM",
+                    "libelle": "GUAM"
+                },
+                {
+                    "code": "GTM",
+                    "libelle": "GUATEMALA"
+                },
+                {
+                    "code": "GIN",
+                    "libelle": "GUINÉE"
+                },
+                {
+                    "code": "GNQ",
+                    "libelle": "GUINÉE ÉQUATOR."
+                },
+                {
+                    "code": "GNB",
+                    "libelle": "GUINÉE-BISSAU"
+                },
+                {
+                    "code": "GUY",
+                    "libelle": "GUYANE"
+                },
+                {
+                    "code": "GUF",
+                    "libelle": "GUYANE FRANÇ."
+                },
+                {
+                    "code": "HTI",
+                    "libelle": "HAÏTI"
+                },
+                {
+                    "code": "HND",
+                    "libelle": "HONDURAS"
+                },
+                {
+                    "code": "HKG",
+                    "libelle": "HONG KONG"
+                },
+                {
+                    "code": "HUN",
+                    "libelle": "HONGRIE"
+                },
+                {
+                    "code": "HMD",
+                    "libelle": "IL.HEARD/MCDON."
+                },
+                {
+                    "code": "BVT",
+                    "libelle": "ILE BOUVET"
+                },
+                {
+                    "code": "CXR",
+                    "libelle": "ILE CHRISTMAS"
+                },
+                {
+                    "code": "NFK",
+                    "libelle": "ILE NORFOLK"
+                },
+                {
+                    "code": "CYM",
+                    "libelle": "ILES CAÏMANS"
+                },
+                {
+                    "code": "CCK",
+                    "libelle": "ILES COCOS"
+                },
+                {
+                    "code": "COK",
+                    "libelle": "ILES COOK"
+                },
+                {
+                    "code": "MNP",
+                    "libelle": "ILES MARIANNES"
+                },
+                {
+                    "code": "UMI",
+                    "libelle": "ILES MINOR OUTL"
+                },
+                {
+                    "code": "NIU",
+                    "libelle": "ILES NIUE"
+                },
+                {
+                    "code": "SGS",
+                    "libelle": "ILES SANDWICH"
+                },
+                {
+                    "code": "SJM",
+                    "libelle": "ILES SVALBARD"
+                },
+                {
+                    "code": "TKL",
+                    "libelle": "ILES TOKELAU"
+                },
+                {
+                    "code": "VGB",
+                    "libelle": "ILES VIERGES GB"
+                },
+                {
+                    "code": "VIR",
+                    "libelle": "ILES VIERGES US"
+                },
+                {
+                    "code": "IND",
+                    "libelle": "INDE"
+                },
+                {
+                    "code": "IDN",
+                    "libelle": "INDONÉSIE"
+                },
+                {
+                    "code": "IRN",
+                    "libelle": "IRAN"
+                },
+                {
+                    "code": "IRQ",
+                    "libelle": "IRAQ"
+                },
+                {
+                    "code": "IRL",
+                    "libelle": "IRLANDE"
+                },
+                {
+                    "code": "ISL",
+                    "libelle": "ISLANDE"
+                },
+                {
+                    "code": "ISR",
+                    "libelle": "ISRAËL"
+                },
+                {
+                    "code": "ITA",
+                    "libelle": "ITALIE"
+                },
+                {
+                    "code": "JAM",
+                    "libelle": "JAMAÏQUE"
+                },
+                {
+                    "code": "JPN",
+                    "libelle": "JAPON"
+                },
+                {
+                    "code": "JOR",
+                    "libelle": "JORDANIE"
+                },
+                {
+                    "code": "KAZ",
+                    "libelle": "KAZAKHSTAN"
+                },
+                {
+                    "code": "KEN",
+                    "libelle": "KENYA"
+                },
+                {
+                    "code": "KIR",
+                    "libelle": "KIRIBATI"
+                },
+                {
+                    "code": "KWT",
+                    "libelle": "KOWEIT"
+                },
+                {
+                    "code": "KGZ",
+                    "libelle": "KYRGHIZISTAN"
+                },
+                {
+                    "code": "LAO",
+                    "libelle": "LAOS"
+                },
+                {
+                    "code": "LSO",
+                    "libelle": "LESOTHO"
+                },
+                {
+                    "code": "LVA",
+                    "libelle": "LETTONIE"
+                },
+                {
+                    "code": "LBN",
+                    "libelle": "LIBAN"
+                },
+                {
+                    "code": "LBR",
+                    "libelle": "LIBERIA"
+                },
+                {
+                    "code": "LIE",
+                    "libelle": "LIECHTENSTEIN"
+                },
+                {
+                    "code": "LTU",
+                    "libelle": "LITHUANIE"
+                },
+                {
+                    "code": "LUX",
+                    "libelle": "LUXEMBOURG"
+                },
+                {
+                    "code": "LBY",
+                    "libelle": "LYBIE"
+                },
+                {
+                    "code": "MKD",
+                    "libelle": "MACÉDOINE"
+                },
+                {
+                    "code": "MAC",
+                    "libelle": "MACAO"
+                },
+                {
+                    "code": "MDG",
+                    "libelle": "MADAGASCAR"
+                },
+                {
+                    "code": "MYS",
+                    "libelle": "MALAISIE"
+                },
+                {
+                    "code": "MWI",
+                    "libelle": "MALAWI"
+                },
+                {
+                    "code": "MDV",
+                    "libelle": "MALDIVES"
+                },
+                {
+                    "code": "MLI",
+                    "libelle": "MALI"
+                },
+                {
+                    "code": "FLK",
+                    "libelle": "MALOUINES"
+                },
+                {
+                    "code": "MLT",
+                    "libelle": "MALTE"
+                },
+                {
+                    "code": "MAR",
+                    "libelle": "MAROC"
+                },
+                {
+                    "code": "MHL",
+                    "libelle": "MARSHALL (ILES)"
+                },
+                {
+                    "code": "MTQ",
+                    "libelle": "MARTINIQUE"
+                },
+                {
+                    "code": "MUS",
+                    "libelle": "MAURICE (ILE)"
+                },
+                {
+                    "code": "MRT",
+                    "libelle": "MAURITANIE"
+                },
+                {
+                    "code": "MYT",
+                    "libelle": "MAYOTTE"
+                },
+                {
+                    "code": "MEX",
+                    "libelle": "MEXIQUE"
+                },
+                {
+                    "code": "FSM",
+                    "libelle": "MICRONÉSIE"
+                },
+                {
+                    "code": "MDA",
+                    "libelle": "MOLDAVIE"
+                },
+                {
+                    "code": "MCO",
+                    "libelle": "MONACO"
+                },
+                {
+                    "code": "MNG",
+                    "libelle": "MONGOLIE"
+                },
+                {
+                    "code": "MSR",
+                    "libelle": "MONTSERRAT"
+                },
+                {
+                    "code": "MOZ",
+                    "libelle": "MOZAMBIQUE"
+                },
+                {
+                    "code": "NPL",
+                    "libelle": "NÉPAL"
+                },
+                {
+                    "code": "NAM",
+                    "libelle": "NAMIBIE"
+                },
+                {
+                    "code": "NRU",
+                    "libelle": "NAURU"
+                },
+                {
+                    "code": "NCL",
+                    "libelle": "NELLE CALÉDONIE"
+                },
+                {
+                    "code": "NIC",
+                    "libelle": "NICARAGUA"
+                },
+                {
+                    "code": "NER",
+                    "libelle": "NIGER"
+                },
+                {
+                    "code": "NGA",
+                    "libelle": "NIGERIA"
+                },
+                {
+                    "code": "NOR",
+                    "libelle": "NORVÈGE"
+                },
+                {
+                    "code": "NZL",
+                    "libelle": "NVELLE ZÉLANDE"
+                },
+                {
+                    "code": "OMN",
+                    "libelle": "OMAN"
+                },
+                {
+                    "code": "UGA",
+                    "libelle": "OUGANDA"
+                },
+                {
+                    "code": "UZB",
+                    "libelle": "OUZBÉKISTAN"
+                },
+                {
+                    "code": "PER",
+                    "libelle": "PÉROU"
+                },
+                {
+                    "code": "PAK",
+                    "libelle": "PAKISTAN"
+                },
+                {
+                    "code": "PLW",
+                    "libelle": "PALAU"
+                },
+                {
+                    "code": "PAN",
+                    "libelle": "PANAMA"
+                },
+                {
+                    "code": "PNG",
+                    "libelle": "PAP.NOUV.GUINÉE"
+                },
+                {
+                    "code": "PRY",
+                    "libelle": "PARAGUAY"
+                },
+                {
+                    "code": "NLD",
+                    "libelle": "PAYS-BAS"
+                },
+                {
+                    "code": "PHL",
+                    "libelle": "PHILIPPINES"
+                },
+                {
+                    "code": "PCN",
+                    "libelle": "PITCAÏRN (BOUN)"
+                },
+                {
+                    "code": "POL",
+                    "libelle": "POLOGNE"
+                },
+                {
+                    "code": "PYF",
+                    "libelle": "POLYNÉSIE FRAN."
+                },
+                {
+                    "code": "PRI",
+                    "libelle": "PORTO RICO"
+                },
+                {
+                    "code": "PRT",
+                    "libelle": "PORTUGAL"
+                },
+                {
+                    "code": "QAT",
+                    "libelle": "QATAR"
+                },
+                {
+                    "code": "DOM",
+                    "libelle": "RÉP.DOMINICAINE"
+                },
+                {
+                    "code": "REU",
+                    "libelle": "RÉUNION"
+                },
+                {
+                    "code": "CZE",
+                    "libelle": "REPUBL. TCHEQUE"
+                },
+                {
+                    "code": "ROM",
+                    "libelle": "ROUMANIE"
+                },
+                {
+                    "code": "GBR",
+                    "libelle": "ROYAUME UNI"
+                },
+                {
+                    "code": "RUS",
+                    "libelle": "RUSSIE (FÉD.)"
+                },
+                {
+                    "code": "RWA",
+                    "libelle": "RWANDA"
+                },
+                {
+                    "code": "SEN",
+                    "libelle": "SÉNÉGAL"
+                },
+                {
+                    "code": "ESH",
+                    "libelle": "SAHARA OCCID."
+                },
+                {
+                    "code": "VCT",
+                    "libelle": "SAINT VINCENT"
+                },
+                {
+                    "code": "SMR",
+                    "libelle": "SAINT-MARIN"
+                },
+                {
+                    "code": "SHN",
+                    "libelle": "SAINTE-HÉLÈNE"
+                },
+                {
+                    "code": "LCA",
+                    "libelle": "SAINTE-LUCIE"
+                },
+                {
+                    "code": "SLB",
+                    "libelle": "SALOMON (ILES)"
+                },
+                {
+                    "code": "SLV",
+                    "libelle": "SALVADOR"
+                },
+                {
+                    "code": "WSM",
+                    "libelle": "SAMOA"
+                },
+                {
+                    "code": "STP",
+                    "libelle": "SAO TOMÉ-ET-PR."
+                },
+                {
+                    "code": "SYC",
+                    "libelle": "SEYCHELLES"
+                },
+                {
+                    "code": "SLE",
+                    "libelle": "SIERRA LEONE"
+                },
+                {
+                    "code": "SGP",
+                    "libelle": "SINGAPOUR"
+                },
+                {
+                    "code": "SVN",
+                    "libelle": "SLOVÉNIE"
+                },
+                {
+                    "code": "SVK",
+                    "libelle": "SLOVAQUIE"
+                },
+                {
+                    "code": "SOM",
+                    "libelle": "SOMALIE"
+                },
+                {
+                    "code": "SDN",
+                    "libelle": "SOUDAN"
+                },
+                {
+                    "code": "LKA",
+                    "libelle": "SRI LANKA"
+                },
+                {
+                    "code": "KNA",
+                    "libelle": "ST KITTS/NAVIS"
+                },
+                {
+                    "code": "SPM",
+                    "libelle": "ST PIERRE MIQ."
+                },
+                {
+                    "code": "SWE",
+                    "libelle": "SUÈDE"
+                },
+                {
+                    "code": "CHE",
+                    "libelle": "SUISSE"
+                },
+                {
+                    "code": "SUR",
+                    "libelle": "SURINAME"
+                },
+                {
+                    "code": "SWZ",
+                    "libelle": "SWAZILAND"
+                },
+                {
+                    "code": "SYR",
+                    "libelle": "SYRIE"
+                },
+                {
+                    "code": "TWN",
+                    "libelle": "TAÏWAN"
+                },
+                {
+                    "code": "TJK",
+                    "libelle": "TADJIKISTAN"
+                },
+                {
+                    "code": "TZA",
+                    "libelle": "TANZANIE"
+                },
+                {
+                    "code": "TCD",
+                    "libelle": "TCHAD"
+                },
+                {
+                    "code": "IOT",
+                    "libelle": "TERBRITOCÉANIND"
+                },
+                {
+                    "code": "THA",
+                    "libelle": "THAÏLANDE"
+                },
+                {
+                    "code": "TMP",
+                    "libelle": "TIMOR ORIENT."
+                },
+                {
+                    "code": "TGO",
+                    "libelle": "TOGO"
+                },
+                {
+                    "code": "TON",
+                    "libelle": "TONGA"
+                },
+                {
+                    "code": "TTO",
+                    "libelle": "TRINITAD TOBAGO"
+                },
+                {
+                    "code": "TUN",
+                    "libelle": "TUNISIE"
+                },
+                {
+                    "code": "TKM",
+                    "libelle": "TURKMÉNISTAN"
+                },
+                {
+                    "code": "TCA",
+                    "libelle": "TURKS CAIQUES"
+                },
+                {
+                    "code": "TUR",
+                    "libelle": "TURQUIE"
+                },
+                {
+                    "code": "TUV",
+                    "libelle": "TUVALU"
+                },
+                {
+                    "code": "UKR",
+                    "libelle": "UKRAINE"
+                },
+                {
+                    "code": "URY",
+                    "libelle": "URUGUAY"
+                },
+                {
+                    "code": "VUT",
+                    "libelle": "VANUATU"
+                },
+                {
+                    "code": "VAT",
+                    "libelle": "VATICAN"
+                },
+                {
+                    "code": "VEN",
+                    "libelle": "VENEZUELA"
+                },
+                {
+                    "code": "VNM",
+                    "libelle": "VIÊT NAM"
+                },
+                {
+                    "code": "WLF",
+                    "libelle": "WALLIS FUTUNA"
+                },
+                {
+                    "code": "YEM",
+                    "libelle": "YÉMEN"
+                },
+                {
+                    "code": "YUG",
+                    "libelle": "YOUGOSLAVIE"
+                },
+                {
+                    "code": "ZAR",
+                    "libelle": "ZAÏRE"
+                },
+                {
+                    "code": "ZMB",
+                    "libelle": "ZAMBIE"
+                },
+                {
+                    "code": "ZWE",
+                    "libelle": "ZIMBABWE"
+                }
+            ],
+            "voies": [
+                {
+                    "code": "BIS",
+                    "libelle": "BIS"
+                },
+                {
+                    "code": "TER",
+                    "libelle": "TER"
+                },
+                {
+                    "code": "VIDE",
+                    "libelle": ""
+                }
+            ],
+            "typeVoies": [
+                {
+                    "code": "ABE",
+                    "libelle": "ABBAYE"
+                },
+                {
+                    "code": "ACH",
+                    "libelle": "ANCIEN CHEMIN"
+                },
+                {
+                    "code": "AGL",
+                    "libelle": "AGGLOMERATION"
+                },
+                {
+                    "code": "AIRE",
+                    "libelle": "AIRE"
+                },
+                {
+                    "code": "AL",
+                    "libelle": "AL"
+                },
+                {
+                    "code": "ALL",
+                    "libelle": "ALLEE"
+                },
+                {
+                    "code": "ANSE",
+                    "libelle": "ANSE"
+                },
+                {
+                    "code": "ARC",
+                    "libelle": "ARCADE"
+                },
+                {
+                    "code": "ART",
+                    "libelle": "ANCIENNE ROUTE"
+                },
+                {
+                    "code": "AUT",
+                    "libelle": "AUTOROUTE"
+                },
+                {
+                    "code": "AV",
+                    "libelle": "AVENUE"
+                },
+                {
+                    "code": "BAST",
+                    "libelle": "BASTION"
+                },
+                {
+                    "code": "BCH",
+                    "libelle": "BAS CHEMIN"
+                },
+                {
+                    "code": "BCLE",
+                    "libelle": "BOUCLE"
+                },
+                {
+                    "code": "BD",
+                    "libelle": "BOULEVARD"
+                },
+                {
+                    "code": "BEGI",
+                    "libelle": "BEGUINAGE"
+                },
+                {
+                    "code": "BER",
+                    "libelle": "BERGE"
+                },
+                {
+                    "code": "BOIS",
+                    "libelle": "BOIS"
+                },
+                {
+                    "code": "BRE",
+                    "libelle": "BARRIERE"
+                },
+                {
+                    "code": "BRG",
+                    "libelle": "BOURG"
+                },
+                {
+                    "code": "BSTD",
+                    "libelle": "BASTIDE"
+                },
+                {
+                    "code": "BUT",
+                    "libelle": "BUTTE"
+                },
+                {
+                    "code": "CALE",
+                    "libelle": "CALE"
+                },
+                {
+                    "code": "CAMP",
+                    "libelle": "CAMP"
+                },
+                {
+                    "code": "CAR",
+                    "libelle": "CARREFOUR"
+                },
+                {
+                    "code": "CARE",
+                    "libelle": "CARRIERE"
+                },
+                {
+                    "code": "CARR",
+                    "libelle": "CARRE"
+                },
+                {
+                    "code": "CAU",
+                    "libelle": "CARREAU"
+                },
+                {
+                    "code": "CAV",
+                    "libelle": "CAVEE"
+                },
+                {
+                    "code": "CCAL",
+                    "libelle": "CENTRE COMMERCIAL"
+                },
+                {
+                    "code": "CD",
+                    "libelle": "CHEMIN DEPARTEMENTAL"
+                },
+                {
+                    "code": "CGNE",
+                    "libelle": "CAMPAGNE"
+                },
+                {
+                    "code": "CH",
+                    "libelle": "CHEMIN"
+                },
+                {
+                    "code": "CHE",
+                    "libelle": "CHEMIN"
+                },
+                {
+                    "code": "CHEM",
+                    "libelle": "CHEMINEMENT"
+                },
+                {
+                    "code": "CHEZ",
+                    "libelle": "CHEZ"
+                },
+                {
+                    "code": "CHI",
+                    "libelle": "CHARMILLE"
+                },
+                {
+                    "code": "CHL",
+                    "libelle": "CHALET"
+                },
+                {
+                    "code": "CHP",
+                    "libelle": "CHAPELLE"
+                },
+                {
+                    "code": "CHS",
+                    "libelle": "CHAUSSEE"
+                },
+                {
+                    "code": "CHT",
+                    "libelle": "CHATEAU"
+                },
+                {
+                    "code": "CHV",
+                    "libelle": "CHEMIN VICINAL"
+                },
+                {
+                    "code": "CITE",
+                    "libelle": "CITE"
+                },
+                {
+                    "code": "CLOI",
+                    "libelle": "CLOITRE"
+                },
+                {
+                    "code": "CLOS",
+                    "libelle": "CLOS"
+                },
+                {
+                    "code": "COL",
+                    "libelle": "COL"
+                },
+                {
+                    "code": "COLI",
+                    "libelle": "COLLINE"
+                },
+                {
+                    "code": "COR",
+                    "libelle": "CORNICHE"
+                },
+                {
+                    "code": "COTE",
+                    "libelle": "COTEAU"
+                },
+                {
+                    "code": "COTT",
+                    "libelle": "COTTAGE"
+                },
+                {
+                    "code": "COUR",
+                    "libelle": "COUR"
+                },
+                {
+                    "code": "CPG",
+                    "libelle": "CAMPING"
+                },
+                {
+                    "code": "CR",
+                    "libelle": "CHEMIN RURAL"
+                },
+                {
+                    "code": "CRS",
+                    "libelle": "COURS"
+                },
+                {
+                    "code": "CST",
+                    "libelle": "CASTEL"
+                },
+                {
+                    "code": "CTR",
+                    "libelle": "CONTOUR"
+                },
+                {
+                    "code": "CTRE",
+                    "libelle": "CENTRE"
+                },
+                {
+                    "code": "DARS",
+                    "libelle": "DARSE"
+                },
+                {
+                    "code": "DEG",
+                    "libelle": "DEGRE"
+                },
+                {
+                    "code": "DIG",
+                    "libelle": "DIGUE"
+                },
+                {
+                    "code": "DOM",
+                    "libelle": "DOMAINE"
+                },
+                {
+                    "code": "DSC",
+                    "libelle": "DESCENTE"
+                },
+                {
+                    "code": "ECL",
+                    "libelle": "ECLUSE"
+                },
+                {
+                    "code": "EGL",
+                    "libelle": "EGLISE"
+                },
+                {
+                    "code": "EN",
+                    "libelle": "ENCEINTE"
+                },
+                {
+                    "code": "ENC",
+                    "libelle": "ENCLOS"
+                },
+                {
+                    "code": "ENV",
+                    "libelle": "ENCLAVE"
+                },
+                {
+                    "code": "ESC",
+                    "libelle": "ESCALIER"
+                },
+                {
+                    "code": "ESP",
+                    "libelle": "ESPLANADE"
+                },
+                {
+                    "code": "ESPA",
+                    "libelle": "ESPACE"
+                },
+                {
+                    "code": "ETNG",
+                    "libelle": "ETANG"
+                },
+                {
+                    "code": "FG",
+                    "libelle": "FAUBOURG"
+                },
+                {
+                    "code": "FON",
+                    "libelle": "FONTAINE"
+                },
+                {
+                    "code": "FORM",
+                    "libelle": "FORUM"
+                },
+                {
+                    "code": "FORT",
+                    "libelle": "FORT"
+                },
+                {
+                    "code": "FOS",
+                    "libelle": "FOSSE"
+                },
+                {
+                    "code": "FOYR",
+                    "libelle": "FOYER"
+                },
+                {
+                    "code": "FRM",
+                    "libelle": "FERME"
+                },
+                {
+                    "code": "GAL",
+                    "libelle": "GALERIE"
+                },
+                {
+                    "code": "GARE",
+                    "libelle": "GARE"
+                },
+                {
+                    "code": "GARN",
+                    "libelle": "GARENNE"
+                },
+                {
+                    "code": "GBD",
+                    "libelle": "GRAND BOULEVARD"
+                },
+                {
+                    "code": "GDEN",
+                    "libelle": "GRAND ENSEMBLE"
+                },
+                {
+                    "code": "GPE",
+                    "libelle": "GROUPE"
+                },
+                {
+                    "code": "GPT",
+                    "libelle": "GROUPEMENT"
+                },
+                {
+                    "code": "GR",
+                    "libelle": "GRANDE RUE"
+                },
+                {
+                    "code": "GRI",
+                    "libelle": "GRILLE"
+                },
+                {
+                    "code": "GRIM",
+                    "libelle": "GRIMPETTE"
+                },
+                {
+                    "code": "HAM",
+                    "libelle": "HAMEAU"
+                },
+                {
+                    "code": "HCH",
+                    "libelle": "HAUT CHEMIN"
+                },
+                {
+                    "code": "HIP",
+                    "libelle": "HIPPODROME"
+                },
+                {
+                    "code": "HLE",
+                    "libelle": "HALLE"
+                },
+                {
+                    "code": "HLM",
+                    "libelle": "HLM"
+                },
+                {
+                    "code": "ILE",
+                    "libelle": "ILE"
+                },
+                {
+                    "code": "IMM",
+                    "libelle": "IMMEUBLE"
+                },
+                {
+                    "code": "IMP",
+                    "libelle": "IMPASSE"
+                },
+                {
+                    "code": "JARD",
+                    "libelle": "JARDIN"
+                },
+                {
+                    "code": "JTE",
+                    "libelle": "JETEE"
+                },
+                {
+                    "code": "LD",
+                    "libelle": "LIEU DIT"
+                },
+                {
+                    "code": "LEVE",
+                    "libelle": "LEVEE"
+                },
+                {
+                    "code": "LOT",
+                    "libelle": "LOTISSEMENT"
+                },
+                {
+                    "code": "MAIL",
+                    "libelle": "MAIL"
+                },
+                {
+                    "code": "MAN",
+                    "libelle": "MANOIR"
+                },
+                {
+                    "code": "MAR",
+                    "libelle": "MARCHE"
+                },
+                {
+                    "code": "MAS",
+                    "libelle": "MAS"
+                },
+                {
+                    "code": "MET",
+                    "libelle": "METRO"
+                },
+                {
+                    "code": "MF",
+                    "libelle": "MAISON FORESTIERE"
+                },
+                {
+                    "code": "MLN",
+                    "libelle": "MOULIN"
+                },
+                {
+                    "code": "MTE",
+                    "libelle": "MONTEE"
+                },
+                {
+                    "code": "MUS",
+                    "libelle": "MUSEE"
+                },
+                {
+                    "code": "N",
+                    "libelle": "ROUTE NATIONALE"
+                },
+                {
+                    "code": "NTE",
+                    "libelle": "NOUVELLE ROUTE"
+                },
+                {
+                    "code": "PA",
+                    "libelle": "PARC D ACTIVITE"
+                },
+                {
+                    "code": "PAE",
+                    "libelle": "PETITE AVENUE"
+                },
+                {
+                    "code": "PAL",
+                    "libelle": "PALAIS"
+                },
+                {
+                    "code": "PARC",
+                    "libelle": "PARC"
+                },
+                {
+                    "code": "PAS",
+                    "libelle": "PASSAGE"
+                },
+                {
+                    "code": "PASS",
+                    "libelle": "PASSE"
+                },
+                {
+                    "code": "PAT",
+                    "libelle": "PATIO"
+                },
+                {
+                    "code": "PAV",
+                    "libelle": "PAVILLON"
+                },
+                {
+                    "code": "PCH",
+                    "libelle": "PETIT CHEMIN"
+                },
+                {
+                    "code": "PERI",
+                    "libelle": "PERIPHERIQUE"
+                },
+                {
+                    "code": "PIM",
+                    "libelle": "PETITE IMPASSE"
+                },
+                {
+                    "code": "PKG",
+                    "libelle": "PARKING"
+                },
+                {
+                    "code": "PL",
+                    "libelle": "PLACE"
+                },
+                {
+                    "code": "PLAG",
+                    "libelle": "PLAGE"
+                },
+                {
+                    "code": "PLAN",
+                    "libelle": "PLAN"
+                },
+                {
+                    "code": "PLCI",
+                    "libelle": "PLACIS"
+                },
+                {
+                    "code": "PLE",
+                    "libelle": "PASSERELLE"
+                },
+                {
+                    "code": "PLN",
+                    "libelle": "PLAINE"
+                },
+                {
+                    "code": "PLT",
+                    "libelle": "PLATEAU"
+                },
+                {
+                    "code": "PN",
+                    "libelle": "PASSAGE A NIVEAU"
+                },
+                {
+                    "code": "PNT",
+                    "libelle": "POINTE"
+                },
+                {
+                    "code": "PONT",
+                    "libelle": "PONT"
+                },
+                {
+                    "code": "PORQ",
+                    "libelle": "PORTIQUE"
+                },
+                {
+                    "code": "PORT",
+                    "libelle": "PORT"
+                },
+                {
+                    "code": "POT",
+                    "libelle": "POTERNE"
+                },
+                {
+                    "code": "POUR",
+                    "libelle": "POURTOUR"
+                },
+                {
+                    "code": "PRCH",
+                    "libelle": "PORCHE"
+                },
+                {
+                    "code": "PRE",
+                    "libelle": "PRE"
+                },
+                {
+                    "code": "PROM",
+                    "libelle": "PROMENADE"
+                },
+                {
+                    "code": "PRQ",
+                    "libelle": "PRESQU ILE"
+                },
+                {
+                    "code": "PRT",
+                    "libelle": "PETITE ROUTE"
+                },
+                {
+                    "code": "PRV",
+                    "libelle": "PARVIS"
+                },
+                {
+                    "code": "PSTY",
+                    "libelle": "PERISTYLE"
+                },
+                {
+                    "code": "PTA",
+                    "libelle": "PETITE ALLEE"
+                },
+                {
+                    "code": "PTE",
+                    "libelle": "PORTE"
+                },
+                {
+                    "code": "PTR",
+                    "libelle": "PETITE RUE"
+                },
+                {
+                    "code": "QUA",
+                    "libelle": "QUARTIER"
+                },
+                {
+                    "code": "QUAI",
+                    "libelle": "QUAI"
+                },
+                {
+                    "code": "R",
+                    "libelle": "RUE"
+                },
+                {
+                    "code": "RAC",
+                    "libelle": "RACCOURCI"
+                },
+                {
+                    "code": "RAID",
+                    "libelle": "RAIDILLON"
+                },
+                {
+                    "code": "RD",
+                    "libelle": "ROUTE DE"
+                },
+                {
+                    "code": "REM",
+                    "libelle": "REMPART"
+                },
+                {
+                    "code": "RES",
+                    "libelle": "RESIDENCE"
+                },
+                {
+                    "code": "RLE",
+                    "libelle": "RUELLE"
+                },
+                {
+                    "code": "RN",
+                    "libelle": "ROUTE NATIONALE"
+                },
+                {
+                    "code": "ROC",
+                    "libelle": "ROCADE"
+                },
+                {
+                    "code": "ROQT",
+                    "libelle": "ROQUET"
+                },
+                {
+                    "code": "RPE",
+                    "libelle": "RAMPE"
+                },
+                {
+                    "code": "RPT",
+                    "libelle": "ROND POINT"
+                },
+                {
+                    "code": "RTD",
+                    "libelle": "ROTONDE"
+                },
+                {
+                    "code": "RTE",
+                    "libelle": "ROUTE"
+                },
+                {
+                    "code": "RUE",
+                    "libelle": "RUE"
+                },
+                {
+                    "code": "SEN",
+                    "libelle": "SENTIER"
+                },
+                {
+                    "code": "SQ",
+                    "libelle": "SQUARE"
+                },
+                {
+                    "code": "STA",
+                    "libelle": "STATION"
+                },
+                {
+                    "code": "STDE",
+                    "libelle": "STADE"
+                },
+                {
+                    "code": "TOUR",
+                    "libelle": "TOUR"
+                },
+                {
+                    "code": "TPL",
+                    "libelle": "TERRE PLEIN"
+                },
+                {
+                    "code": "TRA",
+                    "libelle": "TRAVERSE"
+                },
+                {
+                    "code": "TRN",
+                    "libelle": "TERRAIN"
+                },
+                {
+                    "code": "TRT",
+                    "libelle": "TERTRE"
+                },
+                {
+                    "code": "TSSE",
+                    "libelle": "TERRASSE"
+                },
+                {
+                    "code": "VAL",
+                    "libelle": "VALLEE"
+                },
+                {
+                    "code": "VC",
+                    "libelle": "VOIE COMMUNALE"
+                },
+                {
+                    "code": "VCHE",
+                    "libelle": "VIEUX CHEMIN"
+                },
+                {
+                    "code": "VEN",
+                    "libelle": "VENELLE"
+                },
+                {
+                    "code": "VGE",
+                    "libelle": "VILLAGE"
+                },
+                {
+                    "code": "VIA",
+                    "libelle": "VIA"
+                },
+                {
+                    "code": "VLA",
+                    "libelle": "VILLA"
+                },
+                {
+                    "code": "VOI",
+                    "libelle": "VOIE"
+                },
+                {
+                    "code": "VOIE",
+                    "libelle": "VOIE"
+                },
+                {
+                    "code": "VTE",
+                    "libelle": "VIEILLE ROUTE"
+                },
+                {
+                    "code": "ZA",
+                    "libelle": "ZONE D ACTIVITE"
+                },
+                {
+                    "code": "ZAC",
+                    "libelle": "ZONE D AMENAGEMENT CONCERTE"
+                },
+                {
+                    "code": "ZAD",
+                    "libelle": "ZONE D AMENAGEMENT DIFFERE"
+                },
+                {
+                    "code": "ZI",
+                    "libelle": "ZONE INDUSTRIELLE"
+                },
+                {
+                    "code": "ZONE",
+                    "libelle": "ZONE"
+                },
+                {
+                    "code": "ZUP",
+                    "libelle": "ZONE A URBANISER EN PRIORITE"
+                }
+            ],
+            "formesJuridiques": [
+                {
+                    "code": "01",
+                    "libelle": "SA"
+                },
+                {
+                    "code": "02",
+                    "libelle": "SARL"
+                },
+                {
+                    "code": "03",
+                    "libelle": "SCPI"
+                },
+                {
+                    "code": "04",
+                    "libelle": "SNC"
+                },
+                {
+                    "code": "05",
+                    "libelle": "EPA"
+                },
+                {
+                    "code": "06",
+                    "libelle": "CE"
+                },
+                {
+                    "code": "07",
+                    "libelle": "IND"
+                }
+            ],
+            "modesLivraisons": [
+                {
+                    "code": "CFA",
+                    "libelle": "CFAO Liv/Emp"
+                },
+                {
+                    "code": "CHR",
+                    "libelle": "CHRONOPOST"
+                },
+                {
+                    "code": "CLS",
+                    "libelle": "COLISSIMO"
+                },
+                {
+                    "code": "COU",
+                    "libelle": "Livraison Coursier"
+                },
+                {
+                    "code": "GEE",
+                    "libelle": "GEODIS Emportables"
+                },
+                {
+                    "code": "GEL",
+                    "libelle": "GEODIS Livrables"
+                },
+                {
+                    "code": "LIW",
+                    "libelle": "Livraison Web"
+                },
+                {
+                    "code": "LVB",
+                    "libelle": "Livraison BOULANGER"
+                },
+                {
+                    "code": "RES",
+                    "libelle": "Réservation Magasin"
+                }
+            ],
+            "redevance": [
+                {
+                    "code": "1",
+                    "libelle": "Résidence Principale"
+                },
+                {
+                    "code": "2",
+                    "libelle": "Résidence Secondaire"
+                },
+                {
+                    "code": "3",
+                    "libelle": "Dans débit de boisson"
+                },
+                {
+                    "code": "4",
+                    "libelle": "Dans un autre lieu public"
+                }
+            ],
+            "conditions": [
+                {
+                    "code": "ZREB",
+                    "libelle": "ZREB - Remise Lot",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZRSO",
+                    "libelle": "ZRSO - REMISE SOLUTION",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZR01",
+                    "libelle": "ZR01 - REMISE PUBLICITAIRE",
+                    "badge": false,
+                    "affichable": true
+                },
+                {
+                    "code": "ZR02",
+                    "libelle": "ZR02 - REPRISE DE CONTRAT",
+                    "badge": false,
+                    "affichable": true
+                },
+                {
+                    "code": "ZR03",
+                    "libelle": "ZR03 - VENTE A PERSONNEL",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZR04",
+                    "libelle": "ZR04 - REMISE SUR MATERIEL",
+                    "badge": false,
+                    "affichable": true
+                },
+                {
+                    "code": "ZR06",
+                    "libelle": "ZR06 - AVOIR SUR DEVIS",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZR07",
+                    "libelle": "ZR07 - AVOIR DE BAISSE",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZR08",
+                    "libelle": "ZR08 - AVOIRS",
+                    "badge": false,
+                    "affichable": true
+                },
+                {
+                    "code": "ZR09",
+                    "libelle": "ZR09 - AVOIRS SUR ACHAT",
+                    "badge": false,
+                    "affichable": true
+                },
+                {
+                    "code": "ZR12",
+                    "libelle": "ZR12 - Avantage Fam. Nombr.",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZR13",
+                    "libelle": "ZR13 - Remise cuisine",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZR19",
+                    "libelle": "ZR19 - Escompte comptant",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZR21",
+                    "libelle": "ZR21 - OFFRE LOCALE",
+                    "badge": false,
+                    "affichable": true
+                },
+                {
+                    "code": "ZR22",
+                    "libelle": "ZR22 - OFFRE FLASH",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZR24",
+                    "libelle": "ZR24 - OFFRE SPECIALE",
+                    "badge": false,
+                    "affichable": true
+                },
+                {
+                    "code": "ZTE1",
+                    "libelle": "ZTE1 - Taxe eco emetteur",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZTE2",
+                    "libelle": "ZTE2 - Taxe eco distribut",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZTE3",
+                    "libelle": "ZTE3 - EcoMobilier emetteur",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZTE4",
+                    "libelle": "ZTE4 - EcoMobilier distrib.",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZUE1",
+                    "libelle": "ZUE1 - AVOIR EXCEPTIONNEL",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "ZUE2",
+                    "libelle": "ZUE2 - AVOIR EXCEPTIONNEL",
+                    "badge": false,
+                    "affichable": false
+                },
+                {
+                    "code": "AW",
+                    "libelle": "AW - Alignement Web",
+                    "badge": true,
+                    "affichable": true
+                },
+                {
+                    "code": "RV",
+                    "libelle": "RV - Remise vendeur",
+                    "badge": true,
+                    "affichable": true
+                }
+            ],
+            "Optin": [
+                {
+                    "code": "1",
+                    "libelle": "E-mailing partenaire",
+                    "valeurParDefaut": "N"
+                },
+                {
+                    "code": "2",
+                    "libelle": "Courrier",
+                    "valeurParDefaut": "O"
+                },
+                {
+                    "code": "3",
+                    "libelle": "SMS",
+                    "valeurParDefaut": ""
+                },
+                {
+                    "code": "4",
+                    "libelle": "E-mailing",
+                    "valeurParDefaut": ""
+                }
+            ],
+            "infosCnil": [
+                {
+                    "ligne": "1",
+                    "texteInfo": "<b>E-mailing partenaire</b> </br>"
+                },
+                {
+                    "ligne": "4",
+                    "texteInfo": "Permet de recevoir des offres de la part des"
+                },
+                {
+                    "ligne": "5",
+                    "texteInfo": " partenaires de Boulanger</br>"
+                },
+                {
+                    "ligne": "6",
+                    "texteInfo": "Toujours à N (Non) par Défaut. Privilégions en"
+                },
+                {
+                    "ligne": "7",
+                    "texteInfo": " premier les offres Boulanger.</p>"
+                },
+                {
+                    "ligne": "10",
+                    "texteInfo": "</p><B>Courrier :</b></br>"
+                },
+                {
+                    "ligne": "12",
+                    "texteInfo": "Ce champ permet de recevoir par courrier des"
+                },
+                {
+                    "ligne": "13",
+                    "texteInfo": " offres, bons plan ou informations sur les"
+                },
+                {
+                    "ligne": "14",
+                    "texteInfo": " innovations de la part de Boulanger -"
+                },
+                {
+                    "ligne": "15",
+                    "texteInfo": "Toujours à O (oui) par défaut.       </br>"
+                },
+                {
+                    "ligne": "16",
+                    "texteInfo": "Il n'est pas nécessaire d'informer oralement"
+                },
+                {
+                    "ligne": "17",
+                    "texteInfo": " le client sur le consentement express. Des affichettes d'information sur le"
+                },
+                {
+                    "ligne": "18",
+                    "texteInfo": " droit d'opposition seront disponibles en magasin.</p>"
+                },
+                {
+                    "ligne": "19",
+                    "texteInfo": "d'opposition seront disponibles en magasin.</p>"
+                },
+                {
+                    "ligne": "22",
+                    "texteInfo": "</p><b>E-mailing et SMS :</b></br>"
+                },
+                {
+                    "ligne": "24",
+                    "texteInfo": "Ces champs permettent de recevoir des offres,"
+                },
+                {
+                    "ligne": "25",
+                    "texteInfo": " bons plans ou informations sur les innovations"
+                },
+                {
+                    "ligne": "26",
+                    "texteInfo": " de la part de Boulanger par mail ou SMS</p>"
+                },
+                {
+                    "ligne": "27",
+                    "texteInfo": "<b><u>Le recueil du consentement client est obligatoire.</u></b> </p>"
+                },
+                {
+                    "ligne": "28",
+                    "texteInfo": "O : le client donne son accord pour recevoir"
+                },
+                {
+                    "ligne": "29",
+                    "texteInfo": " des informations de la part de Boulanger </br>"
+                },
+                {
+                    "ligne": "30",
+                    "texteInfo": "N : le client s'oppose à recevoir ces informations"
+                }
+            ],
+            "infosClientSansCarte": [
+                {
+                    "ligne": 1,
+                    "texteInfo": "<br>Le client est sans carte</br>"
+                }
+            ],
+            "domaineMail": [
+
+            ],
+            "infosAssurance": [
+                {
+                    "ligne": 1,
+                    "texteInfo": "<center><b>Avant de démarrer la création du contrat</b></center></br>"
+                },
+                {
+                    "ligne": 2,
+                    "texteInfo": "1. Veuillez vous assurer que le client peut accéder à ses SMS ou Email</br>"
+                },
+                {
+                    "ligne": 3,
+                    "texteInfo": "2. Vérifiez par la carte d'identité  que le client est le souscripteur du con"
+                },
+                {
+                    "ligne": 4,
+                    "texteInfo": "trat"
+                },
+                {
+                    "ligne": 5,
+                    "texteInfo": "<BR><br>"
+                },
+                {
+                    "ligne": 6,
+                    "texteInfo": "<i>Vous vous apprêtez à souscrire un contrat pour le client en cours."
+                },
+                {
+                    "ligne": 7,
+                    "texteInfo": "Si vous souhaitez modifier le bénéficiaire du contrat, passez la commande sur"
+                },
+                {
+                    "ligne": 8,
+                    "texteInfo": " le client qui va bénéficier du contrat.<i>"
+                }
+            ],
+            "infosRetraitMagasin": [
+                {
+                    "ligne": 1,
+                    "texteInfo": "Veuillez verifier la piece d'identite du client ci-dessous :"
+                }
+            ],
+            "infosEcranFinRM": [
+                {
+                    "ligne": 1,
+                    "texteInfo": "Le document <site>/<commande>/<numFacture> vous sera envoye par Email."
+                },
+                {
+                    "ligne": 2,
+                    "texteInfo": "Le client pourra la consulter egalement sur son compte web."
+                }
+            ],
+            "civilite": [
+                {
+                    "code": "1",
+                    "libelle": "MME"
+                },
+                {
+                    "code": "3",
+                    "libelle": "M."
+                }
+            ],
+            "dictionnaire": [
+                {
+                    "code": "BLOQUE",
+                    "libelle": "BLOQUEE"
+                },
+                {
+                    "code": "BMODIFIER",
+                    "libelle": "MODIFIER"
+                },
+                {
+                    "code": "BRETRAIT",
+                    "libelle": "RETRAIT"
+                },
+                {
+                    "code": "BVISUALIS",
+                    "libelle": "VISUALISER"
+                },
+                {
+                    "code": "DEMAT",
+                    "libelle": "E-FACTURE"
+                },
+                {
+                    "code": "DEV_MEMBRE",
+                    "libelle": "OUVRIR UNE CARTE B (GRATUITE)"
+                },
+                {
+                    "code": "DISPONIBLE",
+                    "libelle": "DISPONIBLE"
+                },
+                {
+                    "code": "ENTREPOT_E",
+                    "libelle": "Entrepôt éloigné"
+                },
+                {
+                    "code": "ENTREPOT_R",
+                    "libelle": "Entrepôt de rattachement"
+                },
+                {
+                    "code": "GARANTIE_C",
+                    "libelle": "Constructeur"
+                },
+                {
+                    "code": "GARANTIE_H",
+                    "libelle": "Hors garantie"
+                },
+                {
+                    "code": "GARANTIE_K",
+                    "libelle": "Vols et casse"
+                },
+                {
+                    "code": "GARANTIE_Y",
+                    "libelle": "Garantie Remboursement"
+                },
+                {
+                    "code": "GARANTIE_1",
+                    "libelle": "Garantie 1ère année"
+                },
+                {
+                    "code": "GARANTIE_2",
+                    "libelle": "Garantie 2nde année"
+                },
+                {
+                    "code": "GARANTIE_3",
+                    "libelle": "Garantie 3ième année"
+                },
+                {
+                    "code": "GARANTIE_5",
+                    "libelle": "Extension de garantie"
+                },
+                {
+                    "code": "GRATUIT",
+                    "libelle": "GRATUIT"
+                },
+                {
+                    "code": "INDISPO",
+                    "libelle": "INDISPONIBLE"
+                },
+                {
+                    "code": "MAGASIN",
+                    "libelle": "Mon magasin"
+                },
+                {
+                    "code": "MAGASIN_P",
+                    "libelle": "Magasin de proximité"
+                },
+                {
+                    "code": "OFFERT",
+                    "libelle": "OFFERT"
+                },
+                {
+                    "code": "PANIER",
+                    "libelle": "EN CALCUL"
+                },
+                {
+                    "code": "RETRAIT",
+                    "libelle": "AVEC PRODUITS DELIVRABLE"
+                },
+                {
+                    "code": "25",
+                    "libelle": "Carte B+"
+                },
+                {
+                    "code": "35",
+                    "libelle": "Carte B"
+                },
+                {
+                    "code": "45",
+                    "libelle": "Carte Club"
+                }
+            ],
+            "erreursPfs": [
+                {
+                    "codeErreur": "201",
+                    "libelleErreur": "Souscription créée"
+                },
+                {
+                    "codeErreur": "400",
+                    "libelleErreur": "Paramètres manquants"
+                },
+                {
+                    "codeErreur": "401",
+                    "libelleErreur": "Utilisateur non logué"
+                },
+                {
+                    "codeErreur": "403",
+                    "libelleErreur": "Clés uniques de contrat incorrectes"
+                },
+                {
+                    "codeErreur": "500",
+                    "libelleErreur": "Une erreur technique est survenue"
+                },
+                {
+                    "codeErreur": "502",
+                    "libelleErreur": "Le partenaire externe n'est pas joignable"
+                }
+            ],
+            "codesDelivrance": [
+                {
+                    "code": "D",
+                    "libelle": "Differe",
+                    "codesComptoir": [
+                        {
+                            "code": "CD",
+                            "libelle": "Coursier DC"
+                        },
+                        {
+                            "code": "ED",
+                            "libelle": "Différé expo DE"
+                        },
+                        {
+                            "code": "RD",
+                            "libelle": "Sur mon magasin DR"
+                        },
+                        {
+                            "code": "RD",
+                            "libelle": "Autre magasin DR"
+                        }
+                    ]
+                },
+                {
+                    "code": "E",
+                    "libelle": "Emporte",
+                    "codesComptoir": [
+                        {
+                            "code": "JD",
+                            "libelle": "Point retrait DJ"
+                        },
+                        {
+                            "code": "EE",
+                            "libelle": "Expo  EE"
+                        },
+                        {
+                            "code": "PE",
+                            "libelle": "A préparer EP"
+                        },
+                        {
+                            "code": "RE",
+                            "libelle": "Réserve ER"
+                        },
+                        {
+                            "code": "TE",
+                            "libelle": "Surface ET"
+                        }
+                    ]
+                },
+                {
+                    "code": "L",
+                    "libelle": "Livraison",
+                    "codesComptoir": [
+                        {
+                            "code": "RD905",
+                            "libelle": "Boulanger.com"
+                        },
+                        {
+                            "code": "EL",
+                            "libelle": "chez le client Boulanger LE"
+                        },
+                        {
+                            "code": "RL",
+                            "libelle": "chez le client Boulanger LR"
+                        }
+                    ]
+                }
+            ],
+            "statutsProduit": [
+                {
+                    "code": "ADE",
+                    "libelle": "A délivrer",
+                    "couleurTexte": "#FFFFFF",
+                    "couleurFond": "#DF981C"
+                },
+                {
+                    "code": "ANN",
+                    "libelle": "ANNULÉ",
+                    "couleurTexte": "#FEFEFE",
+                    "couleurFond": "#F90000"
+                },
+                {
+                    "code": "ATT",
+                    "libelle": "EN ATTENTE",
+                    "couleurTexte": "#FFFFFF",
+                    "couleurFond": "#DF981C"
+                },
+                {
+                    "code": "DLV",
+                    "libelle": "DÉLIVRÉ",
+                    "couleurTexte": "#FFFFFF",
+                    "couleurFond": "#92BC66"
+                },
+                {
+                    "code": "LCK",
+                    "libelle": "COMMANDE BLOQUÉE",
+                    "couleurTexte": "#FEFEFE",
+                    "couleurFond": "#F90000"
+                },
+                {
+                    "code": "NDE",
+                    "libelle": "Non délivrable",
+                    "couleurTexte": "#FFFFFF",
+                    "couleurFond": "#5CBAD3"
+                },
+                {
+                    "code": "PEC",
+                    "libelle": "Pris en compte pour délivrance",
+                    "couleurTexte": "#FFFFFF",
+                    "couleurFond": "#92BC66"
+                },
+                {
+                    "code": "RES",
+                    "libelle": "RÉSERVÉ",
+                    "couleurTexte": "#FFFFFF",
+                    "couleurFond": "#5CBAD3"
+                }
+            ],
+            "infosMDegSAP": [
+                {
+                    "ligne": 1,
+                    "texteInfo": "SAP est actuellement en mode dégradé.</br>"
+                }
+            ],
+            "theme": [
+                {
+                    "code": "BP",
+                    "libelle": "B.COM augmenté",
+                    "ordre": 7,
+                    "plie": true
+                },
+                {
+                    "code": "IV",
+                    "libelle": "Infos versions",
+                    "ordre": 1,
+                    "plie": true
+                },
+                {
+                    "code": "MO",
+                    "libelle": "Monétique",
+                    "ordre": 5,
+                    "plie": true
+                },
+                {
+                    "code": "OM",
+                    "libelle": "Client",
+                    "ordre": 3,
+                    "plie": true
+                },
+                {
+                    "code": "OV",
+                    "libelle": "Vendeur",
+                    "ordre": 4,
+                    "plie": false
+                },
+                {
+                    "code": "PA",
+                    "libelle": "Paramétrage",
+                    "ordre": 99,
+                    "plie": true
+                },
+                {
+                    "code": "RA",
+                    "libelle": "RACCOURCIS",
+                    "ordre": 2,
+                    "plie": true
+                }
+            ],
+            "messageForcerPaiement": [
+                {
+                    "ligne": "1",
+                    "texteInfo": "LA VENTE A BIEN ETE ENREGISTREE"
+                },
+                {
+                    "ligne": "2",
+                    "texteInfo": "Le client peut se diriger en caisse"
+                }
+            ],
+            "infosBipage": [
+                {
+                    "ligne": 1,
+                    "texteInfo": "Attention, votre client souscrit un contrat de garantie/assurance, merci de l"
+                },
+                {
+                    "ligne": 2,
+                    "texteInfo": "ui remettre le pack service concerné, avant de valider la vente"
+                }
+            ],
+            "infosNonBipage": [
+                {
+                    "ligne": 1,
+                    "texteInfo": "Attention, l'absence de remise du pack service au client constitue une infrac"
+                },
+                {
+                    "ligne": 2,
+                    "texteInfo": "tion sanctionnée par la DDPP/DGCCRF."
+                }
+            ],
+            "message100PourcentAcompte": [
+                {
+                    "ligne": 1,
+                    "texte": "Produit en livraison - Un acompte de 100% est obligatoire.<BR> Autorisation requise."
+                }
+            ]
+        }
+    }
+}
+
+################################################################
