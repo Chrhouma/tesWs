@@ -188,7 +188,7 @@ public class TestWs {
         writeOnFile(Ftoatale,resp1.asString());
         writeOnFile(Ftoatale,endWs);
     }
-    // ici j(essaie de tester
+
     public  void testValiderModeLiv(File Ftoatale) throws IOException{
         String startTest=separateur+"valider_mode_liv"+separateur+"\n";
         File f = new File("/home/front-vendeur/IdeaProjects/Autotest/testWs/validerModeLiv/validerModeLiv" + date );

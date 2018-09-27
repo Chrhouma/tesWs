@@ -1,9 +1,9 @@
 package com.pictimegroupe.FrontVendeur.testWebservice.services;
 
-import com.pictimegroupe.FrontVendeur.testWebservice.Delta;
-import com.pictimegroupe.FrontVendeur.testWebservice.Scenario;
+
+import com.pictimegroupe.FrontVendeur.testWebservice.Util.Const;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailException;
+
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -18,14 +18,12 @@ public class SendEmailServiceImpl implements  SendEmailService {
         this.javaMailSender=javaMailSender;
     }
 
-
     public void sendDelta() {
 
-     System.out.println("je commence l'envoi du mail");
+      System.out.println("je commence l'envoi du mail");
         SimpleMailMessage mail= new SimpleMailMessage();
-
-        mail.setTo("gabaroski@gmail.com");
-        mail.setFrom("gabaroski@gmail.com");
+        mail.setTo(Const.ADRESSEDESTINATAIRE);
+        mail.setFrom(Const.ADRESSEEMETTEUR);
         mail.setSubject("test web service");
         mail.setText( "Notre application a détectée un changement au niveau du scénario  ");
         try {
@@ -34,9 +32,6 @@ public class SendEmailServiceImpl implements  SendEmailService {
         catch (Exception e){
             System.out.println("exception  "+e);
         }
-
-
-
         System.out.println("envoi terminé");
 
     }

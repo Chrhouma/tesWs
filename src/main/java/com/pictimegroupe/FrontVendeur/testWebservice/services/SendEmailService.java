@@ -6,6 +6,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 public interface SendEmailService {
     void NotificationService(JavaMailSender javaMailSender);
-  void sendDelta();
+    void sendDelta();
 }
 

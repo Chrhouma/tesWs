@@ -67,9 +67,6 @@ public  class UserServicesImpl implements UserServices {
             userRepository.save(user);
 
       }
-      //  else{
-       //  throw  new GestionRoleException("vous n'avez pas le droit d'ajouter un utilisateur");
-     //  }
 
     }
 

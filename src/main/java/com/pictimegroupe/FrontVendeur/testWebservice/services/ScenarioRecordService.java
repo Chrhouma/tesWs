@@ -16,7 +16,7 @@ public interface ScenarioRecordService {
     JsonArrayBuilder getAllScenarioRecord();
     void addScenarioRecord(ScenarioRecord ScenarioRecord);
     String sortListrecordByDAte(List<ScenarioRecord> recordList);
-    void testerScenario(String id) throws IOException;
+
     void testerAllScenario() throws IOException;
     void comparerScenario(String idScenarioRecord, String IdScenarioRecord) throws IOException;
     String compareAutomatic() throws IOException;
